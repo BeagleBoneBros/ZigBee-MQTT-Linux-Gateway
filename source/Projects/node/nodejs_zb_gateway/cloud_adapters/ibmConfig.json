@@ -1,0 +1,8 @@
+{
+	"org": "7uhx66",
+	"type": "zigbeeGateway",
+	"id": "myZigbeeGatewayDevice",
+	"domain": "internetofthings.ibmcloud.com",
+	"auth-method": "token",
+	"auth-token": "authToken1234"
+}

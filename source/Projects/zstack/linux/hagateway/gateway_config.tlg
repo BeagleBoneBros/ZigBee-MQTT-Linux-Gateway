@@ -1,0 +1,133 @@
+// Texas Instruments Linux Gateway Endpoint Configuration File (.tlg)
+// Copyright 2014 Texas Instruments Incorporated. All rights reserved.
+
+// comments
+// the rest of a line (after //) is ignored
+// any whitespace separates tokens (lines, spaces, tabs, comma)
+// order is not important (that is, if a name is referred to in may be before or after the reference)
+
+// keywords
+// all keywords are lowercase. Custom names should be MixedCase, so as not to confuse with keywords
+// Names follow C rules and are case sensitive. Numbers may be decimal or hex (e.g. 0x0Ae4)
+//
+// endpoint    - a description of an endpoint
+// endpointdef - a simple descriptor
+// clusterlist - list of clusters (for either input or output)
+// attr        - a single attribute
+// attrlist    - a list of attributes
+// attrdef     - includes and endpoint, cluster, and list of attributes
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Global Attribute ID across clusters
+#define ClusterRevisionAttrId         0xFFFD
+
+//************ Green Power Endpoint definitions *****************//
+
+//Green Power Device ID
+#define DeviceID_GPProxyBasic  0x0061
+
+//Green Power Profile ID
+#define GP_Profile                  0xA1E0
+
+//Green Power Cluster ID
+#define GreenPowerClusterId                     0x0021
+
+//Green Power ID (assigned by Zigbee Alliance, this endpoint ID cannot be changed)
+#define GreenPowerEndpoint                    0xF2
+
+
+// endpointdefs define all fields for a simple descriptor (with the exception of the endpoint id)
+//  uint16 profileid;
+//  uint16 deviceid;
+//  uint8  devicever;
+//  input clusterlist;
+//  output clusterlist;
+endpointdef GPProxyBasicEpDef { GP_Profile, DeviceID_GPProxyBasic , 0, GPProxyBasicInputClusters, GPProxyBasicOutputClusters }
+
+
+// clusterlists include a list of clusters
+// for some common ZigBee clusters there is an internal keyword defined, that can optionally be used instead of a number or an explicit #define. These keywords are: basic, identify, groups, scenes, onoff.
+// - supporting as server (accepting client to server commands):
+clusterlist GPProxyBasicInputClusters { }
+// - supporting as clients (accepting server to client commands):
+clusterlist GPProxyBasicOutputClusters { GreenPowerClusterId }
+
+// attribute definition include cluster id, attribute id, data type, and access control
+//  uint16  attrid;         // in hex (0x050E) or decimal (0, 99, etc..)
+//  uint8   datatype;       // Enther a keyword or any supported ZigBee type value. Supported keywords are: uint8, uint16, uint32, boolean, octetstr, charstr, enum8
+//  uint8   accesscontrol;  // one of the keywords: rdonly, rdwr
+// special case: if attribute datatype is charstring or octetstring, a length byte follows the type
+//               { 99, charstring, 16, rdwr } // a character string up to 16 bytes
+attr GP_MaxProxyTableEntries { GreenPowerClusterId, 0x0010, uint8, rdonly }
+attr GP_ProxyTable { GreenPowerClusterId, 0x0011, 0x43, rdonly }
+attr GP_NotificationRetryNumber { GreenPowerClusterId , 0x0012, uint8, rdwr }
+attr GP_NotificationRetryTimer  { GreenPowerClusterId , 0x0013, uint8, rdwr }
+attr GP_Functionality  { GreenPowerClusterId , 0x0016, 0x1a, rdonly }
+attr GP_ActiveFunctionality { GreenPowerClusterId , 0x0017, 0x1a, rdwr }
+attr GP_SharedSecurityKeyType { GreenPowerClusterId , 0x0020, 0x18, rdwr }
+attr GP_SharedSecurityKey { GreenPowerClusterId , 0x0021, 0xf1, rdwr }
+attr GP_LinkKey { GreenPowerClusterId , 0x0022, 0xf1, rdwr }
+attr GP_ClusterRevision { GreenPowerClusterId, ClusterRevisionAttrId, uint8, rdonly }
+
+// attrlists are a collection of attributes
+attrlist GPProxyBasicAttrList { GP_MaxProxyTableEntries, GP_ProxyTable, GP_NotificationRetryNumber, GP_NotificationRetryTimer, GP_Functionality, GP_ActiveFunctionality, GP_SharedSecurityKeyType, GP_SharedSecurityKey, GP_LinkKey, GP_ClusterRevision }
+
+
+//************ Combined Interface Endpoint definitions *****************//
+
+// Device IDs
+#define DeviceID_CombinedInterface     0x0007
+
+// Cluster IDs
+#define AlarmsClusterId 0x0009
+#define PollControlClusterId 0x0020
+#define DoorLockClusterId 0x0101
+#define IasZoneClusterId 0x0500
+#define IasAceClusterId 0x0501
+
+
+// endpointdefs define all fields for a simple descriptor (with the exception of the endpoint id)
+//  uint16 profileid;
+//  uint16 deviceid;
+//  uint8  devicever;
+//  input clusterlist;
+//  output clusterlist;
+endpointdef CombinedInterfaceEpDef { ha_profile, DeviceID_CombinedInterface , 0, CombinedInterfaceInputClusters, CombinedInterfaceOutputClusters }
+
+// clusterlists include a list of clusters
+// for some common ZigBee clusters there is an internal keyword defined, that can optionally be used instead of a number or an explicit #define. These keywords are: basic, identify, groups, scenes, onoff.
+// - supporting as server (accepting client to server commands):
+clusterlist CombinedInterfaceInputClusters { basic, identify, IasAceClusterId }
+// - supporting as clients (accepting server to client commands):
+clusterlist CombinedInterfaceOutputClusters { onoff, groups, scenes, IasZoneClusterId, AlarmsClusterId, DoorLockClusterId, PollControlClusterId }
+
+// attribute definition include cluster id, attribute id, data type, and access control
+//  uint16  attrid;         // in hex (0x050E) or decimal (0, 99, etc..)
+//  uint8   datatype;       // Enther a keyword or any supported ZigBee type value. Supported keywords are: uint8, uint16, uint32, boolean, octetstr, charstr, enum8
+//  uint8   accesscontrol;  // one of the keywords: rdonly, rdwr
+// special case: if attribute datatype is charstring or octetstring, a length byte follows the type
+//               { 99, charstring, 16, rdwr } // a character string up to 16 bytes
+attr Identify_IdentifyTimeAttr { identify, 0x0000, uint16, rdwr }
+attr Identify_ClusterRevision { identify, ClusterRevisionAttrId, uint8, rdonly }
+attr Basic_ZCLVersionAttr { basic, 0x0000, uint8, rdonly }
+attr Basic_PowerSourceAttr { basic, 0x0007, enum8, rdonly }
+attr Basic_ClusterRevision { basic, ClusterRevisionAttrId, uint8, rdonly }
+
+// attrlists are a collection of attributes
+attrlist CombinedInterfaceAttrList { Identify_IdentifyTimeAttr, Identify_ClusterRevision, Basic_ZCLVersionAttr, Basic_PowerSourceAttr, Basic_ClusterRevision }
+
+
+//************ Endpoint definitions *****************//
+
+// Application endpoints IDs may be in the range 1-254, except:
+// endpoint IDs 0 is reserved by the system (ZDO)
+// endpoint ID 14 is reserved as well (OtaMgr)
+// endpoint ID 244 is reserved for green power
+// the same endpointdef may be used by more than one endpoint
+// endpoint { ID, EndpointDef, AttrDef }
+endpoint { 0x04, CombinedInterfaceEpDef, CombinedInterfaceAttrList }
+endpoint { GreenPowerEndpoint, GPProxyBasicEpDef, GPProxyBasicAttrList }
+
+
+

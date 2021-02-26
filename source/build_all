@@ -1,0 +1,8 @@
+pushd `dirname $0` > /dev/null
+SCRIPTPATH=`pwd`
+popd > /dev/null
+export GATEWAY=$SCRIPTPATH
+export PKGS_OUTPUT_DIR=$SCRIPTPATH/out
+cd scripts
+export BUILDING_FROM_SOURCE_PACKAGE="TRUE"
+./package_builder

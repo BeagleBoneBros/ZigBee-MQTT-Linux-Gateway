@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+/******************************************************************************
+
+ @file webapp.html
+
+ @brief Front End HTML File
+
+ Group: WCS LPC
+
+ ******************************************************************************
+ $License: BSD3 2018 $
+
+   Copyright (c) 2018, Texas Instruments Incorporated
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   *  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   *  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+   *  Neither the name of Texas Instruments Incorporated nor the names of
+      its contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+   PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+   OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+   EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ ******************************************************************************
+ $Release Name: ZStack Linux Gateway SDK ENG $
+ $Release Date: May 07, 2018 $
+ *****************************************************************************/
+ -->
+
+<head>
+  <title>Zigbee Sensor to Cloud</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/dist/js/Chart.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="/dist/css/slider.css"/>
+  <script src="/dist/jquery/jquery-1.12.0.min.js"></script>
+  <script src="/dist/js/popper.min.js"></script>
+  <script src="/dist/js/bootstrap.js"></script>
+
+  <script src="/webapp.js"></script>
+
+  <script language="javascript" type="text/javascript" src="zb_lib.js"></script>
+
+</head>
+
+<body>
+  <nav class="navbar sticky-top bg-dark navbar-dark">
+
+    <a class="navbar-brand text-left margin-left" href="#">Zigbee Sensor to Cloud</a>
+
+    <button class="nav-item navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse hide" id="collapsibleNavbar">
+      <ul class="navbar-nav text-right">
+        <li class="nav-item">
+          <div class="mt-4 col-md-12"></div>
+        </li>
+        <li class="nav-item">
+          <h5 class="text-white">Texas Instruments</h5>
+        </li>
+        <li class="nav-item">
+          <div class="text-white" id="networkChannelNumber"></div>
+          <div class="text-white" id="networkPanID"></div>
+        </li>
+        <li class="nav-item">
+          <div class="mt-4 col-md-12"></div>
+        </li>
+        <li class="nav-item">
+          <button id="NetworkButton" type="button" state="closed" class="btn btn-success" onclick="network_btn()">Open Network</button>
+        </li>
+        <li class="nav-item">
+          <div class="mt-4 col-md-12"></div>
+        </li>
+        <li class="nav-item">
+          <button id="SoftSystemresetButton" type="button" state="closed" class="btn btn-warning" onclick="soft_system_reset_btn()">Soft System Reset</button>
+        </li>
+        <li class="nav-item">
+          <div class="mt-4 col-md-12"></div>
+        </li>
+        <li class="nav-item">
+          <button id="HardSystemresetButton" type="button" state="closed" class="btn btn-danger" onclick="hard_system_reset_btn()">Hard System Reset</button>
+        </li>
+      </ul>
+    </div>  
+  </nav>
+
+  <p></p>
+
+  <div class="container-fluid">
+
+    <ul id="addDevDevList" class="list-group"></ul>
+
+    <div class="modal fade" id="networkResetModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" >Network Reset</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Please Wait while the Zigbee Network is being reset.
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="networkReadyModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" >Network Ready</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            The Zigbee network is ready!
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>  
+
+
+  <script>
+    webAppClient = new WebAppClient();
+      
+    webAppClient.getDeviceList();    
+    
+    webAppClient.drawList();
+  
+    // handle network open/close button
+    function network_btn() {
+      webAppClient.networkButtonPress();
+    }
+
+    // handle network open/close button
+    function hard_system_reset_btn() {
+      webAppClient.hardSystemReset();
+    }
+
+    // handle network open/close button
+    function soft_system_reset_btn() {
+      webAppClient.softSystemReset();
+    }    
+
+    function remove_btn(btn) {
+      webAppClient.removeDevice(btn);
+    }
+
+    function toggle_light_btn(btn) {
+      webAppClient.toggleLight(btn);
+    }
+
+    function light_on_btn(btn) {
+      webAppClient.lightOn(btn);
+    }
+
+    function light_off_btn(btn) {
+      webAppClient.lightOff(btn);
+    }
+
+    function get_temp_btn(btn) {
+      webAppClient.getTemp(btn);
+    }
+
+    function send_report_btn(btn) {
+      webAppClient.setReportInterval(btn);
+    }
+
+    function sliderChangeLevel(btn){
+      webAppClient.setLevelTransition(btn);
+    }
+
+    function sliderChangeTransition(btn){
+      webAppClient.setOnOffTransition(btn);
+    }
+
+    function sliderChangeHue(btn){
+      webAppClient.setColor(btn);
+    }
+
+    function sliderChangeSaturation(btn){
+      webAppClient.setColor(btn);
+    }
+    
+    function get_doorlock_state_btn(btn) {
+      webAppClient.getDoorLockState(btn);
+    }
+
+    function set_doorlock_lock_btn(btn) {
+      webAppClient.setDoorLockState_Lock(btn);
+    }
+
+    function set_doorlock_unlock_btn(btn) {
+      webAppClient.setDoorLockState_Unlock(btn);
+    }
+
+    function setpoint_thermostat_increase_btn(btn) {
+      webAppClient.setpointThermostat_increase(btn);
+    }
+
+    function setpoint_thermostat_decrease_btn(btn) {
+      webAppClient.setpointThermostat_decrease(btn);
+    }
+
+    function thermostat_poll_btn(btn) {
+      webAppClient.Thermostat_poll(btn);
+    }
+
+    function bind_device_btn(btn) {
+      webAppClient.bindDevice(btn);
+    }
+
+    function bind_modal_switchlight_btn(btn){
+      webAppClient.openBindModal_SwitchLight(btn);
+    }
+
+    function bind_modal_doorlockcontroller_btn(btn){
+      webAppClient.openBindModal_DoorLockController(btn);
+    }
+
+    function unbind_device_btn(btn) {
+      webAppClient.unbindDevice(btn);
+    }
+
+  </script>
+
+</body>
+
+</html>

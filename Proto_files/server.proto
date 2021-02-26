@@ -1,0 +1,228 @@
+//----------------------------------------------------------------------------
+//  Filename:       server.proto
+//  Revised:        $Date$
+//  Revision:       $Revision$
+//
+//  Description:    TI Server Protocol Buffers Definition File
+//
+//
+//  Copyright 2013 Texas Instruments Incorporated. All rights reserved.
+//
+//  IMPORTANT: Your use of this Software is limited to those specific rights
+//  granted under the terms of a software license agreement between the user
+//  who downloaded the software, his/her employer (which must be your employer)
+//  and Texas Instruments Incorporated (the "License").  You may not use this
+//  Software unless you agree to abide by the terms of the License. The License
+//  limits your use, and you acknowledge, that the Software may not be modified,
+//  copied or distributed unless embedded on a Texas Instruments microcontroller
+//  or used solely and exclusively in conjunction with a Texas Instruments radio
+//  frequency transceiver, which is integrated into your product.  Other than for
+//  the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//  works of, modify, distribute, perform, display or sell this Software and/or
+//  its documentation for any purpose.
+//
+//  YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//  PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//  INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//  NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//  TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//  NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//  LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//  INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//  OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//  OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//  (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//
+//  Should you have any questions regarding your right to use this Software,
+//  contact Texas Instruments Incorporated at www.TI.com.
+//----------------------------------------------------------------------------
+
+
+//-----------------------------------------
+// Constants and definitions
+//-----------------------------------------
+
+// MT System ID for the Server Protobuf sub-system ID
+enum zStackServerSysId_t
+{
+  RPC_SYS_PB_SRVR = 25;
+}
+
+// Command IDs - each of these are associated with Request, Responses, Indications, and Confirm messages
+enum srvrCmdId_t 
+{
+  SRVR_GET_IEEE_ADDRESS_REQ = 0;
+  SRVR_GET_IEEE_ADDRESS_CNF = 1;
+
+  SRVR_GET_SHORT_ADDRESS_REQ = 2;
+  SRVR_GET_SHORT_ADDRESS_CNF = 3;
+
+  SRVR_GET_DEVICE_INFO_REQ = 4;
+  SRVR_GET_DEVICE_INFO_CNF = 5;
+
+  SRVR_GET_DEVICE_STATUS_REQ = 6;
+  SRVR_GET_DEVICE_STATUS_CNF = 7;
+
+  SRVR_SET_DEVICE_STATUS_REQ = 8;
+  SRVR_SET_DEVICE_STATUS_CNF = 9;
+}
+
+enum srvrDeviceStatus_t
+{
+  DEVICE_OFF_LINE = 0;             // Device is off-line (non-responsive to service discovery)
+  DEVICE_ON_LINE = 1;              // Status good
+  DEVICE_REMOVED = 2;              // Device has been removed
+  DEVICE_NA = 255;                 // Not Applicable (this value is returned when gateway device)
+}
+
+enum srvrStatus_t
+{
+  STATUS_SUCCESS = 0;
+  STATUS_FAILURE = 1;
+  STATUS_BUSY = 2;      // state machine busy, resources unavailable... 
+  STATUS_INVALID_PARAMETER = 3;
+  STATUS_TIMEOUT = 4;
+}
+
+//----------------------------------------------------------------------------------------------
+// Structures - submessages, these aren't sent as messages but are included within other messages
+//----------------------------------------------------------------------------------------------
+
+message srvrSimpleDescriptor_t
+{
+  required uint32 endpointId = 1;         // (uint8) endpoint
+  required uint32 profileId = 2;          // (uint16) applications profile ID
+  required uint32 deviceId = 3;           // (uint16) device ID
+  required uint32 deviceVer = 4;          // (uint16) device version
+  repeated uint32 inputClusters = 5;      // Array of (uint16) input clusters
+  repeated uint32 outputClusters = 6;     // Array of (uint16) output clusters
+}
+
+message srvrDeviceInfo_t
+{
+  required uint32 networkAddress = 1;                 // (uint16) device short address
+  required fixed64 ieeeAddress = 2;                   // device extended address
+  optional fixed64 parentIeeeAddress = 3;             // IEEE address of the parent device, if available
+  required uint32 manufacturerId = 4;                 // (uint16) manufacturer ID
+  repeated srvrSimpleDescriptor_t simpleDescList = 5;
+  required srvrDeviceStatus_t deviceStatus = 6;
+}
+
+//---------------------------------------------------
+// Server API Set
+//---------------------------------------------------
+
+// SRVR_GET_IEEE_ADDRESS_REQ
+message SrvrGetIeeeAddressReq
+{
+  // SRVR_GET_IEEE_ADDRESS_REQ - command ID used to identify this message
+  // Get IEEE Address - This message is called by the server to retrieve the IEEE address
+  // of a device using the device's short address.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_IEEE_ADDRESS_REQ];   // don't change this field
+  required uint32 shortAddress = 2;
+}
+
+// SRVR_GET_IEEE_ADDRESS_CNF
+message SrvrGetIeeeAddressCnf
+{
+  // SRVR_GET_IEEE_ADDRESS_CNF - command ID used to identify this message
+  // Get IEEE Address Confirmation - This message is sent in response to SRVR_GET_IEEE_ADDRESS_REQ by the 
+  // network manager server to provide the IEEE address of a device in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_IEEE_ADDRESS_CNF];   // don't change this field
+  required srvrStatus_t status = 2;
+  required fixed64 ieeeAddress = 3;
+}
+
+// SRVR_GET_SHORT_ADDRESS_REQ
+message SrvrGetShortAddressReq
+{
+  // SRVR_GET_SHORT_ADDRESS_REQ - command ID used to identify this message
+  // Get Short Address - This message is called by the server to retrieve the short address
+  // of a device using the devices' IEEE address.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_SHORT_ADDRESS_REQ];    // don't change this field
+  required fixed64 ieeeAddress = 2;
+}
+
+// SRVR_GET_SHORT_ADDRESS_CNF
+message SrvrGetShortAddressCnf
+{
+  // SRVR_GET_SHORT_ADDRESS_CNF - command ID used to identify this message
+  // Get IEEE Address Confirmation - This message is sent in response to SRVR_GET_SHORT_ADDRESS_REQ by the 
+  // network manager server to provide the short address of a device in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_SHORT_ADDRESS_CNF];    // don't change this field
+  required srvrStatus_t status = 2;
+  required uint32 shortAddress = 3;
+}
+
+// SRVR_GET_DEVICE_INFO_REQ
+message SrvrGetDeviceInfoReq
+{
+  // SRVR_GET_DEVICE_INFO_REQ - command ID used to identify this message
+  // Get Device Information - This message is called by the server to retrieve device information
+  // for a specific device in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_DEVICE_INFO_REQ];    // don't change this field
+  required fixed64 ieeeAddress = 2;
+}
+
+// SRVR_GET_DEVICE_INFO_CNF
+message SrvrGetDeviceInfoCnf
+{
+  // SRVR_GET_DEVICE_INFO_CNF - command ID used to identify this message
+  // Get Device Information Confirmation - This message is sent in response to SRVR_GET_DEVICE_INFO_REQ by the
+  // network manager server to provide device information on a specific device in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_DEVICE_INFO_CNF];    // don't change this field
+  required srvrStatus_t status = 2;
+  required srvrDeviceInfo_t deviceInfo = 3;
+}
+
+// SRVR_GET_DEVICE_STATUS_REQ
+message SrvrGetDeviceStatusReq
+{
+  // SRVR_GET_DEVICE_STATUS_REQ - command ID used to identify this message
+  // Get Device Status - This message is called by the server to retrieve the device status on a 
+  // specific device in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_DEVICE_STATUS_REQ];    // don't change this field
+  required fixed64 ieeeAddress = 2;
+}
+
+// SRVR_GET_DEVICE_STATUS_CNF
+message SrvrGetDeviceStatusCnf
+{
+  // SRVR_GET_DEVICE_STATUS_CNF - command ID used to identify this message
+  // Get Device Status Confirmation - This message is sent in response to SRVR_GET_DEVICE_STATUS_REQ by the
+  // network manager server to provide the device status on a specific device in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_GET_DEVICE_STATUS_CNF];    // don't change this field
+  required srvrStatus_t status = 2;
+  required srvrDeviceStatus_t deviceStatus = 3;
+}
+
+// SRVR_SET_DEVICE_STATUS_REQ
+message SrvrSetDeviceStatusReq
+{
+  // SRVR_SET_DEVICE_STATUS_REQ - command ID used to identify this message
+  // Set Device Status - This message is called by the server to set the device status on a specific
+  // device in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_SET_DEVICE_STATUS_REQ];    // don't change this field
+  required fixed64 ieeeAddress = 2;
+  required srvrDeviceStatus_t deviceStatus = 3; 
+}
+
+// SRVR_SET_DEVICE_STATUS_CNF
+message SrvrSetDeviceStatusCnf
+{
+  // SRVR_SET_DEVICE_STATUS_CNF - command ID used to identify this message
+  // Set Device Status Confirmation - This message is sent in response to SRVR_SET_DEVICE_STATUS_REQ by the 
+  // network manager server to confirm the setting of a device's status in the database.
+
+  required srvrCmdId_t cmdId = 1 [default = SRVR_SET_DEVICE_STATUS_CNF];    // don't change this field
+  required srvrStatus_t status = 2;
+}

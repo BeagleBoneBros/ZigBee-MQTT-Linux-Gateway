@@ -1,0 +1,2151 @@
+//----------------------------------------------------------------------------
+//  Filename:       zstack.proto
+//  Revised:        $Date$
+//  Revision:       $Revision$
+//
+//  Description:    TI ZStack Protocol Buffers Definition File
+//
+//
+//  Copyright 2013 - 2014 Texas Instruments Incorporated. All rights reserved.
+//
+//  IMPORTANT: Your use of this Software is limited to those specific rights
+//  granted under the terms of a software license agreement between the user
+//  who downloaded the software, his/her employer (which must be your employer)
+//  and Texas Instruments Incorporated (the "License").  You may not use this
+//  Software unless you agree to abide by the terms of the License. The License
+//  limits your use, and you acknowledge, that the Software may not be modified,
+//  copied or distributed unless embedded on a Texas Instruments microcontroller
+//  or used solely and exclusively in conjunction with a Texas Instruments radio
+//  frequency transceiver, which is integrated into your product.  Other than for
+//  the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//  works of, modify, distribute, perform, display or sell this Software and/or
+//  its documentation for any purpose.
+//
+//  YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//  PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//  INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//  NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//  TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//  NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//  LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//  INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//  OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//  OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//  (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//
+//  Should you have any questions regarding your right to use this Software,
+//  contact Texas Instruments Incorporated at www.TI.com.
+//----------------------------------------------------------------------------
+
+
+//-----------------------------------------
+// Constants and definitions
+//-----------------------------------------
+
+// ZStack Proto Version, this file's version
+enum ZStackAPIVersion
+{
+  ZSTACK_API_VERSION = 1;
+}
+
+// MT System ID for ZStack Protobuf sub-system ID
+enum ZStackSysIDs
+{
+  RPC_SYS_PROTOBUF = 17;
+}
+
+// Command IDs - each of these are associated with Request, Responses, Indications, and Confirm messages
+enum ZStackCmdIDs 
+{
+  SYS_RESET_REQ = 0x00;
+  SYS_VERSION_REQ = 0x02;
+  SYS_CONFIG_READ_REQ = 0x03;
+  SYS_CONFIG_WRITE_REQ = 0x04;
+  SYS_SET_TX_POWER_REQ = 0x07;
+  SYS_NWK_INFO_READ_REQ = 0x08;
+  SYS_NWK_INFO_WRITE_REQ = 0x09;
+  SYS_VERSION_RSP = 0x0A;
+  SYS_CONFIG_READ_RSP = 0x0B;
+  SYS_SET_TX_POWER_RSP = 0x0D;
+  SYS_NWK_INFO_READ_RSP = 0x0E;
+  SYS_NWK_INFO_WRITE_RSP = 0x0F;
+  DEV_START_REQ = 0x10;
+  DEV_NWK_DISCOVERY_REQ = 0x11;
+  DEV_JOIN_REQ = 0x12;
+  DEV_REJOIN_REQ = 0x13;
+  DEV_ZDO_CBS_REQ = 0x14;
+  DEV_NWK_ROUTE_REQ = 0x15;
+  DEV_NWK_CHECK_ROUTE_REQ = 0x16;
+  DEV_JAMMER_IND = 0x17;
+  APS_REMOVE_GROUP = 0x18;
+  APS_REMOVE_ALL_GROUPS = 0x19;
+  APS_FIND_ALL_GROUPS_REQ = 0x1A;
+  APS_FIND_ALL_GROUPS_RSP = 0x1B;
+  APS_FIND_GROUP_REQ = 0x1C;
+  APS_FIND_GROUP_RSP = 0x1D;
+  APS_ADD_GROUP = 0x1E;
+  APS_COUNT_ALL_GROUPS = 0x1F;
+  AF_REGISTER_REQ = 0x20;
+  AF_UNREGISTER_REQ = 0x21;
+  AF_DATA_REQ = 0x22;
+  AF_INTERPAN_CTL_REQ = 0x23;
+  AF_CONFIG_GET_REQ = 0x24;
+  AF_CONFIG_SET_REQ = 0x25;
+  ZDO_NWK_ADDR_REQ = 0x30;
+  ZDO_IEEE_ADDR_REQ = 0x31;
+  ZDO_NODE_DESC_REQ = 0x32;
+  ZDO_POWER_DESC_REQ = 0x33;
+  ZDO_SIMPLE_DESC_REQ = 0x34;
+  ZDO_ACTIVE_ENDPOINT_REQ = 0x35;
+  ZDO_MATCH_DESC_REQ = 0x36;
+  ZDO_COMPLEX_DESC_REQ = 0x37;
+  ZDO_SERVER_DISC_REQ = 0x39;
+  ZDO_END_DEVICE_BIND_REQ = 0x3A;
+  ZDO_BIND_REQ = 0x3B;
+  ZDO_UNBIND_REQ = 0x3C;
+  ZDO_MGMT_NWK_DISC_REQ = 0x3D;
+  ZDO_MGMT_LQI_REQ = 0x3E;
+  ZDO_MGMT_RTG_REQ = 0x3F;
+  ZDO_MGMT_BIND_REQ = 0x40;
+  ZDO_MGMT_LEAVE_REQ = 0x41;
+  ZDO_MGMT_DIRECT_JOIN_REQ = 0x42;
+  ZDO_MGMT_PERMIT_JOIN_REQ = 0x43;
+  ZDO_MGMT_NWK_UPDATE_REQ = 0x44;
+  ZDO_DEVICE_ANNOUNCE_REQ = 0x45;
+  ZDO_USER_DESCR_SET_REQ = 0x46;
+  ZDO_USER_DESC_REQ = 0x47;
+  ZDO_DEVICE_ANNOUNCE = 0x48;
+  ZDO_NWK_ADDR_RSP = 0x60;
+  ZDO_IEEE_ADDR_RSP = 0x61;
+  ZDO_NODE_DESC_RSP = 0x62;
+  ZDO_POWER_DESC_RSP = 0x63;
+  ZDO_SIMPLE_DESC_RSP = 0x64;
+  ZDO_ACTIVE_EP_RSP = 0x65;
+  ZDO_MATCH_DESC_RSP = 0x66;
+  ZDO_COMPLEX_DESC_RSP = 0x67;
+  ZDO_USER_DESC_RSP = 0x68;
+  ZDO_USER_DESC_SET_RSP = 0x69;
+  ZDO_SERVER_DISC_RSP = 0x6A;
+  ZDO_END_DEVICE_BIND_RSP = 0x6B;
+  ZDO_BIND_RSP = 0x6C;
+  ZDO_UNBIND_RSP = 0x6D;
+  ZDO_MGMT_NWK_DISC_RSP = 0x6E;
+  ZDO_MGMT_LQI_RSP = 0x6F;
+  ZDO_MGMT_RTG_RSP = 0x70;
+  ZDO_MGMT_BIND_RSP = 0x71;
+  ZDO_MGMT_LEAVE_RSP = 0x72;
+  ZDO_MGMT_DIRECT_JOIN_RSP = 0x73;
+  ZDO_MGMT_PERMIT_JOIN_RSP = 0x74;
+  ZDO_MGMT_NWK_UPDATE_NOTIFY = 0x75;
+  ZDO_END_DEVICE_TIMEOUT_RSP = 0x76;
+  ZDO_SRC_RTG_IND = 0x80;
+  ZDO_CONCENTRATOR_IND = 0x81;
+  ZDO_NWK_DISC_CNF = 0x82;
+  ZDO_BEACON_NOTIFY_IND = 0x83;
+  ZDO_JOIN_CNF = 0x84;
+  ZDO_LEAVE_CNF = 0x85;
+  ZDO_LEAVE_IND = 0x86;
+  AF_CONFIG_GET_RSP = 0x87;
+  SYS_RESET_IND = 0x90;
+  AF_DATA_CONFIRM_IND = 0x91;
+  AF_INCOMING_MSG_IND = 0x92;
+  AF_REFLECT_ERROR_IND = 0x93;
+  DEV_STATE_CHANGE_IND = 0x94;
+  ZDO_TC_DEVICE_IND = 0x95;
+  DEV_PERMIT_JOIN_IND = 0x96;
+  SEC_NWK_KEY_GET_REQ = 0xA0;
+  SEC_NWK_KEY_SET_REQ = 0xA1;
+  SEC_NWK_KEY_UPDATE_REQ = 0xA2;
+  SEC_NWK_KEY_SWITCH_REQ = 0xA3;
+  SEC_APS_LINKKEY_GET_REQ = 0xA4;
+  SEC_APS_LINKKEY_SET_REQ = 0xA5;
+  SEC_APS_LINKKEY_REMOVE_REQ = 0xA6;
+  SEC_APS_REMOVE_REQ = 0xA7;
+  SEC_NWK_KEY_GET_RSP = 0xB0;
+  SEC_APS_LINKKEY_GET_RSP = 0xB1;
+  ZSTACK_DEFAULT_RSP = 0xFA;
+  ZDO_DEVICE_ANNOUNCE_SHADOW = 0xe2;
+  APP_CNF_COMMISSIONING_NOTIFICATION = 0xe3;
+  GP_SEC_REQ_INCOMING_MSG = 0xe4;
+  GP_SEC_RSP_MSG = 0xe5;
+  APP_CNF_ADD_INSTALL_CODE_REQ = 0xe6;
+  SEND_GET_DEV_NWK_INFO_REQ = 0xf1;
+  GP_DATA_IND_INCOMING_MSG = 0xf2;
+  ZCL_ACTION_REQ = 0xf3;
+  APP_CNF_START_COMMISSIONING_REQ = 0xf4;
+  UTIL_SET_DEV_NWK_INFO_REQ = 0xf5;
+  UTIL_GET_DEV_NWK_INFO_REQ = 0xf6;
+  GP_ADDRESS_CONFLICT = 0xf7;
+   ZCL_ACTION_RSP = 0xf8;
+}
+
+// General collection of status values
+enum ZStatusValues
+{
+  ZSuccess = 0x00;                  // Operation successful
+  ZFailure = 0x01;
+  ZInvalidParameter = 0x02;
+  ZDecodeError = 0x03;
+  ZMemError = 0x10;
+  ZBufferFull = 0x11;
+  ZUnsupportedMode = 0x12;
+  ZMacMemError = 0x13;
+  ZSapiInProgress = 0x20;
+  ZSapiTimeout = 0x21;
+  ZSapiInit = 0x22;
+  ZNotAuthorized = 0x7E;
+  ZMalformedCmd = 0x80;
+  ZUnsupClusterCmd = 0x81;
+  ZOtaAbort = 0x95;
+  ZOtaImageInvalid = 0x96;
+  ZOtaWaitForData = 0x97;
+  ZOtaNoImageAvailable = 0x98;
+  ZOtaRequireMoreImage = 0x99;
+  ZApsFail = 0xb1;
+  ZApsTableFull = 0xb2;
+  ZApsIllegalRequest = 0xb3;
+  ZApsInvalidBinding = 0xb4;
+  ZApsUnsupportedAttrib = 0xb5;
+  ZApsNotSupported = 0xb6;
+  ZApsNoAck = 0xb7;
+  ZApsDuplicateEntry = 0xb8;
+  ZApsNoBoundDevice = 0xb9;
+  ZApsNotAllowed = 0xba;
+  ZApsNotAuthenticated = 0xbb;
+  ZSecNoKey = 0xa1;
+  ZSecOldFrmCount = 0xa2;
+  ZSecMaxFrmCount = 0xa3;
+  ZSecCcmFail = 0xa4;
+  ZNwkInvalidParam = 0xc1;
+  ZNwkInvalidRequest = 0xc2;
+  ZNwkNotPermitted = 0xc3;
+  ZNwkStartupFailure = 0xc4;
+  ZNwkAlreadyPresent = 0xc5;
+  ZNwkSyncFailure = 0xc6;
+  ZNwkTableFull = 0xc7;
+  ZNwkUnknownDevice = 0xc8;
+  ZNwkUnsupportedAttribute = 0xc9;
+  ZNwkNoNetworks = 0xca;
+  ZNwkLeaveUnconfirmed = 0xcb;
+  ZNwkNoAck = 0xcc;
+  ZNwkNoRoute = 0xcd;
+  ZAfDuplicateEndpoint = 0xd0;
+  ZAfEndpointMax = 0xd1;
+}
+////
+
+enum CommNotification {
+ STATUS_SUCCESS = 0;
+ IN_PROGRESS = 1;
+ NO_NETWORK = 2;
+ TL_TARGET_FAILURE = 3;
+ TL_NOT_AA_CAPABLE = 4;
+ TL_NOT_SCAN_RESPONSE = 5;
+ TL_NOT_PERMITED = 6;
+ TCLK_EX_FAILURE = 7;
+ FORMATION_FAILURE = 8;
+ FB_TARGET_IN_PROGRESS = 9;
+ FB_INITIATOR_IN_PROGRESS = 0x0A;
+ FB_NO_IDENTIFY_QUERY_RESPONSE = 0x0B;
+ FB_BINDING_TABLE_FULL = 0x0C;
+ NETWORK_RESTORED = 0x0D;
+ FAILURE = 0x0E;
+}
+
+
+
+
+// ZStack Server Type
+enum ZStackServerType
+{
+  ZSTACKZNP_COORDINATOR = 0;       // ZStack Server for ZNP, Coordinator
+  ZSTACKZNP_ROUTER = 1;            // ZStack Server for ZNP, Router
+  ZSTACKZNP_ENDDEVICE = 2;         // ZStack Server for ZNP, End Device
+  ZSTACKZNP_ALLBUILD = 3;          // ZStack Server for ZNP, All Build
+  ZSTACK_COORDINATOR = 4;          // ZStack Server (Full), Coordinator
+  ZSTACK_ROUTER = 5;               // ZStack Server (Full), Router
+  ZSTACK_ENDDEVICE = 6;            // ZStack Server (Full), End Device
+  ZSTACK_ALLBUILD = 7;             // ZStack Server (Full), All Build
+}
+
+// Address types
+enum AFAddrMode
+{
+  NONE = 0;       // Address not present
+  GROUP = 1;      // Group Address (uint16)
+  SHORT = 2;      // Short Address (uint16)
+  EXT = 3;        // Extended Address (8 bytes/64 bits)
+  BROADCAST = 15; // Broadcast Address (uint16)
+}
+
+// Reset types
+enum ResetTypes
+{
+  DEVICE = 0;			   // Target Device Reset
+  SERIAL_BOOTLOADER = 1;   // Serial Bootloader Reset
+}
+
+// Reset reasons
+enum ResetReasons
+{
+  POWERUP = 0;
+  EXTERNAL = 1;
+  WATCHDOG = 2;
+}
+
+enum LogicalTypes
+{
+  COORDINATOR = 0;
+  ROUTER = 1;
+  ENDDEVICE = 2;
+  UNKNOWN_TYPE = 3;
+}
+
+enum NetworkLatency
+{
+  NO_LATENCY_REQS = 0;  // Use only this value
+  FAST_BEACONS = 1;
+  SLOW_BEACONDS = 2;
+}
+
+enum NwkAddrReqType
+{
+
+  SINGLE_DEVICE = 0;
+  EXTENDED_W_ASSOCDEVS = 1;
+}
+
+enum PowerLevel
+{
+  LEVEL_CRITICAL = 0x00;  // Critical power level
+  LEVEL_33 = 0x04;        // Power level at 33%
+  LEVEL_66 = 0x08;        // Power level at 66%
+  LEVEL_100 = 0x0C;       // Power level at 100%
+}
+
+enum PowerModes
+{
+  POWER_SYNCHRONIZED = 0; // Receiver synchronized with the receiver on when idle (nodeDesc)
+  POWER_PERIODIC = 1;     // Receiver comes on periodically (powerDesc)
+  POWER_STIMULATED = 2;   // Receiver comes on when stimulated, e.g. key press
+}
+
+enum ZdpStatus
+{
+  SUCCESS = 0;               // Operation completed successfully
+  INVALID_REQTYPE = 0x80;    // The supplied request type was invalid
+  DEVICE_NOT_FOUND =0x81;    // Reserved
+  INVALID_EP = 0x82;         // Invalid endpoint value
+  NOT_ACTIVE = 0x83;         // Endpoint not described by a simple desc.
+  NOT_SUPPORTED = 0x84;      // Optional feature not supported
+  TIMEOUT = 0x85;            // Operation has timed out
+  NO_MATCH = 0x86;           // No match for end device bind
+  NO_ENTRY = 0x88;           // Unbind request failed, no entry
+  NO_DESCRIPTOR = 0x89;      // Child descriptor not available
+  INSUFFICIENT_SPACE = 0x8a; // Insufficient space to support operation
+  NOT_PERMITTED = 0x8b;      // Not in proper state to support operation
+  TABLE_FULL = 0x8c;         // No table space to support operation
+  NOT_AUTHORIZED = 0x8d;     // Permissions indicate request not authorized
+  BINDING_TABLE_FULL = 0x8e; // No binding table space to support operation
+}
+
+enum DevState
+{
+  HOLD = 0;               // Initialized - not started automatically
+  INIT = 1;               // Initialized - not connected to anything
+  NWK_DISC = 2;           // Discovering PAN's to join
+  NWK_JOINING = 3;        // Joining a PAN
+  NWK_REJOIN = 4;         // ReJoining a PAN, only for end devices
+  END_DEVICE_UNAUTH = 5;  // Joined but not yet authenticated by trust center
+  DEV_END_DEVICE = 6;     // Started as device after authentication
+  DEV_ROUTER = 7;         // Device joined, authenticated and is a router
+  COORD_STARTING = 8;     // Started as Zigbee Coordinator
+  DEV_ZB_COORD = 9;       // Started as Zigbee Coordinator
+  NWK_ORPHAN = 10;        // Device has lost information about its parent..
+}
+
+enum RouteStatus
+{
+  ROUTE_ACTIVE = 0;
+  ROUTE_DISCOVERY_UNDERWAY = 1;
+  ROUTE_DISCOVERY_FAILED = 2;
+  ROUTE_INACTIVE = 3;
+  ROUTE_VALIDATION_UNDERWAY = 4;
+}
+
+enum RxOnWhenIdleType
+{
+  RX_ON_WHEN_IDLE_OFF = 0;
+  RX_ON_WHEN_IDLE_ON = 1;
+  RX_ON_WHEN_IDLE_UNKNOWN = 2;
+}
+
+enum RelationType
+{
+  REL_PARENT = 0;
+  REL_CHILD = 1;
+  REL_SIBLING = 2;
+  REL_UNKNOWN = 3;
+  REL_PREVIOUS_CHILD = 4;
+}
+
+enum PermitJoinType
+{
+  NEIGHBOR_NOT_ACCEPTING_JOIN = 0;
+  NEIGHBOR_ACCEPTING_JOIN = 1;
+  NEIGHBOR_UNKNOWN_JOIN = 2;
+}
+
+//-----------------------------------------------------------------------------------------------
+// Structures - submessages, these aren't sent as messages but are included within other messages
+//-----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+message AFAddr
+{
+  // This is a structure used to define an application address.  
+  // Depending on addrMode, only one shortAddr or extAddr should be used.
+  
+  required AFAddrMode addrMode = 1;    // Address Mode
+  optional uint32 shortAddr = 2;       // (uint16) short address
+  optional fixed64 extAddr = 3;        // 64 bit address (always)
+  optional uint32 endpoint = 4;        // (uint8) endpoint
+  optional uint32 panID = 5;	       // (uint16) PAN ID (for use with Inter-PAN)
+}
+
+message StartupOptions
+{
+  // Structure to select the startup states.
+  
+  required bool clearState = 1;        // True to clear the previous network state
+  required bool clearConfig = 2;       // True to overwrite all the configuration parameters with defaults
+}
+
+message SimpleDescriptor
+{
+  // Structure for the Simple Descriptor.
+  
+  required uint32 endpoint = 1;        // (uint8) endpoint
+  required uint32 profileID = 2;       // (uint16) applications profile ID
+  required uint32 deviceID = 3;        // (uint16) device ID
+  required uint32 deviceVer = 4;       // (uint8) device version
+  repeated uint32 inputClusters = 5;   // Array of (uint16) input clusters
+  repeated uint32 outputClusters = 6;  // Array of (uint16) output clusters
+}
+
+message TransOptions
+{
+  // Structure for defining the transaction options when sending a message.
+  
+  optional bool wildcardProfileID = 1;    // set to request use of Wildcard Profile ID (OxFFFF)
+  optional bool ackRequest = 2;           // set to request APS acknowlegement
+  optional bool limitConcentrator = 3;    // set to limit the message to concentrators only
+  optional bool suppressRouteDisc = 4;	  // set to suppress intermediate route discoveries (only initial node)
+  optional bool apsSecurity = 5;          // set to enable APS security
+  optional bool skipRouting = 6;          // set to skip routing
+}
+
+message CapabilityInfo
+{
+  // Structure defines the Capabilities Information bit field.
+  
+  required bool panCoord = 1;         // True if the device is a PAN Coordinator
+  required bool ffd = 2;              // True if the device is a full function device (FFD)
+  required bool mainsPower = 3;       // True if the device is mains powered
+  required bool rxOnWhenIdle = 4;     // True if the device's RX is on when the device is idle
+  required bool security = 5;         // True if the device is capable of sending and receiving secured frames
+}
+
+message ServerCapabilities
+{
+  // Structure defines the Server Capabilities.
+  
+  required bool primaryTrustCenter = 1;       // Set to indicate the Primary Trust Center
+  required bool backupTrustCenter = 2;        // Set to indicate the Backup Trust Center
+  required bool primaryBindingTableCache = 3; // Set to indicate the Primary Binding Table Cache
+  required bool backupBindingTableCache = 4;  // Set to indicate the Backup Binding Table Cache
+  required bool primaryDiscoveryCache = 5;    // Set to indicate the Primary Discovery Cache
+  required bool backupDiscoveryCache = 6;     // Set to indicate the Backup Discovery Cache
+  required bool networkManager = 7;           // Set to indicate the Network Manager
+}
+
+message BindRec
+{
+  // Structure for the Binding Information record.
+  
+  required fixed64 srcAddr = 1;          // targeted device's ieee address
+  required uint32 srcEndpoint = 2;       // (uint8) targeted device's endpoint
+  required uint32 clusterID = 3;         // (uint16) Cluster ID
+  required AFAddr dstAddr = 4;           // binding's destination address
+}
+
+message LeaveOptions
+{
+  // Options subfield of the leave request
+  
+  required bool rejoin = 1;              // Set to request a rejoin
+  required bool removeChildren = 2;      // Set to request the device's children to leave
+}
+
+message NodeDescriptor
+{
+  // Structure for the Node Descriptor
+  
+  required LogicalTypes logicalType = 1;       // Device type
+  required bool complexDescAvail = 2;          // Set if the Complex Descriptor is available
+  required bool userDescAvail = 3;             // Set if the User Descriptor is available
+  required uint32 apsFlags = 4;                // (5 bits) Node Flags assigned for APS
+  required uint32 freqBand = 5;                // (3 bits) Identifies node frequency  band capabilities
+  required CapabilityInfo capInfo = 6;         // MAC Capabilities
+  required uint32 manufacturerCode = 7;        // (uint16) Manufacturer Code allocated by Zigbee Alliance
+  required uint32 maxBufferSize = 8;           // (uint8) Maximum size of NPDU
+  required uint32 maxInTransferSize = 9;       // (uint16) Maximum size of transfer up to 0x7FFF, reserved and shall be set to 0
+  required ServerCapabilities serverMask = 10; // Server Capabilities
+  required uint32 maxOutTransferSize = 11;     // (uint16) Maximum size of Transfer up to 0x7FFF
+  required uint32 descCap = 12;                // Descriptor capabilities
+}
+
+message PowerSource
+{
+  // Power Source options
+  
+  required bool mains = 1;		// set for constant (Mains) power
+  required bool recharge = 2;		// set for rechargeable battery
+  required bool dispose = 3;		// set for disposable battery
+}
+
+message PowerDescriptor
+{
+  // Structure for the Power Descriptor
+  
+  required PowerModes powerMode = 1;            // Current power mode
+  required PowerSource availPowerSource = 2;    // Available power sources
+  required PowerSource currentPowerSource = 3;  // Current power source
+  required PowerLevel currentPowerLevel = 4;    // Current power level
+}
+
+message nwkDiscItem
+{
+  // Structure for the network information of a single network
+  
+  required fixed64 extendedPANID = 1;        // 64 bit extended PAN ID
+  required uint32 logicalChan = 2;           // (uint8) current logical channel
+  required uint32 stackProfile = 3;          // (uint8) A ZigBee profile identifier
+  required uint32 version = 4;               // (uint8) ZigBee Protocol version
+  required uint32 beaconOrder = 5;           // (uint8) beacon Order
+  required uint32 superFrameOrder = 6;       // (uint8) superframe Order
+  required bool permitJoin = 7;              // True if Permit Join set
+}
+
+message neighborLqiItem
+{
+  // Structure to hold the LQI information of a single network.
+  
+  required fixed64 extendedPANID = 1;        // 64 bit extended PAN ID
+  required fixed64 extendedAddr = 2;         // 64 bit extended address
+  required uint32 nwkAddr = 3;               // (uint16) device's short address
+  required LogicalTypes deviceType = 4;      // Type of the neighbor device
+  required RxOnWhenIdleType rxOnWhenIdle = 5; // Receiver On When Idle status
+  required RelationType relationship = 6;    // Neighbor's relationship 
+  required PermitJoinType permit = 7;        // Permit Join Status
+  required uint32 depth = 8;                 // The tree depth, 0 - device is coordinator
+  required uint32 lqi = 9;                   // (uint8) receive LQI
+}
+
+message rtgItem
+{
+  // Structure to hold the information for a single route.
+  
+  required uint32 dstAddr = 1;               // (uint16) destination short address
+  required uint32 nextHop = 2;               // (uint16) next hop short address
+  required RouteStatus status = 3;           // Route status
+  required bool memoryConstrained = 4;       // a flag indicating whether the device is a memory constrained concentrator
+  required bool manyToOne = 5;               // a flag indicating that the destination is a concentrator
+  required bool routeRecordRequired = 6;     // a flag indicating that a route record command frame should be sent before data
+}
+
+message bindItem
+{
+  // Structure to hold a binding record.
+  
+  required fixed64 srcAddr = 1;              // 64 bit source extended address
+  required uint32 srcEndpoint = 2;           // (uint8) source endpoint
+  required uint32 clustedID = 3;             // (uint16) cluster ID
+  required AFAddr dstAddr = 4;               // Destination address
+}
+
+message deviceTypes
+{
+  // Device type capable information, a device can be capable of one or more of these types.
+  
+  required bool coodinator = 1;
+  required bool router = 2;
+  required bool enddevice = 3;
+}
+
+//-----------------------------------------
+// System Interface Request Messages
+//-----------------------------------------
+
+message sysResetReq
+{
+  // Send this message to Reset the ZStack Server.  The command ID for this message is SYS_RESET_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SYS_RESET_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_RESET_REQ];  // don't change this field
+  // if the stack doesn't support a type of reset, the type will
+  // be ignored and a reset will be performed. 
+  required ResetTypes type = 2;
+  // Set this flag to TRUE to disregard the values stored in non-volatile and restart fresh.   
+  required bool newNwkState = 3;
+  // Set the shutdown flag to turn off the radio device, HW reset must be used to restore the radio device.
+  optional bool shutdown = 4;	
+}
+
+message sysVersionReq
+{
+  // Send this message to request the version information from the ZStack Server.  The command ID for this message is SYS_VERSION_REQ. 
+  // The synchronous response to this message is zstackVersionRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_VERSION_REQ];  // don't change this field
+}
+
+message sysConfigReadReq
+{
+  // Send this message to request the configuration information from the ZStack Server.  Each bool item is individually selected.
+  // The command ID for this message is SYS_CONFIG_READ_REQ. 
+  // The synchronous response to this message is sysConfigReadRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_CONFIG_READ_REQ];  // don't change this field
+  required bool preConfigKeyEnable = 2;  // True to return Pre Config Key Enable
+  required bool securityModeEnable = 3;  // True to return Security Mode Enable (nwk)
+  required bool useDefaultTCLK = 4;      // True to return default TCLK flag
+  required bool pollRate = 5;            // True to return Poll Rate
+  required bool queuedPollRate = 6;      // True to return Queued Poll Rate
+  required bool responsePollRate = 7;    // True to return Response Poll Rate
+  required bool apsAckWaitDuration = 8;  // True to return APS Ack Waite Duration
+  required bool bindingTime = 9;         // True to return Binding Time
+  required bool panID = 10;              // True to return PAN ID
+  required bool pollFailureRetries = 11; // True to return Poll Failure Retries
+  required bool indirectMsgTimeout = 12; // True to return Indirect Message Timeout
+  required bool apsFrameRetries = 13;    /// True to return APS Frame Retries
+  required bool bcastRetries = 14;       // True to return Broadcast Retries
+  required bool passiveAckTimeout = 15;  // True to return Passive Ack Timeout
+  required bool bcastDeliveryTime = 16;  // True to return Broadcast Delivery Time
+  required bool routeExpiryTime = 17;    // True to return Route Expiry Time
+  required bool userDesc = 18;           // True to return User Descriptor (16 bytes max)
+  required bool preConfigKey = 19;       // True to return PreConfig Key (16 bytes)
+  required bool chanList = 20;           // True to return Channel List (bit masked)
+  required bool multicastRadius = 21;    // True to return the Multicast radius 
+  required bool extendedPANID = 22;      // True to return the extended PAN ID (APS USE)
+  required bool ieeeAddr = 23;           // True to return the IEEE extended address
+  required bool macRxOnIdle = 24;        // True to return the MAC's RxOnIdle parameter
+  required bool snifferFeature = 25;     // True to return the sniffer feature enabled/disabled (if implemented)
+  required bool concentratorEnable = 26; // True to return the concentrator flag
+  required bool concentratorDiscTime = 27; // True to return the concentrator discovery time
+}
+
+message sysConfigWriteReq
+{
+  // Send this message to write configuration information to the ZStack Server. 
+  // Since all of the items are optional, you can write one or many configuration items.
+  // The command ID for this message is SYS_CONFIG_WRITE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SYS_CONFIG_WRITE_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_CONFIG_WRITE_REQ];  // don't change this field
+  optional bool preConfigKeyEnable = 2;         // Pre Config Key Enable
+  optional bool securityModeEnable = 3;         // Security Mode Enable (nwk)
+  optional bool useDefaultTCLK = 4;             // Enable the use of the preconfig Trust Center Link Key
+  optional uint32 pollRate = 5;                 // (uint16) End Device Poll Rate (not applicable for routers)
+  optional uint32 queuedPollRate = 6;           // (uint16) End Device Queued Poll Rate (not applicable for routers)
+  optional uint32 responsePollRate = 7;         // (uint16) End Device Response Poll Rate (not applicable for routers)
+  optional uint32 apsAckWaitDuration = 8;       // (uint16) APS Ack Waite Duration
+  optional uint32 bindingTime = 9;              // (uint16) Binding Time
+  optional uint32 panID = 10;                   // (uint16) PAN ID
+  optional uint32 pollFailureRetries = 11;      // (uint8) End Device Poll Failure Retries (not applicable for routers)
+  optional uint32 indirectMsgTimeout = 12;      // (uint8) Indirect Message Timeout
+  optional uint32 apsFrameRetries = 13;         // (uint8) APS Frame Retries
+  optional uint32 bcastRetries = 14;            // (uint8) Broadcast Retries
+  optional uint32 passiveAckTimeout = 15;       // (uint8) Passive Ack Timeout
+  optional uint32 bcastDeliveryTime = 16;       // (uint8) Broadcast Delivery Time
+  optional uint32 routeExpiryTime = 17;         // (uint8) Route Expiry Time
+  optional bytes userDesc = 18;                 // User Descriptor (16 bytes max)
+  optional bytes preConfigKey = 19;             // PreConfig Key (16 bytes)
+  // Channel List (bitmap) - 
+  // Channels are defined in the following:
+  // 0 : 868 MHz (0x00000001),
+  // 1 - 10 : 915 MHz (0x000007FE),
+  // 11 - 26 : 2.4 GHz (0x07FFF800)
+  optional uint32 chanList = 20;
+  optional uint32 multicastRadius = 21;         // (uint8) Multicast radius 
+  optional fixed64 extendedPANID = 22;          // 64 bit extended PAN ID (APS USE)
+  optional fixed64 ieeeAddr = 23;               // 64 bit extended IEEE address
+  optional bool macRxOnIdle = 24;               // the MAC's RxOnIdle parameter
+  optional bool snifferFeature = 25;            // set to control the sniffer feature (if supported)
+  optional bool concentratorEnable = 26;        // the concentrator enable flag (TRUE to enable)
+  optional uint32 concentratorDiscTime = 27;    // (uint8) concentrator discovery time in seconds
+}
+
+message sysSetTxPowerReq
+{
+  // Send this message to set the TX Power on the ZStack Server. 
+  // The command ID for this message is SYS_SET_TX_POWER_REQ. 
+  // The synchronous response to this message is sysSetTxPowerRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_SET_TX_POWER_REQ];  // don't change this field
+  required int32 requestedTxPower = 2;  // (int8) requested Tx power setting, in dBm
+}
+
+message sysNwkInfoReadReq
+{
+  // Send this message to request the Network Information the ZStack Server. 
+  // The command ID for this message is SYS_NWK_INFO_READ_REQ. 
+  // The synchronous response to this message is sysNwkInfoReadRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_NWK_INFO_READ_REQ];  // don't change this field
+}
+
+
+//-----------------------------------------
+
+
+
+// System Interface Indications from ZStack
+//-----------------------------------------
+
+message sysResetInd
+{
+  // This message is sent from ZStack Server to indication that a reset occurred. 
+  // The command ID for this message is SYS_RESET_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_RESET_IND];  // don't change this field
+  required ResetReasons reason = 2; 	// The reason for the reset
+  required uint32 transportRev = 3;     // (uint8) Transport protocol revision, this is set to a value of 2
+  required uint32 product = 4;          // (uint8) Product ID, this is set to a value of 1
+  required uint32 majorRel = 5;         // (uint8) Major release number
+  required uint32 minorRel = 6;         // (uint8) Minor release number
+  required uint32 hwRev = 7;            // (uint8) Hardware revision number
+}
+
+//-----------------------------------------
+// System Interface Response Messages
+//-----------------------------------------
+
+message sysVersionRsp
+{
+  // This response message is sent from ZStack Server in response to the sysVersionReq message. 
+  // The command ID for this message is SYS_VERSION_RSP. 
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_VERSION_RSP];  // don't change this field
+  required ZStackAPIVersion transportRev = 2; // Transport protocol revision, ZStack Proto API Version
+  required ZStackServerType product = 3;      // Product ID - Device type
+  required uint32 majorRel = 4;               // (uint8) Major release number
+  required uint32 minorRel = 5;               // (uint8) Minor release number
+  required uint32 maintRel = 6;               // (uint8) Maintenance revision number
+}
+
+message sysConfigReadRsp
+{
+  // This response message is sent from ZStack Server in response to the sysConfigReadReq message. 
+  // The command ID for this message is SYS_CONFIG_READ_RSP. 
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_CONFIG_READ_RSP];  // don't change this field
+  optional bool preConfigKeyEnable = 2;         // Pre Config Key Enable
+  optional bool securityModeEnable = 3;         // Security Mode Enable (nwk)
+  optional bool useDefaultTCLK = 4;             // Enable the use of the preconfig Trust Center Link Key
+  optional uint32 pollRate = 5;                 // (uint16) Poll Rate
+  optional uint32 queuedPollRate = 6;           // (uint16) Queued Poll Rate
+  optional uint32 responsePollRate = 7;         // (uint16) Response Poll Rate
+  optional uint32 apsAckWaitDuration = 8;       // (uint16) APS Ack Waite Duration
+  optional uint32 bindingTime = 9;              // (uint16) Binding Time
+  optional uint32 panID = 10;                   // (uint16) PAN ID
+  optional uint32 pollFailureRetries = 11;      // (uint8) Poll Failure Retries
+  optional uint32 indirectMsgTimeout = 12;      // (uint8) Indirect Message Timeout
+  optional uint32 apsFrameRetries = 13;         // (uint8) APS Frame Retries
+  optional uint32 bcastRetries = 14;            // (uint8) Broadcast Retries
+  optional uint32 passiveAckTimeout = 15;       // (uint8) Passive Ack Timeout
+  optional uint32 bcastDeliveryTime = 16;       // (uint8) Broadcast Delivery Time
+  optional uint32 routeExpiryTime = 17;         // (uint8) Route Expiry Time
+  optional bytes userDesc = 18;                 // User Descriptor (16 bytes max)
+  optional bytes preConfigKey = 19;             // PreConfig Key (16 bytes)
+  // Channel List (bitmap) - 
+  // Channels are defined in the following:
+  // 0 : 868 MHz (0x00000001),
+  // 1 - 10 : 915 MHz (0x000007FE),
+  // 11 - 26 : 2.4 GHz (0x07FFF800)
+  optional uint32 chanList = 20;
+  optional uint32 multicastRadius = 21;         // (uint8) Multicast radius 
+  optional fixed64 extendedPANID = 22;          // 64 bit extended PAN ID  (APS USE)
+  optional fixed64 ieeeAddr = 23;               // 64 bit IEEE extended Address
+  optional bool macRxOnIdle = 24;               // the MAC's RxOnIdle parameter
+  optional bool snifferFeature = 25;            // sniffer feature enable
+  optional bool concentratorEnable = 26;        // the concentrator enable flag (TRUE is enabled)
+  optional uint32 concentratorDiscTime = 27;    // (uint8) concentrator discovery time in seconds
+}
+
+message sysSetTxPowerRsp
+{
+  // This response message is sent from ZStack Server in response to the sysSetTxPowerReq message. 
+  // The command ID for this message is SYS_SET_TX_POWER_RSP. 
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_SET_TX_POWER_RSP];  // don't change this field
+  required int32 txPower = 2;          // (int8) actual TX power setting, in dBm
+}
+
+message sysNwkInfoReadRsp
+{
+  // This response message is sent from ZStack Server in response to the sysNwkInfoReadReq message. 
+  // The command ID for this message is SYS_NWK_INFO_READ_RSP. 
+
+  required ZStackCmdIDs cmdID = 1 [default = SYS_NWK_INFO_READ_RSP];  // don't change this field
+  required uint32 nwkAddr = 2;                 // (uint16) Currently assigned short address
+  required fixed64 ieeeAddr = 3;               // 64 bit IEEE Address
+  required DevState devState = 4;              // Current device state
+  required uint32 panId = 5;                   // (uint16) PAN ID
+  required fixed64 extendedPanId = 6;          // 64 bit extended PAN ID
+  required uint32 coordAddr = 7;               // (uint16) parent's short address
+  required fixed64 coordExtAddr = 8;           // 64 bit parent's extended address
+  required deviceTypes devTypes = 9;           // possible device types
+  required uint32 logicalChannel = 10;         // (uint8) current network logical channel
+}
+
+
+
+//-----------------------------------------
+// Device Interface Requests
+//-----------------------------------------
+
+message devStartReq
+{
+  // Send this message to the ZStack Server to request it to start. 
+  // This message should only be used if the ZStack Server is compiled with HOLD_AUTO_START. 
+  // The command ID for this message is DEV_START_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:DEV_START_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = DEV_START_REQ];  // don't change this field
+  required uint32 startDelay = 2;       // (uint16) Time delay (milliseconds) before the device starts
+}
+
+message devNwkDiscReq
+{
+  // Send this message to the ZStack Server to initiate a network discovery. 
+  // The command ID for this message is DEV_NWK_DISCOVERY_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:DEV_NWK_DISCOVERY_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = DEV_NWK_DISCOVERY_REQ];  // don't change this field
+  required uint32 scanChannels = 2;      // (uint32) Bit Mask of channels to scan
+  required uint32 scanDuration = 3;      // (uint8) Scanning Time
+}
+
+message devJoinReq
+{
+  // Send this message to the ZStack Server to initiate a network join. 
+  // The command ID for this message is DEV_JOIN_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:DEV_JOIN_REQ).
+ 
+  required ZStackCmdIDs cmdID = 1 [default = DEV_JOIN_REQ];  // don't change this field
+  required uint32 logicalChannel = 2;      // (uint8) Channel where the PAN is located
+  required uint32 panID = 3;               // (uint16) ID of the PAN to join
+  required fixed64 extendedPANID = 4;      // 64 bit extended PAN ID, use all 0xFF if don't care
+  required uint32 chosenParent = 5;        // (uint16) short address of parent device chosen to join
+  required uint32 parentDepth = 6;         // (uint8) depth of the parent
+  required uint32 stackProfile = 7;        // (uint8) stack profile of the network to join
+}
+
+message devRejoinReq
+{
+  // Send this message to the ZStack Server to initiate a network rejoin. 
+  // The command ID for this message is DEV_REJOIN_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:DEV_REJOIN_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = DEV_REJOIN_REQ];  // don't change this field
+  required bool unsecure = 2;              // True to perform an unsecure rejoin
+  required uint32 logicalChannel = 3;      // (uint8) Channel where the PAN is located
+  required fixed64 extendedPANID = 4;      // 64 bit extended PAN ID, use all 0xFF if don't care
+}
+
+message devZDOCBReq
+{
+  // Send this message to the ZStack Server to subscribe to one or more ZDO callback indications, confirmations, or response messages. 
+  // The command ID for this message is DEV_ZDO_CBS_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:DEV_ZDO_CBS_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = DEV_ZDO_CBS_REQ];  // don't change this field
+  optional bool srcRtgIndCB = 2;           // Set to receive Source Route Indication
+  optional bool concentratorIndCb = 3;     // Set to receive Concentrator Indication
+  optional bool nwkDiscCnfCB = 4;          // Set to receive Network Discovery Confirmation
+  optional bool beaconNotIndCB = 5;        // Set to receive Beacon Notify Indication
+  optional bool joinCnfCB = 6;             // Set to receive Join Confirmation
+  optional bool leaveCnfCB = 7;            // Set to receive Leave Confirmation
+  optional bool leaveIndCB = 8;            // Set to receive Leave Indication
+  optional bool nwkAddrRsp = 9;            // Set to receive ZDO Network Address Response
+  optional bool ieeeAddrRsp = 10;          // Set to receive ZDO IEEE Address Response
+  optional bool nodeDescRsp = 11;          // Set to receive ZDO Node Descriptor Response
+  optional bool powerDescRsp = 12;         // Set to receive ZDO Power Descriptor Response
+  optional bool simpleDescRsp = 13;        // Set to receive ZDO Simple Descriptor Response
+  optional bool activeEndpointRsp = 14;    // Set to receive ZDO Active Endpoint Response
+  optional bool matchDescRsp = 15;         // Set to receive ZDO Match Descriptor Response
+  optional bool complexDescRsp = 16;       // Set to receive ZDO Complex Descriptor Response
+  optional bool userDescRsp = 17;          // Set to receive ZDO User Descriptor Response
+  optional bool discoveryCacheRsp = 18;    // Set to receive ZDO Discovery Cache Response
+  optional bool userDescCnf = 19;          // Set to receive ZDO User Descriptor Confirmation
+  optional bool serverDiscoveryRsp = 20;   // Set to receive ZDO Server Discovery Response
+  optional bool endDeviceTimeoutRsp = 21;  // Set to receive ZDO End Device Timeout Response
+  optional bool bindRsp = 22;              // Set to receive ZDO Bind Response
+  optional bool endDeviceBindRsp = 23;     // Set to receive ZDO End Device Bind Response
+  optional bool unbindRsp = 24;            // Set to receive ZDO Unbind Response
+  optional bool mgmtNwkDiscRsp = 25;       // Set to receive ZDO Management Network Discovery Response
+  optional bool mgmtLqiRsp = 26;           // Set to receive ZDO Management LQI Response
+  optional bool mgmtRtgRsp = 27;           // Set to receive ZDO Management Routing Response
+  optional bool mgmtBindRsp = 28;          // Set to receive ZDO Management Bind Response
+  optional bool mgmtLeaveRsp = 29;         // Set to receive ZDO Management Leave Response
+  optional bool mgmtDirectJoinRsp = 30;    // Set to receive ZDO Management Direct Join Response
+  optional bool mgmtPermitJoinRsp = 31;    // Set to receive ZDO Management Permit Join Response
+  optional bool mgmtNwkUpdateNotify = 32;  // Set to receive ZDO Management Network Update Notify
+  optional bool deviceAnnounce = 33;       // Set to receive Device Announce
+  optional bool devStateChange = 34;       // Set to receive Device State Change Indication
+  optional bool devJammerInd = 35;         // Set to receive the Device Jammer Indication
+  optional bool tcDeviceInd = 36;          // Set to receive the TC Device Indication
+  optional bool devPermitJoinInd = 37;     // Set to receive the Device Permit Join Indication
+}
+
+message devNwkRouteReq
+{
+  // Send this message to the ZStack Server to initiate a route request. 
+  // The command ID for this message is DEV_NWK_ROUTE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:DEV_NWK_ROUTE_REQ).
+  
+  required ZStackCmdIDs cmdID = 1 [default = DEV_NWK_ROUTE_REQ];  // don't change this field
+  required uint32 dstAddr = 2;           // (uint16) Network address to discover
+  optional bool mtoRoute = 3;            // TRUE if you are announcing a concentrator
+  optional bool mtoNoCache = 4;          // TRUE if the concentrator has limited cache (only set if mtoRoute is set)
+  optional bool multicast = 5;           // TRUE if the route requested is for a multicast address 
+  required uint32 radius = 6;            // (uint8) radius of the message
+}
+
+message devNwkCheckRouteReq
+{
+  // Send this message to the ZStack Server to check a route request. 
+  // The command ID for this message is DEV_NWK_CHECK_ROUTE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:DEV_NWK_CHECK_ROUTE_REQ).
+  
+  required ZStackCmdIDs cmdID = 1 [default = DEV_NWK_CHECK_ROUTE_REQ];  // don't change this field
+  required uint32 dstAddr = 2;           // (uint16) Network address to check if a route exists
+  required bool mtoRoute = 3;            // TRUE if you're check for a Many-to-one route
+}
+
+message devJammerInd
+{
+  // This message is sent from ZStack Server to indication change in jammer detection. 
+  // The command ID for this message is DEV_JAMMER_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = DEV_JAMMER_IND];  // don't change this field
+  required bool jammed = 2;            // TRUE if a jammer is detected, FALSE if jammer no longer detected
+}
+
+message devPermitJoinInd
+{
+  // This message is sent from ZStack Server whenever the Permit Join state changes (Off to on, on to off).
+  // The command ID for this message is DEV_PERMIT_JOIN_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = DEV_PERMIT_JOIN_IND];  // don't change this field
+  required uint32 duration = 2;          // (uint8) Duration of join. 0=disabled, 0xFF=enabled, 0x01-0xFE number seconds to permit join
+}
+
+//-----------------------------------------
+// APS Interface Request Messages
+//-----------------------------------------
+
+message apsRemoveGroup
+{
+  // Send this message to the ZStack Server to remove an APS group. 
+  // The command ID for this message is APS_REMOVE_GROUP. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:APS_REMOVE_GROUP).
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_REMOVE_GROUP];  // don't change this field
+  required uint32 endpoint = 2;	            // (uint8) Endpoint
+  required uint32 groupID = 3;	            // (uint16) Group ID
+}
+
+message apsRemoveAllGroups
+{
+  // Send this message to the ZStack Server to remove all APS group. 
+  // The command ID for this message is APS_REMOVE_ALL_GROUPS. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:APS_REMOVE_ALL_GROUPS).
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_REMOVE_ALL_GROUPS];  // don't change this field
+  required uint32 endpoint = 2;	            // (uint8) Endpoint to remove all groups from
+}
+
+message apsFindAllGroupsReq
+{
+  // Send this message to the ZStack Server to find all APS groups. 
+  // The command ID for this message is APS_FIND_ALL_GROUPS_REQ. 
+  // The synchronous response to this message is apsFindAllGroupsRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_FIND_ALL_GROUPS_REQ];  // don't change this field
+  required uint32 endpoint = 2;	            // (uint8) Endpoint to find all groups
+}
+
+message apsFindAllGroupsRsp
+{
+  // This response message is sent from ZStack Server in response to the apsFindAllGroupsReq message. 
+  // The command ID for this message is APS_FIND_ALL_GROUPS_RSP. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_FIND_ALL_GROUPS_RSP];  // don't change this field
+  repeated uint32 groupList = 2;            // (uint16) List of groups
+}
+
+message apsFindGroupReq
+{
+  // Send this message to the ZStack Server to find an APS group for a given endpoint and group ID. 
+  // The command ID for this message is APS_FIND_GROUP_REQ. 
+  // The synchronous response to this message is apsFindGroupRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_FIND_GROUP_REQ];  // don't change this field
+  required uint32 endpoint = 2;	            // (uint8) Endpoint
+  required uint32 groupID = 3;	            // (uint16) group ID
+}
+
+message apsFindGroupRsp
+{
+  // This response message is sent from ZStack Server in response to the apsFindGroupReq message. 
+  // The command ID for this message is APS_FIND_GROUP_RSP. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_FIND_GROUP_RSP];  // don't change this field
+  optional uint32 groupID = 2;	            // (uint16) group ID, not include if not found
+  optional bytes name = 3;                  // Human readable name of group
+}
+
+message apsAddGroup
+{
+  // Send this message to the ZStack Server to add a group for a given endpoint. 
+  // The command ID for this message is APS_ADD_GROUP. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:APS_ADD_GROUP).
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_ADD_GROUP];  // don't change this field
+  required uint32 endpoint = 2;	            // (uint8) Endpoint to remove all groups from
+  required uint32 groupID = 3;	            // (uint16) group ID
+  optional bytes name = 4;                  // Human readable name of group
+}
+
+message apsCountAllGroups
+{
+  // Send this message to the ZStack Server to count all APS groups for a given endpoint. 
+  // The command ID for this message is APS_COUNT_ALL_GROUPS. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:APS_COUNT_ALL_GROUPS), the count is in "status" field (uint8).
+  
+  required ZStackCmdIDs cmdID = 1 [default = APS_COUNT_ALL_GROUPS];  // don't change this field
+}
+
+//-----------------------------------------
+// AF Interface Request Messages
+//-----------------------------------------
+
+message afRegisterReq
+{
+  // Send this message to the ZStack Server to register an AF Enpoint (including Simple Descriptor). 
+  // The command ID for this message is AF_REGISTER_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:AF_REGISTER_REQ).
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_REGISTER_REQ];  // don't change this field
+  required uint32 endpoint = 2;				// (uint8) Endpoint
+  required SimpleDescriptor simpleDesc = 3; // Simple Descriptor
+  required NetworkLatency latencyReq = 4;	// Network Latency Requirements
+}
+
+message afUnRegisterReq
+{
+  // Send this message to the ZStack Server to unregister an AF Enpoint. 
+  // The command ID for this message is AF_UNREGISTER_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:AF_UNREGISTER_REQ).
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_UNREGISTER_REQ];  // don't change this field
+  required uint32 endpoint = 2;				// (uint8) Endpoint
+}
+
+message afDataReq
+{
+  // Send this message to the ZStack Server to send a data message from an endpoint. 
+  // The command ID for this message is AF_DATA_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:AF_DATA_REQ).
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_DATA_REQ];  // don't change this field
+  required AFAddr dstAddr = 2;       // Destination address
+  repeated uint32 relayList = 3;     // optional arrary of hops (source routing)
+  required uint32 srcEndpoint = 4;   // (uint8) Source Endpoint
+  required uint32 clusterID = 5;     // (uint16) Cluster ID
+  required uint32 transID = 6;       // (uint8) transaction ID
+  required TransOptions options = 7; // transaction options
+  required uint32 radius = 8;        // (uint4) network radius
+  required bytes payload = 9;        // payload to send
+  optional uint32 channel = 10;      // (uint8)
+  optional uint32 power = 11;        // (uint8)
+}
+
+message afInterPanCtlReq
+{
+  // Send this message to the ZStack Server to setup the Inter-PAN controller. 
+  // The command ID for this message is AF_INTERPAN_CTL_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:AF_INTERPAN_CTL_REQ).
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_INTERPAN_CTL_REQ];  // don't change this field
+  required bool enable = 2;				    // Set to turn on inter-PAN, Clear to switch back to NIB
+  optional uint32 channel = 3;              // (uint8) InterPan channel
+  optional uint32 endpoint = 4;             // (uint8) Endpoint controller
+  optional uint32 panID = 5;                // (uint16) PAN ID
+}
+
+message afConfigGetReq
+{
+  // Send this message to the ZStack Server to get the AF/APS Fragmentation parameters. 
+  // The command ID for this message is AF_CONFIG_GET_REQ. 
+  // The synchronous response to this message is afConfigGetRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_INTERPAN_CTL_REQ];  // don't change this field
+  required uint32 endpoint = 2;             // (uint8) Endpoint 
+}
+
+message afConfigSetReq
+{
+  // Send this message to the ZStack Server to set the AF/APS Fragmentation parameters. 
+  // The command ID for this message is AF_CONFIG_SET_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:AF_CONFIG_SET_REQ).
+ 
+  required ZStackCmdIDs cmdID = 1 [default = AF_CONFIG_SET_REQ];  // don't change this field
+  required uint32 endpoint = 2;         // (uint8) Endpoint 
+  required uint32 frameDelay = 3;       // (uint8) Fragmentation frame delay
+  required uint32 windowSize = 4;       // (uint8) Fragmentation window size
+}
+
+//-----------------------------------------
+// AF Interface Response Messages
+//-----------------------------------------
+message afConfigGetRsp
+{
+  // This response message is sent from ZStack Server in response to the afConfigGetReq message. 
+  // The command ID for this message is AF_CONFIG_GET_RSP. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_CONFIG_GET_RSP];  // don't change this field
+  required uint32 endpoint = 2;         // (uint8) endpoint
+  required uint32 frameDelay = 3;       // (uint8) Fragmentation frame delay
+  required uint32 windowSize = 4;       // (uint8) Fragmentation window size
+}
+
+//-----------------------------------------
+// AF Interface Indications
+//-----------------------------------------
+
+message afDataConfirmInd
+{
+  // This message is sent from ZStack Server to indicate that the message (afDataReq) was sent or not sent. 
+  // The command ID for this message is AF_DATA_CONFIRM_IND. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_DATA_CONFIRM_IND];  // don't change this field
+  required ZStatusValues status = 2;			// status
+  required uint32 endpoint = 3;	   		    // (uint8) Endpoint
+  required uint32 transID = 4;				// (uint8) transaction ID
+}
+
+message afIncomingMsgInd
+{
+  // This message is sent from ZStack Server to indicate an incoming endpoint data message. 
+  // The command ID for this message is AF_INCOMING_MSG_IND. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_INCOMING_MSG_IND];  // don't change this field
+  required AFAddr srcAddr = 2;				// Source Address, if endpoint is 0xFE, it's an interPAN message
+  required uint32 groupID = 3;              // (uint16) Message's group ID - 0 if not group message
+  required uint32 clusterId = 4;            // (uint16) Message's clusterID
+  required uint32 macDestAddr = 5;          // (uint16) MAC header destination short address
+  required uint32 endpoint = 6;             // (uint8) destination endpoint
+  required bool wasBroadcast = 7;           // Set if network destination was a broadcast address
+  required bool securityUse = 8;            // Set if APS security was used 
+  required uint32 linkQuality = 9;	    // (uint8) The link quality of the received data frame
+  required uint32 correlation = 10;          // (uint8) The raw correlation value of the received data frame
+  required int32 rssi = 11;                 // (int8) The received RF power in units dBm
+  required uint32 timestamp = 12;           // (uint32) receipt timestamp from MAC
+  required uint32 nwkSeqNum = 13;           // (uint8) network header frame sequence number
+  required uint32 macSrcAddr = 14;          // (uint16) MAC header source short address
+  required uint32 transSeqNum = 15;         // (uint8) transaction sequence number
+  required bytes payload = 16;              // message payload
+}
+
+message afReflectErrorInd
+{
+  // This message is sent from ZStack Server to indicate a reflection error. 
+  // The command ID for this message is AF_REFLECT_ERROR_IND. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = AF_REFLECT_ERROR_IND];  // don't change this field
+  required ZStatusValues status = 2;		// status of APSDE_DATA_REQUEST
+  required AFAddr dstAddr = 3;				// Destination Address
+  required uint32 transID = 4;              // Transaction ID
+}
+
+//-----------------------------------------
+// ZDO Interface Request Messages
+//-----------------------------------------
+
+message zdoNwkAddrReq
+{
+  // Send this message to the ZStack Server to send a broadcast ZDO Network Address Request. 
+  // The command ID for this message is ZDO_NWK_ADDR_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_NWK_ADDR_REQ).
+  // When successful, the responding device will send back an asynchronous zdoNwkAddrRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_NWK_ADDR_REQ];  // don't change this field
+  required fixed64 ieeeAddr = 2;            // Known IEEE Address
+  required NwkAddrReqType type = 3;         // Request Type
+  required uint32 startIndex = 4;           // Starting index into the list of children. 
+}
+
+message zdoIeeeAddrReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO IEEE Address Request. 
+  // The command ID for this message is ZDO_IEEE_ADDR_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_IEEE_ADDR_REQ).
+  // When successful, the responding device will send back an asynchronous zdoIeeeAddrRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_IEEE_ADDR_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;              // (uint16) Known short address
+  required NwkAddrReqType type = 3;         // Request Type
+  required uint32 startIndex = 4;           // (uint8) Starting index into the list of children. 
+}
+
+message zdoNodeDescReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Node Descriptor Request. 
+  // The command ID for this message is ZDO_NODE_DESC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_NODE_DESC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoNodeDescRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_NODE_DESC_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+}
+
+message zdoPowerDescReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Power Descriptor Request. 
+  // The command ID for this message is ZDO_POWER_DESC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_POWER_DESC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoPowerDescRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_POWER_DESC_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+}
+
+message zdoSimpleDescReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Simple Descriptor Request. 
+  // The command ID for this message is ZDO_SIMPLE_DESC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_SIMPLE_DESC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoSimpleDescRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_SIMPLE_DESC_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+  required uint32 endpoint = 4;             // (uint8) application endpoint being queried
+}
+
+message zdoActiveEndpointReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Active Endpoint Request. 
+  // The command ID for this message is ZDO_ACTIVE_ENDPOINT_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_ACTIVE_ENDPOINT_REQ).
+  // When successful, the responding device will send back an asynchronous zdoActiveEndpointRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_ACTIVE_ENDPOINT_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+}
+
+message zdoMatchDescReq
+{
+  // Send this message to the ZStack Server to send a ZDO Match Descriptor Request. 
+  // The command ID for this message is ZDO_MATCH_DESC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MATCH_DESC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMatchDescRsp.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MATCH_DESC_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+  required uint32 profileID = 4;            // (uint16) the profile ID of the device
+  repeated uint32 inputClusters = 5;        // Array of (uint16) input clusters
+  repeated uint32 outputClusters = 6;       // Array of (uint16) output clusters
+}
+
+message zdoComplexDescReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Complex Descriptor Request. 
+  // The command ID for this message is ZDO_COMPLEX_DESC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_COMPLEX_DESC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoComplexDescRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_COMPLEX_DESC_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+}
+
+message zdoUserDescReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO User Descriptor Request. 
+  // The command ID for this message is ZDO_USER_DESC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_USER_DESC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoUserDescRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_USER_DESC_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+}
+
+message zdoDeviceAnnounceReq
+{
+  // Send this message to the ZStack Server to send a broadcast ZDO Device Announce. 
+  // The command ID for this message is ZDO_DEVICE_ANNOUNCE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_DEVICE_ANNOUNCE_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_DEVICE_ANNOUNCE_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;              // (uint16) network address of device generating
+  required fixed64 ieeeAddr = 3;            // 64 bit IEEE Address of device
+  required CapabilityInfo capabilities = 4;        // MAC capabilities
+}
+
+message zdoUserDescSetReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Set User Descriptor Request. 
+  // The command ID for this message is ZDO_USER_DESCR_SET_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_USER_DESCR_SET_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_USER_DESCR_SET_REQ];  // don't change this field
+  required uint32 dstAddr = 2;              // (uint16) destination address
+  required uint32 nwkAddrOfInterest = 3;    // (uint16) the network address of the destination device being queried.
+  required bytes userDescriptor = 4;        // up to 16 bytes of description
+}
+
+message zdoServerDiscReq
+{
+  // Send this message to the ZStack Server to send a ZDO Server Discovery Request broadcast to all RxOnWhenIdle devices. 
+  // The command ID for this message is ZDO_SERVER_DISC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_SERVER_DISC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoServerDiscRspInd.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_SERVER_DISC_REQ];  // don't change this field
+  required ServerCapabilities serverMask = 2;  // Looking for these capabilities
+}
+
+message zdoEndDeviceBindReq
+{
+  // Send this message to the ZStack Server to send a ZDO End Device Bind Request to the coordinator. 
+  // The command ID for this message is ZDO_END_DEVICE_BIND_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_END_DEVICE_BIND_REQ).
+  // When successful, the responding device will send back an asynchronous zdoEndDeviceBindRspInd.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_END_DEVICE_BIND_REQ];  // don't change this field
+  required uint32 dstAddr = 2;           // (uint16) destination address, usually 0x0000 for coordinator
+  required uint32 localCoordinator = 3;  // (uint16) local coordinator short address
+  required fixed64 ieee = 4;             // local coordinator's IEEE Address
+  required uint32 endpoint = 5;          // (uint8) device's endpoint
+  required uint32 profileID = 6;         // (uint16) profile ID
+  repeated uint32 inputClusters = 7;     // Array of (uint16) input clusters
+  repeated uint32 outputClusters = 8;    // Array of (uint16) output clusters
+}
+
+message zdoBindReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Bind Request. 
+  // The command ID for this message is ZDO_BIND_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_BIND_REQ).
+  // When successful, the responding device will send back an asynchronous zdoBindRspInd.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_BIND_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required BindRec bindInfo = 3;         // Binding Record
+}
+
+message zdoUnbindReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Unbind Request. 
+  // The command ID for this message is ZDO_UNBIND_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_UNBIND_REQ).
+  // When successful, the responding device will send back an asynchronous zdoUnbindRspInd.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_UNBIND_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required BindRec bindInfo = 3;         // Binding Record
+}
+
+message zdoMgmtNwkDiscReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Management Network Discovery Request. 
+  // The command ID for this message is ZDO_MGMT_NWK_DISC_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_NWK_DISC_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMgmtNwkDiscRspInd.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_NWK_DISC_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required uint32 scanChannels = 3;      // (uint32) Bit Mask of channels to scan
+  required uint32 scanDuration = 4;      // (uint8) Scanning Time.  Valid range is 0-14.
+  required uint32 startIndex = 5;        // (uint8) start index for the response array list.
+}
+
+message zdoMgmtLqiReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Management LQI Request. 
+  // The command ID for this message is ZDO_MGMT_LQI_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_LQI_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMgmtLqiRspInd.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_LQI_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required uint32 startIndex = 3;        // (uint8) start index for the response array list.
+}
+
+message zdoMgmtRtgReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Management Routing Table Request. 
+  // The command ID for this message is ZDO_MGMT_RTG_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_RTG_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMgmtRtgRspInd.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_RTG_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required uint32 startIndex = 3;        // (uint8) start index for the response array list.
+}
+
+message zdoMgmtBindReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Management Binding Table Request. 
+  // The command ID for this message is ZDO_MGMT_BIND_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_BIND_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMgmtBindRspInd.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_BIND_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required uint32 startIndex = 3;        // (uint8) start index for the response array list.
+}
+
+message zdoMgmtLeaveReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Management Leave Request. 
+  // The command ID for this message is ZDO_MGMT_LEAVE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_LEAVE_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMgmtLeaveRspInd.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_LEAVE_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required fixed64 deviceAddress = 3;    // 64 bit IEEE address of the device to leave the network
+  required LeaveOptions options = 4;     // leave options
+}
+
+message zdoMgmtDirectJoinReq
+{
+  // Send this message to the ZStack Server to send a unicast ZDO Management Direct Join Request. 
+  // The command ID for this message is ZDO_MGMT_DIRECT_JOIN_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_DIRECT_JOIN_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMgmtDirectJoinRspInd.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_DIRECT_JOIN_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required fixed64 deviceAddress = 3;    // 64 bit IEEE address of the device to be joined to nwkAddr
+  required CapabilityInfo capInfo = 4;          // MAC capabilities
+}
+
+message zdoMgmtPermitJoinReq
+{
+  // Send this message to the ZStack Server to send a ZDO Management Permit Join Request. 
+  // The command ID for this message is ZDO_MGMT_PERMIT_JOIN_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_PERMIT_JOIN_REQ).
+  // When successful, the responding device will send back an asynchronous zdoMgmtPermitJoinRspInd.
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_PERMIT_JOIN_REQ];  // don't change this field
+  required uint32 nwkAddr = 2;           // (uint16) targeted device
+  required uint32 duration = 3;          // (uint8) Duration of join. 0=disabled, 0xFF=enabled, 0x01-0xFE number seconds to permit join
+  required bool tcSignificance = 4;      // (uint8) if set, and the target device is TC, it affects TC auth policy
+}
+
+message zdoMgmtNwkUpdateReq
+{
+  // Send this message to the ZStack Server to send a ZDO Management Network Update Request. 
+  // The command ID for this message is ZDO_MGMT_NWK_UPDATE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:ZDO_MGMT_NWK_UPDATE_REQ).
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_NWK_UPDATE_REQ];  // don't change this field
+  required uint32 dstAddr = 2;           // (uint16) targeted device (unicast or 0xFFFD)
+  required uint32 channelMask = 3;       // (uint32) Bit masked channel selection
+  required uint32 scanDuration = 4;      // (uint8) MAC Scan duration. Range 0x00-0x05, 0xFE or 0xFF
+  required uint32 scanCount = 5;         // (uint8) number of energy scans to perform and report
+  required uint32 nwkUpdateId = 6;       // (uint8) This value is set by the Network Channel Manager prior to sending the message
+  required uint32 nwkMgrAddr = 7;        // (uint16) nwk address of the Network Manager
+}
+
+//-----------------------------------------
+// ZDO Interface Response Messages
+//-----------------------------------------
+
+message zdoNwkAddrRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Network Address Response message is received. 
+  // The command ID for this message is ZDO_NWK_ADDR_RSP. 
+  // The source device sent this message in response to this device sending zdoNwkAddrReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_NWK_ADDR_RSP];  // don't change this field
+  required ZdpStatus status = 2;         // Response status
+  required fixed64 ieeeAddr = 3;         // 64 bit IEEE address of source device
+  required uint32 nwkAddr = 4;           // (uint16) network address of the responding device
+  required uint32 startIndex = 5;	 // (uint8) starting index into the list of associated devices
+  repeated uint32 assocDevList = 6;      // Array of (uint16) associated devices
+}
+
+message zdoIeeeAddrRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO IEEE Address Response message is received. 
+  // The command ID for this message is ZDO_IEEE_ADDR_RSP. 
+  // The source device sent this message in response to this device sending zdoIeeeAddrReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_IEEE_ADDR_RSP];  // don't change this field
+  required ZdpStatus status = 2;         // Response status
+  required fixed64 ieeeAddr = 3;         // 64 bit IEEE address of source device
+  required uint32 nwkAddr = 4;           // (uint16) network address of the responding device
+  required uint32 startIndex = 5;	 // (uint8) starting index into the list of associated devices
+  repeated uint32 assocDevList = 6;      // Array of (uint16) associated devices
+}
+
+message zdoNodeDescRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Node Descriptor Response message is received. 
+  // The command ID for this message is ZDO_NODE_DESC_RSP. 
+  // The source device sent this message in response to this device sending zdoNodeDescReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_NODE_DESC_RSP];  // don't change this field
+  required uint32 srcAddr = 2;           // (uint16) Source address
+  required ZdpStatus status = 3;         // Response status
+  required uint32 nwkAddrOfInterest = 4; // (uint16) network address of this node descriptor
+  required NodeDescriptor nodeDesc = 5;  // Node Descriptor
+}
+
+message zdoPowerDescRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Power Descriptor Response message is received. 
+  // The command ID for this message is ZDO_POWER_DESC_RSP. 
+  // The source device sent this message in response to this device sending zdoPowerDescReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_POWER_DESC_RSP];  // don't change this field
+  required uint32 srcAddr = 2;             // (uint16) Source address
+  required ZdpStatus status = 3;           // Response status
+  required uint32 nwkAddrOfInterest = 4;   // (uint16) network address of this power descriptor
+  required PowerDescriptor powerDesc = 5;  // Power Descriptor
+}
+
+message zdoSimpleDescRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Simple Descriptor Response message is received. 
+  // The command ID for this message is ZDO_SIMPLE_DESC_RSP. 
+  // The source device sent this message in response to this device sending zdoSimpleDescReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_SIMPLE_DESC_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 nwkAddrOfInterest = 4;     // (uint16) network address of this descriptor
+  required SimpleDescriptor simpleDesc = 5;  // Simple Descriptor
+}
+
+message zdoActiveEndpointsRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Active Endpoints Response message is received. 
+  // The command ID for this message is ZDO_ACTIVE_EP_RSP. 
+  // The source device sent this message in response to this device sending zdoActiveEndpointsReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_ACTIVE_EP_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 nwkAddrOfInterest = 4;     // (uint16) network address of this active endpoint list
+  repeated uint32 activeEPList = 5;          // Array of endpoints (uint8)
+}
+
+message zdoMatchDescRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Match Descriptor Response message is received. 
+  // The command ID for this message is ZDO_MATCH_DESC_RSP. 
+  // The source device sent this message in response to this device sending zdoMatchDescReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MATCH_DESC_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 nwkAddrOfInterest = 4;     // (uint16) network address of this match descriptor
+  repeated uint32 matchList = 5;             // Array of matching endpoints (uint8)
+}
+
+message zdoUserDescRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO User Descriptor Response message is received. 
+  // The command ID for this message is ZDO_USER_DESC_RSP. 
+  // The source device sent this message in response to this device sending zdoUserDescReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_USER_DESC_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 nwkAddrOfInterest = 4;     // (uint16) network address of this match descriptor
+  required bytes desc = 5;                   // Array of descriptor bytes (uint8)
+}
+
+message zdoServerDiscoveryRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Server Discovery Descriptor Response message is received. 
+  // The command ID for this message is ZDO_SERVER_DISC_RSP. 
+  // The source device sent this message in response to this device sending zdoServerDiscoveryReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_SERVER_DISC_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required ServerCapabilities serverCap = 4; // Server Capabilities
+}
+
+message zdoEndDeviceTimeoutRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO End Device Timeout Response message is received. 
+  // The command ID for this message is ZDO_END_DEVICE_TIMEOUT_RSP. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_END_DEVICE_TIMEOUT_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 timeout = 4;               // (uint8) timeout value
+}
+
+message zdoBindRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Bind Response message is received. 
+  // The command ID for this message is ZDO_BIND_RSP. 
+  // The source device sent this message in response to this device sending zdoBindReq. 
+ 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_BIND_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+}
+
+message zdoEndDeviceBindRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO End Device Bind Response message is received. 
+  // The command ID for this message is ZDO_END_DEVICE_BIND_RSP. 
+  // The source device sent this message in response to this device sending zdoEndDeviceBindReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_END_DEVICE_BIND_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+}
+
+message zdoUnbindRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Unbind Response message is received. 
+  // The command ID for this message is ZDO_UNBIND_RSP. 
+  // The source device sent this message in response to this device sending zdoUnbindReq. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_UNBIND_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+}
+
+message zdoDeviceAnnounceInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Device Announce message is received. 
+  // The command ID for this message is ZDO_DEVICE_ANNOUNCE. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_DEVICE_ANNOUNCE];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required uint32 devAddr = 3;               // (uint16) Device short address
+  required fixed64 devExtAddr = 4;           // Devices IEEE Address (64-bit)
+  required CapabilityInfo capInfo = 5;       // Device's Capabilities
+}
+
+message zdoDeviceAnnounceShadowInd //nuevo
+{
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_DEVICE_ANNOUNCE_SHADOW];  // don't change this field
+  required uint32 srcAddr = 2;       
+  required uint32 devAddr = 3;            
+  required uint64 devExtAddr = 4; 
+  required CapabilityInfo capInfo = 5;
+}
+
+
+message zdoMgmtNwkDiscRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management Network Discovery Response message is received. 
+  // The command ID for this message is ZDO_MGMT_NWK_DISC_RSP. 
+  // The source device sent this message in response to this device sending zdoMgmtNwkDiscReq. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_NWK_DISC_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 networkCount = 4;          // (uint8) The total number of networks reported
+  required uint32 startIndex = 5;            // (uint8) The starting point in the networkList
+  repeated nwkDiscItem netList = 6;          // array of networks  
+}
+
+message zdoMgmtLqiRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management LQI Response message is received. 
+  // The command ID for this message is ZDO_MGMT_LQI_RSP. 
+  // The source device sent this message in response to this device sending zdoMgmtLqiReq. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_LQI_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 neighborLqiEntries = 4;    // (uint8) The total number of neighbors
+  required uint32 startIndex = 5;            // (uint8) The starting point in the LQI List
+  repeated neighborLqiItem lqiList = 6;      // array of neighbor LQI info  
+}
+
+message zdoMgmtRtgRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management Routing Response message is received. 
+  // The command ID for this message is ZDO_MGMT_RTG_RSP. 
+  // The source device sent this message in response to this device sending zdoMgmtRtgReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_RTG_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required ZdpStatus status = 3;             // Response status
+  required uint32 rtgEntries = 4;            // (uint8) The total number of routing entries available
+  required uint32 startIndex = 5;            // (uint8) The starting point in the routing List
+  repeated rtgItem rtgList = 6;              // array of routing items  
+}
+
+message zdoMgmtBindRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management Binding Response message is received. 
+  // The command ID for this message is ZDO_MGMT_BIND_RSP. 
+  // The source device sent this message in response to this device sending zdoMgmtBindReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_BIND_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address, who we received this message from
+  required ZdpStatus status = 3;             // Response status
+  required uint32 bindEntries = 4;           // (uint8) The total number of binding entries available
+  required uint32 startIndex = 5;            // (uint8) The starting point in the binding List
+  repeated bindItem bindList = 6;            // array of binding items  
+}
+
+message zdoMgmtLeaveRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management Leave Response message is received. 
+  // The command ID for this message is ZDO_MGMT_LEAVE_RSP. 
+  // The source device sent this message in response to this device sending zdoMgmtLeaveReq. 
+ 
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_LEAVE_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address, who we received this message from
+  required ZdpStatus status = 3;             // Response status
+}
+
+message zdoMgmtDirectJoinRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management Direct Join Response message is received. 
+  // The command ID for this message is ZDO_MGMT_DIRECT_JOIN_RSP. 
+  // The source device sent this message in response to this device sending zdoMgmtDirectJoinReq. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_DIRECT_JOIN_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address, who we received this message from
+  required ZdpStatus status = 3;             // Response status
+}
+
+message zdoMgmtPermitJoinRspInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management Permit Join Response message is received. 
+  // The command ID for this message is ZDO_MGMT_PERMIT_JOIN_RSP. 
+  // The source device sent this message in response to this device sending zdoMgmtPermitJoinReq.
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_PERMIT_JOIN_RSP];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address, who we received this message from
+  required ZdpStatus status = 3;             // Response status
+}
+
+message zdoMgmtNwkUpdateNotifyInd
+{
+  // This response indication message is sent from ZStack Server when a ZDO Management Network Update Notify message is received. 
+  // The command ID for this message is ZDO_MGMT_NWK_UPDATE_NOTIFY. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_MGMT_NWK_UPDATE_NOTIFY];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address, who we received this message from
+  required ZdpStatus status = 3;             // Response status
+  required uint32 scannedChannels = 4;       // Bitmap - list of channels scanned by the request.
+  required uint32 totalTrans = 5;            // (uint16) Count of the total transmissions
+  required uint32 transFails = 6;            // (uint16) Sum of the total transmission failures
+  repeated uint32 energyValuesList = 7;      // Array of bytes, each representing the energy value for each scanned channel
+}
+
+message zdoTcDeviceInd
+{
+  // This message is sent from ZStack Server whenever the Trust Center allows a device to join the network. 
+  // The command ID for this message is ZDO_TC_DEVICE_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_TC_DEVICE_IND];  // don't change this field
+  required uint32 nwkAddr = 2;               // (uint16) The joining device's network address
+  required fixed64 extendedAddr = 3;         // The joining device's 64-bit extended address
+  required uint32 parentAddr = 4;            // (uint16) the device's parent's network address
+}
+
+//-----------------------------------------
+// ZDO Interface Confirm/Indication Messages
+//-----------------------------------------
+message zdoSrcRtgInd
+{
+  // This message is sent from ZStack Server to indicate that a source route was received. 
+  // The command ID for this message is ZDO_SRC_RTG_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_SRC_RTG_IND];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) Source address
+  required uint32 relayCnt = 3;              // (uint8) relay count
+  repeated uint32 relay = 4;                 // Array of relay short addresses(uint16)
+}
+
+message zdoConcentratorInd
+{
+  // This message is sent from ZStack Server to indicate that concentrator indication was received. 
+  // The command ID for this message is ZDO_CONCENTRATOR_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_CONCENTRATOR_IND];  // don't change this field
+  required uint32 nwkAddr = 2;               // (uint16) Network address
+  required uint32 pktCost = 3;               // (uint8) pkt Cost
+  required fixed64 ieeeAddr = 4;             // 64 bit IEEE address of concentrator device
+}
+
+message zdoNwkDiscCnf
+{
+  // This message is sent from ZStack Server to indicate a ZDO Network Discovery Confirmation. 
+  // The command ID for this message is ZDO_NWK_DISC_CNF. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_NWK_DISC_CNF];  // don't change this field
+  required uint32 status = 2;                // (uint8) Network discovery status
+}
+
+message zdoBeaconNotifyInd
+{
+  // This message is sent from ZStack Server to indicate a beacon notification. 
+  // The command ID for this message is ZDO_BEACON_NOTIFY_IND. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_BEACON_NOTIFY_IND];  // don't change this field
+  required uint32 sourceAddr = 2;            // (uint16) Source address
+  required uint32 panID = 3;                 // (uint16) PAN ID
+  required uint32 logicalChannel = 4;        // (uint8) logical channel
+  required bool permitJoining = 5;           // Set if joining allowed
+  required bool routerCapacity = 6;          // Set if there is router capacity available
+  required bool deviceCapacity = 7;          // Set if there is device capacity available
+  required uint32 protocolVersion = 8;       // (uint8) protocol version
+  required uint32 stackProfile = 9;          // (uint8) stack profile 
+  required uint32 lqi = 10;                  // (uint8) LQI
+  required uint32 depth = 11;                // (uint8) network depth
+  required uint32 updateID = 12;             // (uint8) update ID
+  required fixed64 extendedPANID = 13;       // 64 bit extended PAN ID
+}
+
+message zdoJoinCnf
+{
+  // This message is sent from ZStack Server to indicate a join confirmation. 
+  // The command ID for this message is ZDO_JOIN_CNF. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_JOIN_CNF];  // don't change this field
+  required ZStatusValues status = 2;         // Join confirm status
+  required uint32 devAddr = 3;               // (uint16) Network address of joining
+  required uint32 parentAddr = 4;            // (uint16) Parent's network address
+}
+
+message zdoLeaveCnf
+{
+  // This message is sent from ZStack Server to indicate a leave confirmation. 
+  // The command ID for this message is ZDO_LEAVE_CNF. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_LEAVE_CNF];  // don't change this field
+  required uint32 dstAddr = 2;               // (uint16) destination address
+  required fixed64 extendedAddr = 3;         // 64 extended address
+  required bool removeChildren = 4;          // Set if remove children option set
+  required bool rejoin = 5;                  // Set if a rejoin is expected, Cleared if not to rejoin network
+  required uint32 status = 6;                // (uint8) leave status
+}
+
+message zdoLeaveInd
+{
+  // This message is sent from ZStack Server to indicate a leave. 
+  // The command ID for this message is ZDO_LEAVE_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = ZDO_LEAVE_IND];  // don't change this field
+  required uint32 srcAddr = 2;               // (uint16) source address
+  required fixed64 extendedAddr = 3;         // 64-bit extended address
+  required uint32 request = 4;               // (uint8) request
+  required bool removeChildren = 5;          // Set if remove children option set
+  required bool rejoin = 6;                  // Set if a rejoin is expected, Cleared if not to rejoin network
+}
+
+
+message AppCnfCommissioningNotification //nuevo
+{
+  required ZStackCmdIDs cmdID = 1 [default = APP_CNF_COMMISSIONING_NOTIFICATION];  // don't change this field
+  required CommNotification status = 2;
+  required uint32 commMode = 3;
+  required uint32 remainingCommMode = 4;
+
+}
+
+//-----------------------------------------
+// Device Interface Indication Messages
+//-----------------------------------------
+
+
+
+message devStateChangeInd
+{
+  // This message is sent from ZStack Server whenever a change in state occurs. 
+  // The command ID for this message is DEV_STATE_CHANGE_IND. 
+
+  required ZStackCmdIDs cmdID = 1 [default = DEV_STATE_CHANGE_IND];  // don't change this field
+  required DevState state = 2;               // new state
+}
+
+//-----------------------------------------
+// Security Interface Request Messages
+//-----------------------------------------
+message secNwkKeyGetReq
+{
+  // Send this message to the ZStack Server to retrieve a network key. 
+  // The command ID for this message is SEC_NWK_KEY_GET_REQ. 
+  // The synchronous response to this message is secNwkKeyGetRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = SEC_NWK_KEY_GET_REQ];  // don't change this field
+  required bool activeKey = 2;           // True to get the active key information, False to get the alternate key
+}
+
+message secNwkKeySetReq
+{
+  // Send this message to the ZStack Server to set a network key. 
+  // The command ID for this message is SEC_NWK_KEY_SET_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SEC_NWK_KEY_SET_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SEC_NWK_KEY_SET_REQ];  // don't change this field
+  required bool activeKey = 2;           // True to set the active key information, False to set the alternate key
+  required uint32 seqNum = 3;            // (uint8) key sequence number
+  optional bytes key = 4;                // 16 bytes of key data, if not included the key is randomly generated.
+}
+
+message secNwkKeyUpdateReq
+{
+  // Send this message to the ZStack Server to update a key in the network. 
+  // The command ID for this message is SEC_NWK_KEY_UPDATE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SEC_NWK_KEY_UPDATE_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SEC_NWK_KEY_UPDATE_REQ];  // don't change this field
+  required uint32 seqNum = 2;            // (uint8) key sequence number
+  required uint32 dstAddr = 3;           // (uint16) destination address - network address or broadcast address (0xFFFF, 0xFFFC, or 0xFFFD)
+}
+
+message secNwkKeySwitchReq
+{
+  // Send this message to the ZStack Server to switch a key in the network. 
+  // The command ID for this message is SEC_NWK_KEY_SWITCH_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SEC_NWK_KEY_SWITCH_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SEC_NWK_KEY_SWITCH_REQ];  // don't change this field
+  required uint32 seqNum = 2;            // (uint8) key sequence number
+  required uint32 dstAddr = 3;           // (uint16) destination address - network address or broadcast address (0xFFFF, 0xFFFC, or 0xFFFD)
+}
+
+message secApsLinkKeyGetReq
+{
+  // Send this message to the ZStack Server to retrieve an APS Link Key (including TC Link Key). 
+  // The command ID for this message is SEC_APS_LINKKEY_GET_REQ. 
+  // The synchronous response to this message is secApsLinkKeyGetRsp.
+  
+  required ZStackCmdIDs cmdID = 1 [default = SEC_APS_LINKKEY_GET_REQ];  // don't change this field
+  required bool tcLinkKey = 2;           // TRUE if TC Link Key, False if link key
+  required fixed64 ieeeAddr = 3;         // IEEE Address of the Link Key wanted
+}
+
+message secApsLinkKeySetReq
+{
+  // Send this message to the ZStack Server to set an APS Link Key (including TC Link Key). 
+  // The command ID for this message is SEC_APS_LINKKEY_SET_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SEC_APS_LINKKEY_SET_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SEC_APS_LINKKEY_SET_REQ];  // don't change this field
+  required bool tcLinkKey = 2;           // True if the key information is for a TC Link Key, false if not
+  optional uint32 shortAddr = 3;         // must be included for a new non-TC Link Key (ignored for TC Link Key)
+  required fixed64 ieeeAddr = 4;         // IEEE Address of the Link Key, USE 0xFFFFFFFFFFFFFFFF for global(only for TC Link Key)
+  required bytes key = 5;                // 16 bytes of key data
+  optional uint32 txFrmCntr = 6;         // (uint32) Transmit frame counter (0 if not included and new Link Keys)
+  optional uint32 rxFrmCntr = 7;         // (uint32) receive frame counter (0 if not included and new Link Keys)
+}
+
+message secApsLinkKeyRemoveReq
+{
+  // Send this message to the ZStack Server to remove an APS Link Key (including TC Link Key). 
+  // The command ID for this message is SEC_APS_LINKKEY_REMOVE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SEC_APS_LINKKEY_REMOVE_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SEC_APS_LINKKEY_REMOVE_REQ];  // don't change this field
+  required bool tcLinkKey = 2;           // True if the key information is for a TC Link Key, false if not
+  required fixed64 ieeeAddr = 3;         // IEEE Address of the Link Key
+}
+
+message secApsRemoveReq
+{
+  // Send this message to the ZStack Server to issue an APS Remove Command (Trust Center Only). 
+  // The command ID for this message is SEC_APS_REMOVE_REQ. 
+  // The synchronous response to this message is zstackDefaultRsp(cmdID:SEC_APS_REMOVE_REQ).
+
+  required ZStackCmdIDs cmdID = 1 [default = SEC_APS_REMOVE_REQ];  // don't change this field
+  required uint32 parentAddr = 2;        // (uint16) Parent's Short Address
+  required uint32 nwkAddr = 3;           // (uint16) Device's NWK Address
+  required fixed64 extAddr = 4;          // Device's Extended IEEE Address
+}
+
+//-----------------------------------------
+// Security Interface Response Messages
+//-----------------------------------------
+message secNwkKeyGetRsp
+{
+  // This response message is sent from ZStack Server in response to the secNwkKeyGetReq message. 
+  // The command ID for this message is SEC_NWK_KEY_GET_RSP. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = SEC_NWK_KEY_GET_RSP];  // don't change this field
+  required ZStatusValues status = 2;     // Get status
+  required bool activeKey = 3;           // True for the active key information, False for the alternate key information
+  required uint32 seqNum = 4;            // (uint8) key sequence number
+  required bytes key = 5;                // 16 bytes of key data
+}
+
+message secApsLinkKeyGetRsp
+{
+  // This response message is sent from ZStack Server in response to the secApsLinkKeyGetReq message. 
+  // The command ID for this message is SEC_APS_TCLINKKEY_GET_RSP. 
+  
+  required ZStackCmdIDs cmdID = 1 [default = SEC_APS_LINKKEY_GET_RSP];  // don't change this field
+  required ZStatusValues status = 2;     // Get status
+  required bool tcLinkKey = 3;           // True if the key information is for a TC Link Key, false if not
+  required fixed64 ieeeAddr = 4;         // IEEE Address of the Link Key wanted
+  required bytes key = 5;                // 16 bytes of key data
+  required uint32 txFrmCntr = 6;         // (uint32) Transmit frame counter
+  required uint32 rxFrmCntr = 7;         // (uint32) receive frame counter
+}
+
+message gpSecReqIncomingMsgInd //nuevo
+{
+  required ZStackCmdIDs cmdID = 1 [default = GP_SEC_REQ_INCOMING_MSG];
+  required uint32 AppID = 2;              
+  required uint32 SrcID = 3;            
+  required uint64 GPDExtAddr = 4;       
+  required uint32 EndPoint = 5;         
+  required uint32 GPDFSecLvl = 6;      
+  required uint32 GPDFKeyType = 7;        
+  required uint32 GPDSecFrameCounter = 8;   
+  required uint32 dGPStubHandle = 9;        
+}
+
+message GpSecRspMsg //nuevo
+{
+  required ZStackCmdIDs cmdID = 1 [default = GP_SEC_RSP_MSG];
+  required uint32 Status = 2;
+  required uint32 dGPStubHandle = 3;
+  required uint32 AppID = 4;
+  required uint32 SrcID = 5;
+  required uint64 GPDExtAddr = 6;
+  required uint32 EndPoint = 7;
+  required uint32 GPDFSecLvl = 8;
+  required uint32 GPDFKeyType = 9;
+  required uint32 GPDSecFrameCounter = 10;
+  required bytes GPDKey = 11;
+
+}
+
+message AppCnfAddInstallCodeReq
+{
+  required ZStackCmdIDs cmdID = 1 [default = APP_CNF_ADD_INSTALL_CODE_REQ];
+  required uint64 ieeeAddress = 2;
+  required bytes installCode = 3;
+  required uint32 crc = 4;  
+}
+//-----------------------------------------
+// Generic Response Messages
+//-----------------------------------------
+
+message zstackDefaultRsp
+{
+  // There is no one command ID, this message structure is used to respond to all requests (and responses) sent
+  // by the host.  For example, this message structure is used to respond to AF_DATA_REQ with
+  // the immediate status (acceptance of the data request), the response message (in this example) is sent with 
+  // the AF_DATA_REQ command ID.  Example: [Host -> AF_DATA_REQ: afDataReq message structure] or 
+  // [ZStack -> AF_DATA_REQ: zstackDefaultRsp message structure]
+  
+  required ZStackCmdIDs cmdID = 1;              // contains the command ID of the request message
+  required ZStatusValues status = 2;			// Response status - default status
+}
+
+message SendGetDevNwkInfoReq //nuevo
+{
+  required ZStackCmdIDs cmdID = 1 [default = SEND_GET_DEV_NWK_INFO_REQ]; 
+  required uint32 nwkDevAddress = 2;       
+  required uint32 nwkPanId = 3;            
+  required uint32 sequenceNum = 4;         
+  required uint32 nwkLogicalChannel = 5;
+}
+
+message GpDataIndIncomingMsgInd //nuevo
+{
+  required ZStackCmdIDs cmdID = 1 [default = GP_DATA_IND_INCOMING_MSG]; 
+  required uint32 status = 2;
+  required uint32 Rssi = 3;
+  required uint32 LinkQuality = 4;
+  required uint32 SeqNumber = 5;
+  required uint32 shortAddr = 6;
+  required uint64 extAddr = 7;
+  required uint32 addrMode = 8;
+  required uint32 srcPanID = 9;
+  required uint32 appID = 10;
+  required uint32 GPDFSecLvl = 11;
+  required uint32 GPDFKeyType = 12;
+  required uint32 AutoCommissioning = 13;
+  required uint32 RxAfterTx = 14;
+  required uint32 SrcId = 15;
+  required uint32 EndPoint = 16;
+  required uint32 GPDSecFrameCounter = 17;
+  required uint32 GPDCmmdID = 18;
+  required uint32 MIC = 19;
+  required bytes GPDasdu = 20;  
+}
+
+message UtilSetDevNwkInfoReq
+{
+    required ZStackCmdIDs cmdID = 1 [default = UTIL_SET_DEV_NWK_INFO_REQ]; 
+    required uint32 nwkDevAddress = 2;
+    required uint32 nwkPanId = 3;
+    required uint32 sequenceNum = 4;
+    required uint32 nwkLogicalChannel = 5;
+}
+
+message AppCnfStartCommissioningReq
+{
+    required ZStackCmdIDs cmdID = 1 [default = APP_CNF_START_COMMISSIONING_REQ];   
+    required uint32 commissioningMode =  2;
+}
+
+message ZclActionReq
+{
+  required ZStackCmdIDs cmdID = 1 [default = ZCL_ACTION_REQ];   
+  required uint32 action = 2;
+  required uint32 id = 3;
+  required uint32 index = 4;
+  required bytes payload = 5;
+}
+
+message ZclActionRsp
+{
+  required ZStackCmdIDs cmdID = 1 [default = ZCL_ACTION_RSP];   
+  required uint32 action = 2;
+  required uint32 id = 3;
+  required uint32 index = 4;
+  required bytes payload = 5;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "zb-s2c-cloud-webapp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ZigBee IoT example connecting the zstack-linux-gateway to an mqtt cloud service.",
+  "main": "app.js",
+  "dependencies": {
+    "buffer-reverse": "^1.0.1",
+    "bytebuffer": "~3.5.4",
+    "express": "^4.16.2",
+    "mqtt": "~1.0.10",
+    "node-persist": "~0.0.3",
+    "protocol-buffers": "~2.4.7",
+    "socket.io": "~1.3.4",
+    "cfenv": "1.0.x",
+    "ibmiotf":"~0.2.11",
+    "util": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "zigbee",
+    "mqtt"
+  ],
+  "author": "Steven Giewont",
+  "license": "BSD-3-Clause",
+  "repository": {},
+  "engines": {
+  "node": "6.x"
+  }
+}

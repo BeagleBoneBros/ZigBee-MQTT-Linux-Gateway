@@ -1,0 +1,747 @@
+Log started 02/26/2021 at 12:37:34
+Preferred installation mode : win32
+Trying to init installer in mode win32
+Mode win32 successfully initialized
+Preparing to Install
+Preparing to Install
+Creating directory C:\ti
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\zmac
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal\include
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\mac
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\mac\include
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\af
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\gp
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\sys
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\sec
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zdo
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\mt
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\services
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\services\saddr
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\scripts
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\OTA
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\OTA\Source
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\images
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset\project
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset\project\out
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset\source
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zmac
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\usbreset
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\usbreset\project
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\usbreset\source
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\soc_images
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\soc_images\CC2531_USB_Dongle
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hal
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\source
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\sample_app
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\reset
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\reset\bbb
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\project
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\Source
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvepconfig
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\ota_sample_images
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\x86
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\arm
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\arm\pkgconfig
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\include
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\include\google
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\include\google\protobuf-c
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sdb
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\common
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\common
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\project
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\Source
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackpb
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\serverpb
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\cloud_adapters
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\zigbee_library
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\linux_gw_adapters
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\img
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\jquery
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\zb_gateway
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\img
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\jquery
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources
+Creating directory C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Proto_files
+Unpacking files
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Zigbee Linux Gateway_1.0.1_manifest.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\release_notes_zstack_linux_gateway.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\mac\include\mac_api.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\gp\gp_proxyTbl.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\gp\gp_common.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_lighting.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_closures.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_general.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_hvac.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_ss.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_closures.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_lighting.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_hvac.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_ss.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_green_power.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_general.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zdo\ZDProfile.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\mt\MT.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\user_interface.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\nwkmgr.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\gateway.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\images\5678-1234-AAAA0000.zigbee
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\images\5678-1234-BBBB0000.zigbee
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\user_interface.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\attribute_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\commissioning_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\znp_zdo.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\znp_misc.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\zstackpb.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\soc_images\CC2531_USB_Dongle\CC2531-GW-ZNP_39203.bin
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrdatabase.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgr.pb-c.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgr.pb-c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrsrv.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrservices.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\nwkmgrsrv.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\nwkmgr.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\project\sbl_tool.bin
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\Source\zbSocCmd.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\api_server.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\api_client.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvepconfig\serverep.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\otasrvr.pb-c.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\zcl_otaserver_lnx.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\nwkmgr.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\ota_sample_images\5678-1234-0000BBBB.zigbee
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\ota_sample_images\5678-1234-0000AAAA.zigbee
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\x86\libprotobuf-c.so
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\x86\libprotobuf-c.so.1.0.0
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\x86\libprotobuf-c.a
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\arm\libprotobuf-c.a
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\arm\libprotobuf-c.so.1.0.0
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\include\google\protobuf-c\protobuf-c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gatewayservices.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gateway.pb-c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gateway.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\gatewaysrvr.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\nwkmgr.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\gateway.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\NPI_lnx_arm_server
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\npi_lnx_ipc.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\npi_lnx_ipc.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\npi_lnx_uart.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\hal_gpio.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\npi_lnx_spi.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackpb\zstack.pb-c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackpb\zstackpb.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\serverpb\server.pb-c.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\README.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\API.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\API.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\README.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\linux_gw_adapters\hagateway.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\linux_gw_adapters\gateway.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Proto_files\gateway.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\webapp.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\webapp.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-reboot.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-reboot.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-grid.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-grid.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-grid.min.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-grid.min.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-grid.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-grid.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-grid.min.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-grid.min.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap.min.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap.min.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.min.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.min.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.bundle.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.bundle.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.bundle.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.bundle.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\Chart.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\Chart.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\jquery\jquery-1.12.0.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\jquery\jquery-1.12.0.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\zb_gateway\zb-gateway.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\README.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\README.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\Z-Stack Linux Gateway - Developer's Guide.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\Z-Stack Linux Gateway - Quick Start Guide.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\Z-Stack Linux Gateway - User's Guide.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\door_lock_bound_to_door_lock_controller.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\temperature_sensor.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\ibm_cloud_dashboard.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\block diagram detailed.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\switch_popup.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\switch_bind.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\block diagram high level.jpg
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\block diagram.jpg
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\zigbee_gateway_with_cloud_block_diagram.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\ibm_cloud_catalog_page.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\localapp_connected.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\door_lock_pin_invalid_popup.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\nwk_information.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\soft_system_reset.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\door_lock_controller_bind_popup.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\common_device_card_characteristics.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\typical_api_steady_activity.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\webapp_dropdown_menu.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\nodejs_binding_event_handling.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\nodejs_block_diagram.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\add_device_iot.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\typical_api_at_startup.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\creating_authentication_token.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\open_close_nwk.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\creating_iot_service.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\hard_system_reset.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\block diagram high level.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\zigbee_sensor_to_cloud_block_diagram.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\switch.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\typical_api_on_user_input.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Proto_files\zstack.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\main.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\macros.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\data_structures.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\group_scene_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\actions_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\device_list_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset\project\bbb_usbreset.bin
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset\source\bbb_usbreset.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl\main.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl\ccxxxxdnld.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hal\hal_timer.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\main.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\configparser.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gateway_pb_ctrl.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\aps_groups.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\hal_spi.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\hal_i2c.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\project\gw_soc_fw_version_query.bin
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\Source\main.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\serverpb\gatewayp2p.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\services\saddr\saddr.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\polling.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\network_info_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\ota_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\osal_zstack_server_znp.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgr_pb_ctrl.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrp2p.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\source\pb_utils.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\source\OnBoard.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\Source\main.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\ota_common.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\OtaServer.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\otasrvr.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\OtaServer_db.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\otasrvr_pb_ctrl.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\common\OSAL.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\common\OSAL_Timers.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\common\OSAL_Memory.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\common\OSAL_PwrMgr.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\npi_lnx_i2c.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_green_power.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_poll_control.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\tcp_client.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\timer_utils.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\socket_interface.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\system_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\state_reflector.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\sensor_engine.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\usbreset\source\usbreset.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl\sblUart.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\Source\zbSocTransportUart.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\trace.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\zcl_ota.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sdb\SimpleDB.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sdb\SimpleDBTxt.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\zcl_port.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\Source\zbSocCmd.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\Source\zbSocTransportUart.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\serverpb\server_pb_ctrl.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\af\AF.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\gp\cGP_stub.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\AssocList.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\APS.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\BindingTable.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\APSMEDE.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\aps_groups.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\sample_app_ota.cfg
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\data_structures.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\attribute_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\commissioning_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\actions_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\device_list_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\zstack_pb_ctrl.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\znp_af.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl\ccxxxxdnld.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl\deviceTypes.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\aps_groups.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\source\zmain.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\api_lnx_ipc_rpc.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\api_client.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\api_server.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\configparser.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\zcl_port.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\aps_groups.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\comdef.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\aps_groups.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\NPI_Gateway.cfg
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\aic.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-reboot.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\slider.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-reboot.min.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-reboot.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\slider.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-reboot.min.css
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\.cfignore
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\block diagram.drawio
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\gateway application.drawio
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\block diagram high level.drawio
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal\include\hal_uart.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal\include\hal_timer.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal\include\hal_led.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal\include\hal_drivers.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal\include\hal_board.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\hal\include\hal_key.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\gp\dGP_stub.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\gp\gp_common.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\gp\gp_interface.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\nwk.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\NLMEDE.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\nwk_bufs.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\mt\MT_RPC.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\macros.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\group_scene_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\network_info_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\f8wConfig.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hal\hal_mcu.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hal\hal_defs.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hal\hal_board_cfg.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hal\hal_types.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\hal_rpc.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gatewayservices.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gateway_pb_ctrl.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gatewaysrvr.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\common\npi_lnx_ipc_rpc.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\common\npi_lnx.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\common\npi_lnx_error.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\common\hal_rpc.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\common\hal_types.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\npi_lnx_spi.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\hal_spi.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\npi_lnx_uart.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\npi_lnx_i2c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\hal_i2c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\ipclib\server\hal_gpio.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\serverpb\gatewayp2p.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\reflecttrack.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\nwk_globals.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\rtg.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\nwk_util.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\nwk\stub_aps.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\sec\ssp.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\services\saddr\saddr.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\OTA\Source\ota_common.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\socket_interface.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\polling.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\tcp_client.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\timer_utils.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\sensor_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\state_reflector.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\ota_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\engines\system_engine.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl\sblUart.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrsrv.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrdatabase.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrservices.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgrp2p.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgr_pb_ctrl.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\source\OnBoard.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\source\pb_utils.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvepconfig\serverep.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\otasrvr_pb_ctrl.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\OtaServer.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\otasrvr.pb-c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\otasrvr.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\OtaServer_db.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sdb\SimpleDB.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sdb\SimpleDBTxt.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\OSAL_Nv.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\OSAL_Tasks.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\OSAL_PwrMgr.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\saddr.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\OSAL_Timers.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\OSAL.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\sdata.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\OSAL_Memory.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\serverpb\server_pb_ctrl.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\serverpb\server.pb-c.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\zmac\ZMAC.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_ezmode.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zcl\zcl_poll_control.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\sys\ZGlobals.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zdo\ZDApp.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zdo\ZDObject.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zdo\ZDSecMgr.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Components\stack\zdo\ZDConfig.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\types.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\framework\user_interface.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\zstack_pb_ctrl.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\config.ini
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zmac\zmac_internal.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\nwkmgr_config.ini
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\zcl_ha.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\Source\zbSocTransportUart.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\Source\zbSocCmd.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\srvwrapper\trace.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\otaserver.ini
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\zcl_ota.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\utils.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\linux_osal\include\ZComDef.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gateway_config.ini
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\zcl_port.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\zcl_ha.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\Source\zbSocTransportUart.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\Source\zbSocCmd.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackpb\zstackpb.h
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices\device.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\webapp.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\app.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\cloudWebServer.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\webapp.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\README.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\release_notes_zstack_linux_gateway.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\actions_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\api_client.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\api_client.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\arm\libprotobuf-c.la
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\README.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\README.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\main.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\package.json
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\cloud_adapters\ibmConfig.json
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\cloud_adapters\ibmCloudAdapter.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices\light-device.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices\doorlockcontroller-device.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices\switch-device.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices\tempsensor-device.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices\doorlock-device.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\devices\thermostat-device.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\zigbee_library\zb_lib.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\linux_gw_adapters\nwkmgr.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\webserver.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\zb_lib.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap-reboot.min.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\popper.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\ibmConfig.json
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\README.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\package.json
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\zb_lib.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap-reboot.min.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\popper.min.js
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\README.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\Z-Stack Linux Gateway - Quick Start Guide.md
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\gateway_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\device_list_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\configparser.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\attribute_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\data_structures.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\group_scene_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\commissioning_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset\project\out\bbb_usbreset.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\configparser.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\api_client.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\api_server.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\configparser.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\api_server.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\configparser.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\gatewayp2p.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\api_server.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\gatewayservices.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\gateway_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\aps_groups.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\configparser.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\gatewayp2p.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\api_client.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\api_server.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\hal_i2c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\configparser.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\hal_spi.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\hal_gpio.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\main.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\ota_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\macros.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\otasrvr_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\otasrvr.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\network_info_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\nwkmgr_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\OSAL_PwrMgr.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\osal_zstack_server_znp.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\main.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\OSAL_Memory.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\OSAL_Timers.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\hal_timer.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\OnBoard.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\OSAL.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\main.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\nwkmgrp2p.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\nwkmgrservices.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\nwkmgr_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\nwkmgrdatabase.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\project\main.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\OtaServer_db.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\main.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\OtaServer.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\otasrvr.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\otasrvr_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\ota_common.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\otasrvr.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\nwkmgr_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\main.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\nwkmgr_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\npi_lnx_i2c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\npi_lnx_uart.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\npi_lnx_spi.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\project\main.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\pb_utils.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\sensor_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\polling.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\system_engine.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\timer_utils.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\state_reflector.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\tcp_client.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\socket_interface.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\saddr.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\trace.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\pb_utils.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\pb_utils.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\SimpleDBTxt.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\server.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\serverep.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\SimpleDB.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\server_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\trace.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\pb_utils.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\SimpleDBTxt.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\server.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\SimpleDB.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\server_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\pb_utils.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\server.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\serverep.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\server_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\out\trace.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\znp_misc.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\znp_af.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\zmain.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\trace.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\project\zbSocCmd.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\project\zbSocTransportUart.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\zcl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\zcl_port.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\zcl_ota.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\zcl_general.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\zcl_otaserver_lnx.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl_lighting.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl_port.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\trace.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl_poll_control.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl_general.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl_hvac.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl_ss.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zcl_closures.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\out\trace.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\project\zbSocCmd.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\project\zbSocTransportUart.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\znp_zdo.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\zstack_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\zstack_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\zstack_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\protobuf-c\lib\arm\pkgconfig\libprotobuf-c.pc
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zstack_pb_ctrl.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\color_light.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\editing_manifest_yml.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\iot_device_type.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\iot_view_credentials.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\iot_adding_device.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\door_lock_controller.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\cloud_foundry_cli.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\door_lock.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\creating_device_id.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\iot_create_connection.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\dimmable_light.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\iot_gateway_device_type.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\iot_platform.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\iot_platform_menu.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\license.txt
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\setup.sh
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\build_all
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\Makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\package_builder_expected_content_RUNTIME_arm.txt
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\package_builder_expected_content_RUNTIME_x86.txt
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\sbl_tool\project\Makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\ota_sample_images\Readme.txt
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gateway_config.tlg
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\start_ibm.sh
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\start_gateway.sh
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\end.sh
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\start_local.sh
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\linux_gw_adapters\nwkmgr.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\img\light_off.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\img\unlock.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\img\lock.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\img\light_on.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\manifest.yml
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\img\light_off.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\img\unlock.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\img\lock.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\img\light_on.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\.project
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\on_off_light.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\typical_api_wind_down.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\launch_watson_iot_platform_service.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\verify_device_credentials.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\to_view_ibm_hosted_web_app.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\nodejs_start.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\launchpad_web_app_running_in_cloud.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Proto_files\Readme.txt
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Proto_files\server.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Proto_files\otasrvr.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Proto_files\nwkmgr.proto
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\scripts\package_builder
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\bbb_usbreset\project\makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\usbreset\project\makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\cc-rom-sbl\Makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\Makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\sample_app\start_application
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\track_servers
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\zigbeeHAgw
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\reset\soc_reset_hold
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\reset\soc_reset_release
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\reset\bbb\soc_reset_hold
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\scripts\hagateway\reset\bbb\soc_reset_release
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\Makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\Makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\RemoTI-Linux-master\Projects\tools\LinuxHost\makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\version_query_minitool\project\Makefile
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\README.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\demo\project\main.bin
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\ZLSZNP_arm
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackserverznp\out\zstack.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\soc_images\CC2531_USB_Dongle\CC2531-GW-ZNP_39203_sbl39186.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\NWKMGR_SRVR_arm
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\nwkmgr\out\zstack.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\zstack.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\otaserver\out\OTA_SRVR_arm
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gatewaysrvr.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\gateway.pb-c.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\zstack.pb-c.o
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\hagateway\out\GATEWAY_SRVR_arm
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\zstack\linux\zstackpb\zstack.pb-c.c
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap.min.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\css\bootstrap.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.bundle.min.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\node\nodejs_zb_gateway\webserver\public\dist\js\bootstrap.bundle.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap.min.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\css\bootstrap.css.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.bundle.min.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\source\Projects\cloud_apps\ibm-webapp\cloudWebServer\public\dist\js\bootstrap.bundle.js.map
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps\zr_light_CC26X2R1_LAUNCHXL_tirtos_ccs.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps\zed_temperaturesensor_CC26X2R1_LAUNCHXL_tirtos_ccs.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps\zed_thermostat_CC26X2R1_LAUNCHXL_tirtos_ccs.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps\zed_doorlock_CC26X2R1_LAUNCHXL_tirtos_ccs.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps\zed_light_CC26X2R1_LAUNCHXL_tirtos_ccs.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps\zed_doorlockcontroller_CC26X2R1_LAUNCHXL_tirtos_ccs.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\cc26x2_sampleapps\zed_sw_CC26X2R1_LAUNCHXL_tirtos_ccs.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp\CC2538_GW_ZNP_EM_StandAlone_USB.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp\CC2652R1LP_GW_ZNP_UART.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp\CC2530_GW_ZNP_SRF05+EM_UART.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp\CC2538_GW_ZNP_SRF06+EM_UART.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp\CC2531ZNP_GW_ZNP_USB.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp\CC1352P2LP_GW_ZNP_UART.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Firmware\znp\CC1352R1LP_GW_ZNP_UART.hex
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\Z-Stack Linux Gateway - API document v1.1.pdf
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\Z-Stack Linux Gateway - User's Guide.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\Z-Stack Linux Gateway - Developer's Guide.html
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\gateway application.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\block diagram.png
+Unpacking C:\ti\Zigbee_3_0_Linux_Gateway_1_0_1\Documents\resources\entering_iot_service_credentials_ibmConfig_json.png
+Creating Uninstaller
+Creating uninstaller 25%
+Creating uninstaller 50%
+Creating uninstaller 75%
+Creating uninstaller 100%
+Installation completed
+Log finished 02/26/2021 at 12:37:57
