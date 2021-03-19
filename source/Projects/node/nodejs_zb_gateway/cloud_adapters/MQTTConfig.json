@@ -6,7 +6,7 @@
 		"password":"password",
 		"clean":true
 		},
-	"subscribe_options": {
+	"sub_options": {
 		"retain":true,
 		"qos":1
 		},
