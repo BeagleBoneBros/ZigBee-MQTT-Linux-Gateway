@@ -162,7 +162,7 @@ setup_for_arm()
 	export NPI_NAME=NPI_lnx_arm_server
 
 	export NPI_CONFIG=NPI_Gateway.cfg
-	export NPI_CMD="./$NPI_NAME $NPI_CONFIG -v 0xFFFFFFFF"
+	export NPI_CMD="./$NPI_NAME $NPI_CONFIG -v 0x0000010E"
   # note: for less verbose output, remove '-v 0x0000010E' from the command above
   #       for more verbose output, replace 0x0000010E with 0xFFFFFFFF
   #       for even more verbose debug output, add 'debugAll' to the command above after 0xFFFFFFFF
@@ -267,6 +267,8 @@ case "$BOARD_TYPE" in
 bbb | beaglebone)
 	# beaglebone does some magic with the omap_mux
 	# and as such an explicit reverse isn't needed
+	config-pin P9.11 uart
+	config-pin P9.13 uart
 	ZBEE_RESET_EXPLICIT_REVERSE=0
 	ZBEE_RESET_GPIO_LINE=77
 	export ZBEE_SERIAL_PORT=/dev/ttyS4
