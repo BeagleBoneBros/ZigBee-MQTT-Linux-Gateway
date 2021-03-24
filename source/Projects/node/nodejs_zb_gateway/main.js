@@ -45,6 +45,7 @@
 
 var Webserver = require('./webserver/webserver.js');
 var IbmAdapter = require("./cloud_adapters/ibmCloudAdapter.js");
+var MQTTAdapter = require("./cloud_adapters/MQTTCloudAdapterSimple.js");
 
 // top level function starting appropriate webserver
 function Main() {
@@ -64,8 +65,18 @@ function Main() {
       console.log("Started IBM Cloud Hosted Webserver");
       this.cloudadapter = new IbmAdapter(ip_address);
     }
+    else if (webserver_mode == 'MQTT'){
+      console.log("Started MQTT Adapter");
+      this.cloudadapter = new MQTTAdapter(ip_address);
+    }
+    else if (webserver_mode == 'MQTTandLocal'){
+      console.log("Started MQTT Adapter");
+      this.cloudadapter = new MQTTAdapter(ip_address);
+      this.webserver = new Webserver(ip_address);
+    }
+
     else{
-      console.log("ERROR: Incorrect mode set, please enter either `localhost` or `ibm`");
+      console.log("ERROR: Incorrect mode set, please enter either `localhost`, `ibm`, 'MQTT', or 'MQTTandLocal'");
     }
   }
 

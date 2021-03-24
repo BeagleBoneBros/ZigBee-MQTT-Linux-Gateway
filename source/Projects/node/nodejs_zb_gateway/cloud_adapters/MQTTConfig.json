@@ -1,24 +1,23 @@
 {
-	"broker_address": "172.0.01",
+	"broker_address": "mqtt://192.168.1.24",
 	"broker_options": { 
-		"clientId": "mqtt12345",
-		"username":"mqtt",
-		"password":"password",
-		"clean":true
+		"clientId": "",
+		"username":"mosquitto",
+		"password":""
 		},
-	"sub_options": {
+	"subscribe_options": {
 		"retain":true,
 		"qos":1
 		},
 	"gateway_getDeviceList_topic": "gateway/getdevicelist",
 	"gateway_getBindList_topic": "gateway/getbindlist",
-	"gateway_removeDevice_topic": "gateway/removedevice"
+	"gateway_removeDevice_topic": "gateway/removedevice",
 	
 	"network_open_topic": "network/open",
 	"network_close_topic": "network/close",
 	"network_getinfo_topic": "network/getinfo",
 	"network_hard_reset_topic": "network/hardreset",
-	"network_soft_reset_topic": "network/open",
+	"network_soft_reset_topic": "network/softreset",
 	
 	"light_set_ONOFF_topic": "light/set/onoff",
 	"light_get_ONOFF_topic": "light/get/onoff",
