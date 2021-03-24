@@ -1,0 +1,44 @@
+html
+  head
+    link(rel='stylesheet', href='css/bulma.css',id='main-styles-link')
+  body
+    .section
+      .containers
+        .container
+          form(method='POST', action='/submit')
+
+            .field
+              label.label Broker Address
+              .control
+                input.input(name='broker_address', type='text', value=broker_address, placeholder='Input1')
+              p.help This is a field for Broker Address
+
+            .field
+              label.label Broker Options
+              .control
+              input.input(name='clientId', type='text',value=clientId, placeholder='ClientID')
+              input.input(name='username', type = 'text', value=username, placeholder='Username')
+              input.input(name='password', type='text', value=password, placeholder='Password')
+              input.input(name='clean', type='text', value=clean, placeholder='Clean? True/False')
+              
+            .field
+              label.label Sub Options
+              .control
+              input.input(name='retain',type='text',value=retain, placeholder='Retain? True/False')
+              input.input(name='qos',type='text',value=qos,placeholder='QOS')
+              
+            .field
+              label.label Network Toggles
+              select(name="dd1", type="text", value=dd1)
+                option(value = dd1) --On/Off--
+                option(value = "On") On
+                option(value = "Off") Off
+            br
+            
+            
+            
+              
+            .control
+              button.button.is-primary Submit
+          
+            

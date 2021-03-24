@@ -1,0 +1,15 @@
+{
+  "name": "MQTTConfigurator",
+  "version": "0.0.1",
+  "description": "left empty",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pug": "^3.0.2"
+  }
+}
