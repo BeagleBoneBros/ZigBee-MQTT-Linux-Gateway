@@ -5,40 +5,57 @@
 		"username":"mosquitto",
 		"password":""
 		},
-	"subscribe_options": {
-		"retain":true,
+	"subpub_options": {
+		"retain":false,
 		"qos":1
 		},
-	"gateway_getDeviceList_topic": "gateway/getdevicelist",
-	"gateway_getBindList_topic": "gateway/getbindlist",
-	"gateway_removeDevice_topic": "gateway/removedevice",
+	"gateway_getDeviceList_topic": "zb/gateway/getdevicelist",
+	"gateway_getBindList_topic": "zb/gateway/getbindlist",
+	"gateway_removeDevice_topic": "zb/gateway/removedevice",
 	
-	"network_open_topic": "network/open",
-	"network_close_topic": "network/close",
-	"network_getinfo_topic": "network/getinfo",
-	"network_hard_reset_topic": "network/hardreset",
-	"network_soft_reset_topic": "network/softreset",
+	"network_open_topic": "zb/network/open",
+	"network_close_topic": "zb/network/close",
+	"network_getinfo_topic": "zb/network/getinfo",
+	"network_hard_reset_topic": "zb/network/hardreset",
+	"network_soft_reset_topic": "zb/network/softreset",
 	
-	"light_set_ONOFF_topic": "light/set/onoff",
-	"light_get_ONOFF_topic": "light/get/onoff",
-	"light_set_level_transition_topic": "light/set/leveltransition",
-	"light_set_onoff_transition_topic": "light/set/onofftransition",
-	"light_get_level_topic": "light/get/level",
-	"light_set_level_topic": "light/set/level",
-	"light_set_color_topic": "light/set/color",
-	"light_get_color_topic": "light/get/color",
+	"light_set_ONOFF_topic": "zb/light/set/onoff",
+	"light_get_ONOFF_topic": "zb/light/get/onoff",
+	"light_set_level_transition_topic": "zb/light/set/leveltransition",
+	"light_set_onoff_transition_topic": "zb/light/set/onofftransition",
+	"light_get_level_topic": "zb/light/get/level",
+	"light_set_level_topic": "zb/light/set/level",
+	"light_set_color_topic": "zb/light/set/color",
+	"light_get_color_topic": "zb/light/get/color",
 	
-	"temp_get_temp_topic": "temp/get/temp",
-	"temp_set_interval_topic": "temp/set/interval",
+	"temp_get_temp_topic": "zb/temp/get/temp",
+	"temp_set_interval_topic": "zb/temp/set/interval",
 	
-	"doorlock_get_state_topic": "lock/get/state",
-	"doorlock_set_unlock_topic": "lock/set/unlocked",
-	"doorlock_set_lock_topic": "lock/set/locked",
+	"doorlock_get_state_topic": "zb/lock/get/state",
+	"doorlock_set_unlock_topic": "zb/lock/set/unlocked",
+	"doorlock_set_lock_topic": "zb/lock/set/locked",
 	
-	"thermostat_change_setpoint_topic": "thermostat/set/setpoint",
-	"thermostat_get_minheat_setpoint_topic": "thermostat/get/minheat",
-	"thermostat_get_all_attributes": "thermostat/get/attributes",
+	"thermostat_change_setpoint_topic": "zb/thermostat/set/setpoint",
+	"thermostat_get_minheat_setpoint_topic": "zb/thermostat/get/minheat",
+	"thermostat_get_all_attributes": "zb/thermostat/get/attributes",
 	
-	"binding_set_bind_topic": "binding/set/bind",
-	"binding_set_unbind_topic": "binding/set/unbind"
+	"binding_set_bind_topic": "zb/binding/set/bind",
+	"binding_set_unbind_topic": "zb/binding/set/unbind",
+
+	"server_devList_topic":"zb/server/devList",
+	"server_removeDeviceCard_topic":"zb/server/removeDeviceCard",
+	"server_network_ready_topic":"zb/server/networkready",
+	"server_network_info_topic":"zb/server/networkinfo",
+	"server_binding_event_topic":"zb/server/bindingevent",
+	"server_binding_failed_topic":"zb/server/bindingfailed",
+	"server_unbinding_failed_topic":"zb/server/unbindingfailed",
+	"server_light_device_state_topic":"zb/server/light/state",
+	"server_light_device_level_topic":"zb/server/light/level",
+	"server_light_device_color_topic":"zb/server/light/color",
+	"server_temp_device_temp_topic":"zb/server/temp/temp",
+	"server_doorlock_device_state_topic":"zb/server/doorlock/state",
+	"server_doorlock_device_set_rsp_topic":"zb/server/doorlock/setrsp",
+	"server_thermostat_attribute_topic":"zb/server/thermostat/attribute"
+
+
 }

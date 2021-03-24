@@ -47,37 +47,37 @@ gatewayClient.on('connect', function(){
     console.log("Connected to MQTT Broker!");
 
     // HA-Gateway Subscriptions
-    gatewayClient.subscribe(MQTTConfig.gateway_getDeviceList_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.gateway_getBindList_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.gateway_removeDevice_topic, MQTTConfig.sub_options);
+    gatewayClient.subscribe(MQTTConfig.gateway_getDeviceList_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.gateway_getBindList_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.gateway_removeDevice_topic, MQTTConfig.subpub_options);
     // Network Subscriptions
-	gatewayClient.subscribe(MQTTConfig.network_open_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.network_close_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.network_getinfo_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.network_hard_reset_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.network_soft_reset_topic, MQTTConfig.sub_options);
+	gatewayClient.subscribe(MQTTConfig.network_open_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.network_close_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.network_getinfo_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.network_hard_reset_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.network_soft_reset_topic, MQTTConfig.subpub_options);
     // Light Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.light_set_ONOFF_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.light_get_ONOFF_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.light_set_level_transition_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.light_set_onoff_transition_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.light_get_level_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.light_set_color_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.light_get_color_topic, MQTTConfig.sub_options);
+	gatewayClient.subscribe(MQTTConfig.light_set_ONOFF_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.light_get_ONOFF_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.light_set_level_transition_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.light_set_onoff_transition_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.light_get_level_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.light_set_color_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.light_get_color_topic, MQTTConfig.subpub_options);
     // Temp Sensor Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.temp_get_temp_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.temp_set_interval_topic, MQTTConfig.sub_options);
+	gatewayClient.subscribe(MQTTConfig.temp_get_temp_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.temp_set_interval_topic, MQTTConfig.subpub_options);
     // Doorlock Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.doorlock_get_state_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.doorlock_set_unlock_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.doorlock_set_lock_topic, MQTTConfig.sub_options);
+	gatewayClient.subscribe(MQTTConfig.doorlock_get_state_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.doorlock_set_unlock_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.doorlock_set_lock_topic, MQTTConfig.subpub_options);
     // Thermostat Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.thermostat_change_setpoint_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.thermostat_get_minheat_setpoint_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.thermostat_get_all_attributes, MQTTConfig.sub_options);
+	gatewayClient.subscribe(MQTTConfig.thermostat_change_setpoint_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.thermostat_get_minheat_setpoint_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.thermostat_get_all_attributes, MQTTConfig.subpub_options);
     // Binding Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.binding_set_bind_topic, MQTTConfig.sub_options);
-	gatewayClient.subscribe(MQTTConfig.binding_set_unbind_topic, MQTTConfig.sub_options);
+	gatewayClient.subscribe(MQTTConfig.binding_set_bind_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTConfig.binding_set_unbind_topic, MQTTConfig.subpub_options);
   });
 
   gatewayClient.on("error",function(error){
@@ -215,7 +215,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(listData);
-		gatewayClient.publish(MQTTConfig.server_devList_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_devList_topic, msgData, MQTTConfig.subpub_options);  
 	}
   })
 
@@ -232,7 +232,7 @@ gatewayClient.on('connect', function(){
     if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(listData);
-		gatewayClient.publish(MQTTConfig.server_devList_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_devList_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -243,7 +243,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_removeDeviceCard_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_removeDeviceCard_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -253,7 +253,7 @@ gatewayClient.on('connect', function(){
 
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
-		//gatewayClient.publish(MQTTConfig.server_network_ready'_topic, "", MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_network_ready_topic, "null", MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -264,7 +264,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_network_info_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_network_info_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -282,7 +282,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(listData);
-		gatewayClient.publish(MQTTConfig.server_binding_event_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_binding_event_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -293,7 +293,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 
-		//gatewayClient.publish(MQTTConfig.server_binding_failed_topic, "", MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_binding_failed_topic, "null", MQTTConfig.subpub_options);  
 	}  	
   })
 
@@ -304,7 +304,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 
-		//gatewayClient.publish(MQTTConfig.server_unbinding_failed_topic, "", MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_unbinding_failed_topic, "null", MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -314,7 +314,8 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_light_device_state_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_light_device_state_topic, msgData, MQTTConfig.subpub_options);  
+        console.log("MQTT Published!");
 	}  
   })
 
@@ -324,7 +325,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_light_device_level_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_light_device_level_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -334,7 +335,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_light_device_color_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_light_device_color_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -344,7 +345,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_temp_device_temp_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_temp_device_temp_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -354,7 +355,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_doorlock_device_state_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_doorlock_device_state_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -364,7 +365,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_doorlock_device_set_rsp_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_doorlock_device_set_rsp_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   })
 
@@ -374,7 +375,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_thermostat_attribute_topic, msgData, MQTTConfig.sub_options);  
+		gatewayClient.publish(MQTTConfig.server_thermostat_attribute_topic, msgData, MQTTConfig.subpub_options);  
 	}  
   });
 
