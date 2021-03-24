@@ -1,0 +1,3 @@
+Endpoint Database
+IeeeAddr,EndpointId,ProfileId,DeviceId,DeviceVer,NumIncluster,NumOutClusters,Clusters
+        00:12:4B:00:1C:A1:AD:29 , 8 , 0x0104, 0x0101 , 0 , 6 , 0 , 0x0000 , 0x0003 , 0x0004 , 0x0005 , 0x0006 , 0x0008

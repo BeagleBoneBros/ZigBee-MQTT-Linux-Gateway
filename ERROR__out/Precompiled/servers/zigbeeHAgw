@@ -1,0 +1,1075 @@
+#! /bin/bash                                               
+#
+# script to start/stop zigbee gateway servers
+#
+
+export LINE="==================================================="
+
+# NOTE: to turn on verbosity, set VERBOSE_GW_SCRIPT to something
+# in the environment when starting this script
+
+# for trap situation
+killing_myself=0
+
+# threshold that divides 'starting' from 'running' 
+running_thresh_secs=5
+
+# exit codes
+ERROR_NO_TARGET=10
+ERROR_BAD_TARGET=11
+
+# this is used to do board-specific stuff that is not easily prarmaterized
+BOARD_TYPE=unknown
+
+VERBOSE=1
+MERGE_OUTPUT=0
+
+ZBEE_RESET_GPIO_LINE=
+
+ZBEE_RESET_EXPLICIT_REVERSE=1
+PROCESSOR_ZBEE_RESET_PIN=
+ZBEE_SERIAL_PORT=
+ignore_zbee_reset=0
+
+if [ -n "$VERBOSE_GW_SCRIPT" ]; then
+  if [ $VERBOSE_GW_SCRIPT -ge 1 ]; then
+  	VERBOSE=$VERBOSE_GW_SCRIPT
+  fi
+fi
+
+if [ "$MERGE_OUTPUT" = "" ]; then
+	if [ $VERBOSE -ge 1 ]; then
+		echo "defaulting output to merged, everything to console"
+	fi
+	MERGE_OUTPUT=1
+fi
+
+# UART baud rate settings
+UART_BAUDRATE=115200 
+
+# these are exit codes from network manager that we look for
+# the network manager exit code determines how this script
+# should behave when it exits, including how to call it when
+# starting the servers up again
+
+NWKMGR_SHUTDOWN_CODE=1
+NWKMGR_SOFT_RESET_CODE=2
+NWKMGR_HARD_RESET_CODE=3
+NWKMGR_SLEEP_CODE=4
+NWKMGR_WAKEUP_CODE=5
+NWKMGR_OTHER_SERVER_DIED=666
+
+# we redirect non netmgr server output to files
+# so we can see what the hell is going on
+NPI_OUT=/tmp/GW_SRVRS.out
+ZLS_OUT=/tmp/GW_SRVRS.out
+GWA_OUT=/tmp/GW_SRVRS.out
+OTA_OUT=/tmp/GW_SRVRS.out
+NWKMGR_OUT=/tmp/GW_SRVRS.out
+
+/bin/rm -f $NPI_OUT $ZLS_OUT $GWA_OUT $OTA_OUT
+
+
+# this is an optional flag passed to the network manager
+# when this script re-starts it (it should be empty when
+# started for the first time). This flag is set based on
+# the exit code that network manager returns on exit.
+
+NWKMGR_RESTART_FLAG=
+
+# the following PIDs are recorded when the servers startup so 
+# we can kill them later, but most importantly, get the exit
+# code of the network manager. Strictly speaking the other
+# PIDs aren't necessary since we do a killall based on the
+# server name anyway
+
+ZLSZNP_PID=0
+GATEWAY_SERVER_PID=0
+NETWORK_MGR_PID=0
+NPI_PID=0
+OTA_SERVER_PID=0
+TRACKER_PID=0
+
+# target is arm (eg, beaglebone), x86 (development machine),
+# or unknown. As we get more target types we will have to
+# use something more specific than a chip class as the target
+# name!
+
+TARGET=unknown
+
+missing_files=0
+
+check_exists()
+{
+	if [ ! -e $1 ]; then
+		echo "file $1 $2 is missing"
+		missing_files=$((missing_files + 1))
+	fi
+}
+
+check_files()
+{
+	check_exists $NPI_NAME
+	check_exists $NPI_CONFIG "(needed by $NPI_NAME)"
+	check_exists $ZLSZNP_NAME
+	check_exists $ZLSZNP_CONFIG "(needed by $ZLSZNP_NAME)"
+	check_exists $GATEWAY_NAME
+	check_exists $NWKMGR_NAME
+	check_exists $OTA_SERVER_NAME
+
+	if [ $missing_files -eq 0 ]; then
+		return
+	else
+		echo "there are $missing_files missing files!"
+		echo exiting $0
+		exit 1
+	fi
+}
+
+setup_for_arago()
+{
+	echo "running $0 on an ARM"
+	export TARGET=arm
+
+	export NPI_NAME=NPI_lnx_arago_server
+	export NPI_CONFIG=NPI_Gateway.cfg
+	export NPI_CMD="./$NPI_NAME $NPI_CONFIG"
+
+	export ZLSZNP_NAME=ZLSZNP_arago
+	export ZLSZNP_CONFIG=config.ini
+	export ZLSZNP_CMD="./$ZLSZNP_NAME 127.0.0.1:2533 $ZLSZNP_CONFIG" 
+
+	export GATEWAY_NAME=GATEWAY_SRVR_arago
+	export GATEWAY_SERVER_CMD="./$GATEWAY_NAME 127.0.0.1:2536 127.0.0.1:2540"
+
+	export NWKMGR_NAME=NWKMGR_SRVR_arago
+	export NWKMGR_CMD="./$NWKMGR_NAME 127.0.0.1:2536"
+
+	export OTA_SERVER_NAME=OTA_SRVR_arago
+	export OTA_SERVER_CMD="./$OTA_SERVER_NAME 127.0.0.1:2536 127.0.0.1:2540"
+
+	# busybox 'ps' doesn't take flags but seems equivalent to 'ps -e'
+	export PS=ps
+
+	export SOC_RESET_REQUIRED=1
+}
+
+setup_for_arm()
+{
+	echo "running $0 on an ARM"
+	export TARGET=arm
+
+	export NPI_NAME=NPI_lnx_arm_server
+
+	export NPI_CONFIG=NPI_Gateway.cfg
+	export NPI_CMD="./$NPI_NAME $NPI_CONFIG -v 0xFFFFFFFF"
+  # note: for less verbose output, remove '-v 0x0000010E' from the command above
+  #       for more verbose output, replace 0x0000010E with 0xFFFFFFFF
+  #       for even more verbose debug output, add 'debugAll' to the command above after 0xFFFFFFFF
+
+	export ZLSZNP_NAME=ZLSZNP_arm
+	export ZLSZNP_CONFIG=config.ini
+	export ZLSZNP_CMD="./$ZLSZNP_NAME 127.0.0.1:2533 $ZLSZNP_CONFIG -v 0x0000460E"
+  # note: for less verbose output, remove '-v 0x0000460E' from the command above
+  #       for more verbose output, replace 0x0000460E with 0xFFFFFFFF
+
+	export GATEWAY_NAME=GATEWAY_SRVR_arm
+	export GATEWAY_SERVER_CMD="./$GATEWAY_NAME 127.0.0.1:2536 127.0.0.1:2540 -v 0x0000460E"
+  # note: for less verbose output, remove '-v 0x0000460E' from the command above
+  #       for more verbose output, replace 0x0000460E with 0xFFFFFFFF
+
+	export NWKMGR_NAME=NWKMGR_SRVR_arm
+	export NWKMGR_CMD="./$NWKMGR_NAME 127.0.0.1:2536 -v 0x0000460E"
+  # note: for less verbose output, remove '-v 0x0000460E' from the command above
+  #       for more verbose output, replace 0x0000460E with 0xFFFFFFFF
+
+	export OTA_SERVER_NAME=OTA_SRVR_arm
+	export OTA_SERVER_CMD="./$OTA_SERVER_NAME 127.0.0.1:2536 127.0.0.1:2540 -v 0x0000460E"
+  # note: for less verbose output, remove '-v 0x0000460E' from the command above
+  #       for more verbose output, replace 0x0000460E with 0xFFFFFFFF
+
+	# busybox 'ps' doesn't take flags but seems equivalent to 'ps -e'
+	export PS=ps
+
+	export SOC_RESET_REQUIRED=1
+}
+
+setup_for_x86()
+{
+	echo "running $0 on an x86"
+
+	export TARGET=x86
+
+	export NPI_NAME=NPI_lnx_x86_server
+	export NPI_CONFIG=NPI_Gateway.cfg
+	export NPI_CMD="./$NPI_NAME $NPI_CONFIG"
+# -v 0x0000010E
+# debugAll
+
+	export ZLSZNP_NAME=ZLSZNP_x86
+	export ZLSZNP_CONFIG=config.ini
+	export ZLSZNP_CMD="./$ZLSZNP_NAME 127.0.0.1:2533 $ZLSZNP_CONFIG"
+#-v 0x0000460E
+
+	export GATEWAY_NAME=GATEWAY_SRVR_x86
+	export GATEWAY_SERVER_CMD="./$GATEWAY_NAME 127.0.0.1:2536 127.0.0.1:2540"
+#-v 0x0000460E
+
+	export NWKMGR_NAME=NWKMGR_SRVR_x86
+	export NWKMGR_CMD="./$NWKMGR_NAME 127.0.0.1:2536"
+#-v 0x0000460E
+
+	export OTA_SERVER_NAME=OTA_SRVR_x86
+	export OTA_SERVER_CMD="./$OTA_SERVER_NAME 127.0.0.1:2536 127.0.0.1:2540"
+#-v 0x0000460E
+
+	export PS="ps -e"
+
+	export SOC_RESET_REQUIRED=1
+}
+
+usage()
+{
+	echo -n "Usage: $0 [help "
+	echo -n "| beaglebone | bbb "
+	echo -n "| x86 ] "
+	echo " "
+
+	if [ "$1" != "" ]; then
+		exit $1
+	else
+		exit 0
+	fi
+}
+
+if [ $# -lt 1 ]; then
+
+	if file `which ls` | grep -q 80386; then
+		BOARD_TYPE=x86
+	elif file `which ls` | grep -q x86; then
+		BOARD_TYPE=x86
+	else
+		BOARD_TYPE=bbb
+	fi
+	echo Platform type selected automatically as $BOARD_TYPE.
+	echo To override this selection, please stop this script, and then run it again, 
+	echo specifying the desired platform type at the command line:
+	echo "  $0 [help | bbb | x86 ]"
+	echo
+
+else
+
+	export BOARD_TYPE=$1
+fi
+
+case "$BOARD_TYPE" in 
+
+bbb | beaglebone)
+	# beaglebone does some magic with the omap_mux
+	# and as such an explicit reverse isn't needed
+	ZBEE_RESET_EXPLICIT_REVERSE=0
+	ZBEE_RESET_GPIO_LINE=77
+	export ZBEE_SERIAL_PORT=/dev/ttyS4
+	setup_for_arm
+	;;	
+	
+x86)
+	export ZBEE_SERIAL_PORT=/dev/ttyACM0
+	setup_for_x86
+	;;	
+
+help)
+	usage
+	;;
+
+* )
+	echo "I don't recognize target $BOARD_TYPE"
+	usage $ERROR_BAD_TARGET
+	;; 
+
+esac
+
+
+
+check_files
+
+
+if [ $VERBOSE -ge 1 ]; then
+	echo done processing arguments, board type $BOARD_TYPE, target $TARGET
+	echo "NPI                 is '"$NPI_NAME"'"
+	echo "Zstack linux server is '"$ZLSZNP_NAME"'"
+	echo "gateway server      is '"$GATEWAY_NAME"'"
+	echo "network manager     is '"$NWKMGR_NAME"'"
+	echo "OTA server     	  is '"$OTA_SERVER_NAME"'"
+fi
+
+handle_znp_signal()
+{
+	#restore original signal handler
+	LAST_STATUS=1
+}
+
+start_npi()
+{
+
+	if [ $VERBOSE -ge 1 ]; then
+		echo $LINE
+		echo "starting NPI, cmd '" $NPI_CMD "' on" `date`
+	fi
+
+	if [ $MERGE_OUTPUT -ge 1 ]; then 
+		$NPI_CMD -p $$ -s $ZBEE_SERIAL_PORT&
+	else
+		$NPI_CMD -p $$ -s $ZBEE_SERIAL_PORT |& tee -a $NPI_OUT &
+	fi
+}
+
+start_zlsznp()
+{
+	if [ $VERBOSE -ge 1 ]; then
+		echo $LINE
+		echo "starting ZLSZNP, cmd '" $ZLSZNP_CMD "' on" `date`
+	fi
+
+	if [ $MERGE_OUTPUT -ge 1 ]; then 
+    		$ZLSZNP_CMD -p $$ & 
+	else
+    		$ZLSZNP_CMD -p $$ |& tee -a $ZLS_OUT &
+	fi
+}
+
+start_gateway()
+{
+	if [ $VERBOSE -ge 1 ]; then
+		echo $LINE
+		echo "starting GATEWAY_SERVER, cmd '" $GATEWAY_SERVER_CMD "' on" `date`
+	fi
+
+	if [ $MERGE_OUTPUT -ge 1 ]; then 
+    		$GATEWAY_SERVER_CMD -p $$ & 
+	else
+    		$GATEWAY_SERVER_CMD -p $$ |& tee -a $GWA_OUT &
+	fi
+}
+
+start_netmgr()
+{
+	if [ $VERBOSE -ge 1 ]; then
+		echo $LINE
+
+		echo "starting NETWORK_MGR, cmd '" $NWKMGR_CMD $NWKMGR_RESTART_FLAG "' on" `date`
+	fi
+ 
+	if [ $MERGE_OUTPUT -ge 1 ]; then 
+		$NWKMGR_CMD $NWKMGR_RESTART_FLAG -p $$ &
+	else
+		$NWKMGR_CMD $NWKMGR_RESTART_FLAG -p $$ |& tee -a $NWKMGR_OUT &
+	fi
+}
+
+
+start_otaserver()
+{
+	if [ $VERBOSE -ge 1 ]; then
+		echo $LINE
+		echo "starting OTA_SERVER, cmd '"$OTA_SERVER_CMD "' on" `date`
+	fi
+
+	if [ $MERGE_OUTPUT -ge 1 ]; then 
+    		$OTA_SERVER_CMD -p $$ & 
+	else
+    		$OTA_SERVER_CMD -p $$ |& tee -a $OTA_OUT &
+	fi
+}
+
+start_tracker()
+{
+    # start a daemon (just a shell script) that sends us SIGUSR2
+    # if anybody dies
+
+    pids="$NPI_PID $ZLSZNP_PID $GATEWAY_SERVER_PID $OTA_SERVER_PID"
+
+    # pass in our PID and a list of PIDs we care about
+    echo starting tracker with our pid $0 and pid list $pids
+    ./track_servers $$ "$pids" &
+
+    export TRACKER_PID=$!
+}
+
+stop_tracker()
+{
+	if [ $TRACKER_PID != 0 ]; then
+		kill -9 $TRACKER_PID
+		wait $TRACKER_PID
+		export TRACKER_PID=0
+	fi
+}
+
+get_uptime()
+{
+	# note: this rounds down to nearest second
+	export current_uptime=`cat /proc/uptime | awk -F"." '{print $1}'`
+	export current_date="`date`"
+}
+
+start_all()                                                 
+{                                                       
+	echo "Starting the ZigBee gateway subsystem"
+
+	export non_nwkmgr_died=0
+
+	STARTUP_PHASE=1
+
+	#save original signal handler
+#	PREV_SIGUSR_TRAP=`trap -p SIGUSR1`
+#	PREV_SIGUSR_TRAP=${PREV_SIGUSR_TRAP:9:${#PREV_SIGUSR_TRAP} - 18}  
+	trap handle_znp_signal SIGUSR1 
+	
+	while [ $STARTUP_PHASE -lt 6 ]; do
+
+		LAST_STATUS=0
+	
+		case $STARTUP_PHASE in
+			1)
+				#make sure no server is already running
+				stop_all
+                                                    
+				#on some platforms it is more convinient not to reset the  SoC when trying to bring up the servers for the first time
+				if [ $SOC_RESET_REQUIRED -ge 1 ]; then
+					hw_reset_soc
+				fi
+
+				#a reset will be needed before we retry to being up the server after a bring-up failure
+				SOC_RESET_REQUIRED=1
+				
+				start_npi
+				SERVER_PID_VAR=NPI_PID
+			;;
+			2)
+				start_zlsznp
+				SERVER_PID_VAR=ZLSZNP_PID
+			;;
+			3)
+				start_netmgr
+				SERVER_PID_VAR=NETWORK_MGR_PID
+			;;
+			4)
+				start_gateway
+				SERVER_PID_VAR=GATEWAY_SERVER_PID
+			;;
+			5)
+				start_otaserver
+				SERVER_PID_VAR=OTA_SERVER_PID
+			;;
+		esac
+
+		export LAST_PID=$!
+
+		wait $LAST_PID
+
+		if [ $LAST_STATUS -eq 0 ]; then
+			echo Startup phase $STARTUP_PHASE failed
+			STARTUP_PHASE=1
+		else
+			echo "Startup phase $STARTUP_PHASE completed successfully, server started ($SERVER_PID_VAR=$LAST_PID) on" `date`
+			STARTUP_PHASE=$((STARTUP_PHASE + 1))
+			eval $SERVER_PID_VAR=$LAST_PID
+		fi
+	done
+	
+#	trap $PREV_SIGUSR_TRAP SIGUSR1
+	trap dump_status USR1 
+
+	get_uptime
+	export start_time=$current_uptime
+	export start_date="$current_date"
+
+	start_tracker
+
+	echo $LINE
+}                                                   
+
+count_npi()
+{
+	export n_npi=`$PS | grep ${NPI_NAME:0:15} | grep -v grep | wc -l`
+	if [ $VERBOSE -ge 2 ]; then
+		echo n_npi is $n_npi
+	fi
+}
+
+count_zls()
+{
+	export n_zls=`$PS | grep ${ZLSZNP_NAME:0:15} | grep -v grep | wc -l`
+	if [ $VERBOSE -ge 2 ]; then
+		echo n_zls is $n_zls
+	fi
+}
+
+count_gtw()
+{
+	export n_gtw=`$PS | grep ${GATEWAY_NAME:0:15} | grep -v grep | wc -l`
+	if [ $VERBOSE -ge 2 ]; then
+		echo n_gtw is $n_gtw
+	fi
+}
+
+count_nmg()
+{
+	export n_nmg=`$PS | grep ${NWKMGR_NAME:0:15} | grep -v grep | wc -l`
+	if [ $VERBOSE -ge 2 ]; then
+		echo n_nmg is $n_nmg
+	fi
+}
+
+count_ota()
+{
+	export n_ota=`$PS | grep ${OTA_SERVER_NAME:0:15} | grep -v grep | wc -l`
+	if [ $VERBOSE -ge 2 ]; then
+		echo n_ota is $n_ota
+	fi
+}
+
+count_offenders()
+{
+
+	count_npi
+	count_zls
+	count_gtw
+	count_nmg
+	count_ota
+
+	export n_offenders=$(( $n_npi + $n_zls + $n_gtw + $n_nmg + $n_ota ))
+
+	if [ $VERBOSE -ge 1 ]; then
+		echo there are $n_npi NPI servers
+		echo there are $n_zls ZLS servers
+		echo there are $n_gtw GATEWAY servers
+		echo there are $n_nmg NWKMGR servers
+		echo there are $n_ota OTA servers
+		echo "(total $n_offenders)"
+	fi
+}
+
+make_sure_dead_dead_dead()
+{
+	if [ $VERBOSE -ge 1 ]; then
+		echo making sure there are no lingering servers...
+	fi
+
+	count_offenders
+
+	while [ $n_offenders -gt 0 ]; do
+
+    		killall -s 9 $OTA_SERVER_NAME   2> /dev/null
+    		killall -s 9 $GATEWAY_NAME	2> /dev/null
+    		killall -s 9 $NWKMGR_NAME    	2> /dev/null
+    		killall -s 9 $ZLSZNP_NAME    	2> /dev/null
+    		killall -s 9 $NPI_NAME     	2> /dev/null
+
+		count_offenders 
+
+		if [ $n_offenders -gt 0 ]; then
+			sleep 1
+		fi
+
+	done
+
+	if [ $VERBOSE -ge 1 ]; then
+		echo done
+	fi
+
+	sleep 1
+}
+
+stop_gateway()
+{
+	if [ $GATEWAY_SERVER_PID -ne 0 ]; then
+    		killall $GATEWAY_NAME                  
+		if [ $VERBOSE -ge 1 ]; then
+			echo waiting for GATEWAY SERVER to exit
+		fi
+
+		wait $GATEWAY_SERVER_PID
+
+		export GATEWAY_SERVER_PID=0
+
+		# gawd I hate this sleep!
+		sleep 5
+	fi
+}
+
+stop_ota()
+{
+	if [ $OTA_SERVER_PID -ne 0 ]; then
+		killall $OTA_SERVER_NAME                  
+		if [ $VERBOSE -ge 1 ]; then
+			echo waiting for OTA SERVER to exit
+		fi
+
+		wait $OTA_SERVER_PID
+		export OTA_SERVER_PID=0
+	fi
+}
+
+stop_zlsznp()
+{
+	if [ $ZLSZNP_PID -ne 0 ]; then
+    		# kill zstack                                   
+    		killall $ZLSZNP_NAME
+
+		if [ $VERBOSE -ge 1 ]; then
+			echo waiting for Zstack linux to exit
+		fi
+
+		wait $ZLSZNP_PID
+		export ZLSZNP_PID=0
+	fi
+}
+
+stop_npi()
+{
+	if [ $NPI_PID -ne 0 ]; then
+    		# kill NPI                                  
+    		killall $NPI_NAME        
+		if [ $VERBOSE -ge 1 ]; then
+			echo waiting for NPI to exit
+		fi
+
+		wait $NPI_PID
+		export NPI_PID=0
+	fi
+}
+
+stop_others()                                              
+{                                                   
+	stop_gateway
+	stop_ota
+	stop_zlsznp
+	stop_npi                                                    
+}                                                   
+
+stop_nwkmgr()
+{
+	if [ $NETWORK_MGR_PID -ne 0 ]; then
+		killall $NWKMGR_NAME
+		wait $NETWORK_MGR_PID
+		export NETWORK_MGR_PID=0
+	fi
+}
+
+stop_all()
+{
+	stop_tracker
+	stop_nwkmgr
+	stop_others
+
+    	# just to be completely anal...
+	make_sure_dead_dead_dead
+}
+
+show_servers()
+{
+	echo here are the running servers:
+	echo =============================
+	$PS | grep $NPI_NAME | grep -v grep 
+	$PS | grep $GATEWAY_NAME | grep -v grep 
+	$PS | grep $ZLSZNP_NAME | grep -v grep 
+	$PS | grep $NWKMGR_NAME | grep -v grep
+	$PS | grep $OTA_SERVER_NAME | grep -v grep
+	echo ======================================================
+}
+
+report()
+{
+	netpids=`$PS | grep zigbeenet.sh | grep -v grep | awk '{ print $1 }'`
+	         $PS | grep zigbeenet.sh | grep -v grep | awk '{ print $1 }'
+
+	echo zigbeennet.sh appears to have pid $netpids
+	echo kill -$1 $netpids
+	     kill -$1 $netpids
+} 
+
+dump_status()
+{
+	echo "I got a SIGUSR1 (asked to dump status)"
+	show_servers > /tmp/hagw.servers
+
+	status_stopped=USR2
+	status_started=CONT
+	status_running=USR1
+
+	OLD_VERBOSE=$VERBOSE
+	VERBOSE=2
+	count_npi
+	case $n_npi in
+	0 )
+		echo n_npi is 0, reporting stopped
+		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+
+	1)	# this is the normal case
+		;;
+	*)
+		echo "there are $n_npi $NPI_NAME processes running!"
+    		killall -9 $NPI_NAME        
+		echo "not any more!"
+  		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+	esac
+
+	count_zls
+	case $n_zls in
+	0 )
+		echo n_zls is 0, reporting stopped
+		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+
+	1)	# this is the normal case
+		;;
+	*)
+		echo "there are $n_zls $ZLSZNP_NAME processes running!"
+    		killall -9 $ZLSZNP_NAME        
+		echo "not any more!"
+  		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+	esac
+
+	count_gtw
+	case $n_gtw in
+	0 )
+		echo n_gtw is 0, reporting stopped
+		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+
+	1)	# this is the normal case
+		;;
+	*)
+		echo "there are $n_zls $GATEWAY_NAME processes running!"
+    		killall -9 $GATEWAY_NAME        
+		echo "not any more!"
+  		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+	esac
+
+	count_nmg
+	case $n_nmg in
+	0 )
+		echo n_nmg is 0, reporting stopped
+		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+
+	1)	# this is the normal case
+		;;
+	*)
+		echo "there are $n_nmg $NWKMGR_NAME processes running!"
+    		killall -9 $NWKMGR_NAME        
+		echo "not any more!"
+  		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+	esac
+
+	count_ota
+	case $n_ota in
+	0 )
+		echo n_ota is 0, reporting stopped
+		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+
+	1)	# this is the normal case
+		;;
+	*)
+		echo "there are $n_zls $OTA_SERVER_NAME processes running!"
+    		killall -9 $OTA_SERVER_NAME        
+		echo "not any more!"
+  		report $status_stopped
+		VERBOSE=$OLD_VERBOSE
+		return
+		;;
+	esac
+
+	# if here, all expected servers are running, the
+	# only question is how long
+	
+	echo "all servers are present (and no extras!)"
+	get_uptime
+	echo current_uptime is $current_uptime
+	echo start_time is $start_time
+
+	secs_running=$(( current_uptime - start_time ))
+	echo servers have been running for $secs_running
+	echo servers have been running since $start_date
+	echo "running since $start_date ($secs_running secs)" > /tmp/tihagw.start
+
+	if [ $secs_running -ge $running_thresh_secs ]; then
+		echo reporting RUNNING since $start_date
+		report $status_running
+	else
+		echo reporting STARTED at $start_date
+		report $status_started
+	fi
+	echo exiting dump_status
+}
+
+clean_up()
+{
+	echo caught SIGTERM, killing all the servers and cleaning up
+
+	# prevent myself from restarting stuff  when NWKMGR exits
+	export killing_myself=1
+
+	# kill everybody including network manager
+	stop_all
+
+	# now to kill myself
+	echo "terminating zigbeeHAGW (pid $$)"
+	kill -9 $$
+	echo "am I still alive? that would be disconcerting..."
+}
+
+other_server_died()
+{
+	# track_servers sent us a SIGUSR2, indicating somebody
+	# other than NWKMGR died
+
+	export non_nwkmgr_died=1
+
+	echo "caught SIGUSR2, a server other than NWKMGR died!"
+
+	# allow myself to restart when NWKMGR exits
+	export killing_myself=0
+
+	# kill everybody besides network manager
+	stop_others
+
+	# now kill NWKMGR. this should cause us to fall out
+	# of the 'wait'. because non_nwkmgr_died=1, we will
+	# do a HW reset and restart the world with no special
+	# flag passed to NWKMGR
+
+	killall $NWKMGR_NAME
+}
+
+device_exported()
+{
+	if [ $# -ne 1 ]; then
+		echo device_exported called without required argument
+		exit 1
+	fi
+
+	GPIO_LINE=$1
+
+	if [ -e  /sys/class/gpio/"gpio$GPIO_LINE" ]; then
+		# echo device is exported
+		return 1;
+	else
+		# echo device is not exported
+		return 0;
+	fi
+}
+
+hw_reset_soc()
+{
+	# before calling this function, make sure that the NPI server is not running.
+	# if we reset the HW while NPI is running it can potentially
+	# hold on to /dev/ttyXXX0 so that when we restart things, we
+	# will get /dev/ttyXXX1 instead. 
+
+	if [ $ignore_zbee_reset -eq 1 ]; then
+		echo "skipping zigbee reset"
+		return
+	fi
+	
+	SCRIPTS_COUNT=0
+	if [ -a ../tools/soc_reset_hold ]; then
+		if [ -x ../tools/soc_reset_hold ]; then
+			SCRIPTS_COUNT=$((SCRIPTS_COUNT + 1))
+		else
+			echo ../tools/soc_reset_hold exist but does not have execution permission
+		fi
+	fi
+	if [ -a ../tools/soc_reset_release ]; then
+		if [ -x ../tools/soc_reset_release ]; then
+			SCRIPTS_COUNT=$((SCRIPTS_COUNT + 1))
+		else
+			echo ../tools/soc_reset_release exist but does not have execution permission
+		fi
+	fi
+	if [ $SCRIPTS_COUNT -eq 2 ]; then
+		echo Executing reset from external scripts
+		sh ../tools/soc_reset_hold
+		sh ../tools/soc_reset_release
+	else
+		case "$BOARD_TYPE" in
+
+		bbb | beaglebone)
+
+			echo "resetting ZigBee SoC"
+
+			../tools/usbreset.bin
+			while [ ! -e $ZBEE_SERIAL_PORT ]; do
+				sleep 1
+			done
+			;;
+
+		x86)
+			echo ""
+			echo "***************************************************************"
+			echo ""
+			if [ -e $ZBEE_SERIAL_PORT ]; then
+				echo "Please unplug the ZigBee USB dongle ("$ZBEE_SERIAL_PORT") to continue..."
+				while [ -e $ZBEE_SERIAL_PORT ]; do
+					sleep 1
+				done
+			fi
+			echo "Please wait..."
+			sleep 2
+			echo Please plug in the ZigBee USB dongle to continue...
+			while [ ! -e $ZBEE_SERIAL_PORT ]; do
+				sleep 1
+			done
+			echo "Please wait..."
+			sleep 5
+			;;	
+
+		* )
+			echo "I don't recognize target $BOARD_TYPE"
+			usage $ERROR_BAD_TARGET
+			;; 
+
+		esac
+	fi
+}
+
+# if we get a signal, kill all the servers and rm /tmp files
+# and do other cleanup as needed
+trap clean_up HUP INT TERM
+trap other_server_died USR2 
+
+# start all the servers in a reasonable order
+start_all
+
+while [ 1 ]                                         
+do                                                  
+	if [ $VERBOSE -ge 2 ]; then
+		echo $LINE
+		show_servers
+	fi
+	if [ $VERBOSE -ge 1 ]; then
+	    echo waiting for netmgr to exit "(" pid $NETWORK_MGR_PID ") on" `date`
+	fi
+
+	wait $NETWORK_MGR_PID
+	exit_code=$?
+
+	# before I forget...
+	NETWORK_MGR_PID=0
+
+	if [ $exit_code -eq 127 ]; then
+	    echo "oops! Network manager has already exited (!) on" `date`
+	else
+	    echo "NETWORK MANAGER exited with code $exit_code on" `date`
+	fi
+	
+	if [ $killing_myself -eq 1 ]; then
+		echo I am killing myself will not take further action
+		break;
+	fi
+
+
+	# in all circumstances we stop all the daemons
+	# NWKMGR should already be dead but call stop_all
+	# just to make sure we get everybody
+
+	stop_all
+
+	# wipe the restart code clean until we know what we are doing
+    	export NWKMGR_RESTART_FLAG=
+
+	# if we are shutting down, that's all we do
+	if [ $exit_code -eq $NWKMGR_SHUTDOWN_CODE ]; then 
+		echo got SHUTDOWN from network manager, bailing out
+		break
+	fi
+
+	# in all other cases we will restart the network manager
+	# with a code that reflects what he gave us when exiting
+	# we may also reset the hardware
+
+	if [ $non_nwkmgr_died -eq 1 ]; then
+
+		# if another network server died, we don't really
+		# care how NWKMGR exited. We will stop everybody
+		# and do a HW reset and then restart everybody
+		echo "a server besides NWKMGR has exited!"
+		echo "ignoring exit code $exit_code from netmgr"
+
+		# both of these have already been done elsewhere
+		# but let's be anal.
+    		export NWKMGR_RESTART_FLAG=
+		stop_all
+
+		# make sure HW is ok, at least in theory...
+
+		# note: hw_reset_soc should do any necessary waiting
+		# so the device can be immediately used when it returns
+
+		# now restart everybody
+		start_all
+
+		# and here we go again!
+		continue
+	fi
+
+	case $exit_code in 
+
+	$NWKMGR_SOFT_RESET_CODE )
+    		export NWKMGR_RESTART_FLAG=--reset_soft
+		start_all
+		;;
+
+	$NWKMGR_HARD_RESET_CODE )
+		export NWKMGR_RESTART_FLAG=--reset_hard
+		start_all
+		;;
+
+	$NWKMGR_SLEEP_CODE )
+		# when sleeping we ONLY restart netmgr
+    		export NWKMGR_RESTART_FLAG=--sleep
+    		start_netmgr
+		;; 
+
+	$NWKMGR_WAKEUP_CODE)
+    		export NWKMGR_RESTART_FLAG=--wakeup
+		start_all
+		;; 
+
+	* )
+		echo "unexpected exit code ($exit_code) from netmgr!"
+    		export NWKMGR_RESTART_FLAG=
+		start_all
+		;;
+
+	esac
+
+done             
+
+echo $0 exiting
+

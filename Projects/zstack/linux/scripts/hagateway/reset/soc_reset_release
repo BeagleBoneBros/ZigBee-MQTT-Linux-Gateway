@@ -1,0 +1,3 @@
+#! /bin/bash                                               
+../tools/usbreset.bin 0x47401C60 S 0 >/dev/null
+sleep 2
