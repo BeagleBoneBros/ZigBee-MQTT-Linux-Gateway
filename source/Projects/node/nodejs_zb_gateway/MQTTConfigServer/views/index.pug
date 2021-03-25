@@ -9,8 +9,7 @@ html
 
             .field
               label.label Broker Address:
-              .checked = sub_options.retain == true,
-                input.input(name='broker_address', type='text', value=broker_address, placeholder='Input1')
+                input.input(name='broker_address', type='text', value=broker_address, placeholder='Broker address')
               p.help This is a field for Broker Address
 
             .field
@@ -34,7 +33,7 @@ html
                       input.radio(name='clean', type='radio',checked= broker_options.clean == false, value='false')
               
             .field
-              label.label Sub Options:
+              label.label Publishing and Subscription Options:
               .control
                 .label Retain?  
                   .radio
