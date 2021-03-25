@@ -44,7 +44,6 @@
  *****************************************************************************/
 
 var Webserver = require('./webserver/webserver.js');
-var IbmAdapter = require("./cloud_adapters/ibmCloudAdapter.js");
 var MQTTAdapter = require("./cloud_adapters/MQTTCloudAdapterSimple.js");
 
 
@@ -61,10 +60,6 @@ function Main() {
     if (webserver_mode == 'localhost'){
       console.log("Started Local Hosted Webserver");
       this.webserver = new Webserver(ip_address); 
-    }
-    else if (webserver_mode == 'ibm'){
-      console.log("Started IBM Cloud Hosted Webserver");
-      this.cloudadapter = new IbmAdapter(ip_address);
     }
     else if (webserver_mode == 'MQTT'){
       console.log("Started MQTT Adapter");
