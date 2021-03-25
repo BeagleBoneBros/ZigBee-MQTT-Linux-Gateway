@@ -5,6 +5,9 @@ const fs = require( 'fs' );
 const app = express(); // define the main app as the express package
 const port = 9000;
 
+const workingJson = 'cloud_adapters/MQTTConfig-working.json';
+const defaultJson = 'cloud_adapters/MQTTConfig-default.json';
+
 app.set( 'view engine', 'pug' ); // set view engine to pug
 
 // creat request body object
@@ -20,13 +23,37 @@ app.get( '/', ( req, res ) => {
   res.render( 'index', fields );
 } );
 
+function isTrue( string ) {
+  if ( string === 'true') {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 app.post('/submit', ( req, res ) => {
+  var reqBodyClean = req.body.clean;
+  var isClean = isTrue( reqBodyClean );
   // get data from the form and save it to fields as a string
-  fields = JSON.stringify( req.body, null, 2 );
+  fields = {
+    broker_address: req.body.broker_address,
+    broker_options: {
+      clientId: req.body.clientId,
+  		username: req.body.username,
+  		password: req.body.password,
+  		clean: isTrue( req.body.clean )
+  	},
+  	sub_options: {
+  		  retain: isTrue( req.body.retain ),
+  		  qos: parseInt( req.body.qos )
+  	},
+  };
+  console.log( fields );
+  fields = JSON.stringify( fields, null, 2 );
+  console.log( fields );
 
   // write fields to file
-  fs.writeFile( 'cloud_adapters/MQTTConfig-working.json', fields, ( err ) => {
+  fs.writeFile( workingJson, fields, ( err ) => {
     if ( err ) {
       throw err;
     }
@@ -45,7 +72,7 @@ app.post('/submit', ( req, res ) => {
 // start server on port 8888
 app.listen( port, () => {
   // read test.json int data
-  fs.readFile( 'cloud_adapters/MQTTConfig-working.json', 'utf-8', ( err, data ) => {
+  fs.readFile( workingJson, 'utf-8', ( err, data ) => {
     if ( err ) {
       throw err;
     }
@@ -53,7 +80,7 @@ app.listen( port, () => {
     // check if test.json is empty, if it's empty, load in the default
     if ( data === "" ) {
       // loading in default json
-      fs.readFile( 'cloud_adapters/MQTTConfig-default.json', 'utf-8', ( err, data ) => {
+      fs.readFile( defaultJson, 'utf-8', ( err, data ) => {
         if ( err ) {
           throw err;
         }

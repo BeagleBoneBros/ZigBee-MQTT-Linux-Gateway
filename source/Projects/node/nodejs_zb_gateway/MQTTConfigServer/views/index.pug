@@ -8,35 +8,49 @@ html
           form(method='POST', action='/submit')
 
             .field
-              label.label Broker Address
-              .control
+              label.label Broker Address:
+              .checked = sub_options.retain == true,
                 input.input(name='broker_address', type='text', value=broker_address, placeholder='Input1')
               p.help This is a field for Broker Address
 
             .field
-              label.label Broker Options
+              label.label Broker Options:
+              p.help Here is some helpful info about broker options
+              br
               .control
-              input.input(name='clientId', type='text',value=clientId, placeholder='ClientID')
-              input.input(name='username', type = 'text', value=username, placeholder='Username')
-              input.input(name='password', type='text', value=password, placeholder='Password')
-              input.input(name='clean', type='text', value=clean, placeholder='Clean? True/False')
+                input.input(name='clientId', type='text',value=broker_options.clientId, placeholder='ClientID')
+                input.input(name='username', type = 'text', value=broker_options.username, placeholder='Username')
+                input.input(name='password', type='text', value=broker_options.password, placeholder='Password')
+                br
+                
+              .control
+                
+                .label Clean?  
+                  .radio
+                    label.label True  
+                      input.radio(name='clean', type='radio', checked= broker_options.clean == true, value='true')
+                  .radio
+                    label.label False  
+                      input.radio(name='clean', type='radio',checked= broker_options.clean == false, value='false')
               
             .field
-              label.label Sub Options
+              label.label Sub Options:
               .control
-              input.input(name='retain',type='text',value=retain, placeholder='Retain? True/False')
-              input.input(name='qos',type='text',value=qos,placeholder='QOS')
-              
-            .field
-              label.label Network Toggles
-              select(name="dd1", type="text", value=dd1)
-                option(value = dd1) --On/Off--
-                option(value = "On") On
-                option(value = "Off") Off
-            br
-            
-            
-            
+                .label Retain?  
+                  .radio
+                    label.label True  
+                      input.radio(name='retain', type='radio', checked = sub_options.retain == true, value='true')
+                  .radio
+                    label.label False  
+                      input.radio(name='retain', type='radio', checked = sub_options.retain == false, value='false')
+              .control
+                .label QOS  
+                    select(name='qos',type='select' )
+                      option( value='0', selected= sub_options.qos == 0 ) 0
+                      option( value='1', selected= sub_options.qos == 1 ) 1
+                      option( value='2', selected= sub_options.qos == 2 ) 2
+
+
               
             .control
               button.button.is-primary Submit

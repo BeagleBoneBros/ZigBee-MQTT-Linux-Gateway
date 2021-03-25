@@ -335,7 +335,7 @@ pre {
 }
 
 body {
-  color: #4a4a4a;
+  color: #FFFFFF;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -1966,13 +1966,13 @@ a.box:active {
 }
 
 .button.is-primary {
-  background-color: #00d1b2;
+  background-color: #73000a;
   border-color: transparent;
   color: #fff;
 }
 
 .button.is-primary:hover, .button.is-primary.is-hovered {
-  background-color: #00c4a7;
+  background-color: #510007;
   border-color: transparent;
   color: #fff;
 }
@@ -2869,9 +2869,9 @@ a.box:active {
 
 .input,
 .textarea {
-  background-color: white;
+  background-color: #666666;
   border-color: #dbdbdb;
-  color: #363636;
+  color: #FFFFFF;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   max-width: 100%;
   width: 100%;
@@ -2879,7 +2879,7 @@ a.box:active {
 
 .input::-moz-placeholder,
 .textarea::-moz-placeholder {
-  color: rgba(54, 54, 54, 0.3);
+  color: rgba(54, 54, 54, 1);
 }
 
 .input::-webkit-input-placeholder,
