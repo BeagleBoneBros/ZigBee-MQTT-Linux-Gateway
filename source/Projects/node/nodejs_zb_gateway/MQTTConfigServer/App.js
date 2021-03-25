@@ -23,30 +23,29 @@ app.get( '/', ( req, res ) => {
   res.render( 'index', fields );
 } );
 
-function isTrue( string ) {
-  if ( string === 'true') {
+let strToBool = ( str ) => {
+  if ( str === 'true') {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
 
 app.post('/submit', ( req, res ) => {
   var reqBodyClean = req.body.clean;
-  var isClean = isTrue( reqBodyClean );
+  var isClean = strToBool( reqBodyClean );
   // get data from the form and save it to fields as a string
   fields = {
     broker_address: req.body.broker_address,
     broker_options: {
       clientId: req.body.clientId,
-  		username: req.body.username,
-  		password: req.body.password,
-  		clean: isTrue( req.body.clean )
-  	},
-  	sub_options: {
-  		  retain: isTrue( req.body.retain ),
-  		  qos: parseInt( req.body.qos )
-  	},
+      username: req.body.username,
+      password: req.body.password,
+      clean: strToBool( req.body.clean )
+    },
+    sub_options: {
+        retain: strToBool( req.body.retain ),
+        qos: parseInt( req.body.qos )
+    },
   };
   console.log( fields );
   fields = JSON.stringify( fields, null, 2 );
@@ -62,7 +61,6 @@ app.post('/submit', ( req, res ) => {
 
   // get fields back into json
   fields = JSON.parse( fields );
-  console.log( fields );
 
   // return back to the form page
   res.redirect( '/' );
