@@ -1,0 +1,15 @@
+
+{
+	"broker_address": "172.0.0.1",
+	"broker_options": {
+		"clientId": "mqtt12345",
+		"username":"mqtt",
+		"password":"password",
+		"clean":true
+		},
+	"sub_options": {
+		"retain":true,
+		"qos":1
+		}
+
+}

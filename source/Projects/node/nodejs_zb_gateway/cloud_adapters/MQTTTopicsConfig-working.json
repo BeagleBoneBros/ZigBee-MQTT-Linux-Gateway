@@ -1,0 +1,34 @@
+{
+  "gateway_getDeviceList_topic": "gateway/getdevicelist",
+	"gateway_getBindList_topic": "gateway/getbindlist",
+	"gateway_removeDevice_topic": "gateway/removedevice",
+
+	"network_open_topic": "network/open",
+	"network_close_topic": "network/close",
+	"network_getinfo_topic": "network/getinfo",
+	"network_hard_reset_topic": "network/hardreset",
+	"network_soft_reset_topic": "network/open",
+
+	"light_set_ONOFF_topic": "light/set/onoff",
+	"light_get_ONOFF_topic": "light/get/onoff",
+	"light_set_level_transition_topic": "light/set/leveltransition",
+	"light_set_onoff_transition_topic": "light/set/onofftransition",
+	"light_get_level_topic": "light/get/level",
+	"light_set_level_topic": "light/set/level",
+	"light_set_color_topic": "light/set/color",
+	"light_get_color_topic": "light/get/color",
+
+	"temp_get_temp_topic": "temp/get/temp",
+	"temp_set_interval_topic": "temp/set/interval",
+
+	"doorlock_get_state_topic": "lock/get/state",
+	"doorlock_set_unlock_topic": "lock/set/unlocked",
+	"doorlock_set_lock_topic": "lock/set/locked",
+
+	"thermostat_change_setpoint_topic": "thermostat/set/setpoint",
+	"thermostat_get_minheat_setpoint_topic": "thermostat/get/minheat",
+	"thermostat_get_all_attributes": "thermostat/get/attributes",
+
+	"binding_set_bind_topic": "binding/set/bind",
+	"binding_set_unbind_topic": "binding/set/unbind"
+}

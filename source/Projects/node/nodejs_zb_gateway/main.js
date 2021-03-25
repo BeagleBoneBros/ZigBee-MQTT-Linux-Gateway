@@ -47,6 +47,7 @@ var Webserver = require('./webserver/webserver.js');
 var IbmAdapter = require("./cloud_adapters/ibmCloudAdapter.js");
 var MQTTAdapter = require("./cloud_adapters/MQTTCloudAdapterSimple.js");
 
+
 // top level function starting appropriate webserver
 function Main() {
 
@@ -73,6 +74,7 @@ function Main() {
       console.log("Started MQTT Adapter");
       this.cloudadapter = new MQTTAdapter(ip_address);
       this.webserver = new Webserver(ip_address);
+  
     }
 
     else{

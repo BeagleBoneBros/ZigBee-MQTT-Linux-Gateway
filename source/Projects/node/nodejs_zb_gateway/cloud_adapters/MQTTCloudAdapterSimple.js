@@ -25,10 +25,11 @@ function MQTTCloudAdapter(ip_address) {
   MQTTCloudAdapterInstance = this;
 
   // import MQTT config settings
-  var MQTTConfig = require('./MQTTConfig.json');
+  var MQTTConfig = require('./MQTTConfig-working.json');
+  var MQTTTopicsConfig = require('./MQTTTopicsConfig-working.json');
 
   // connect to MQTT broker and create MQTT client object
-  var gatewayClient  = mqtt.connect(MQTTConfig.broker_address, MQTTConfig.broker_options)
+  var gatewayClient  = mqtt.connect("mqtt://"+MQTTConfig.broker_address, {"clientId": MQTTConfig.clientId,"username": MQTTConfig.username,"password": MQTTConfig.password,"clean": MQTTConfig.clean});
 
   // create Zigbee Gateway
   var zigbeeGateway = new ZigbeeGateway(ip_address);
@@ -47,37 +48,37 @@ gatewayClient.on('connect', function(){
     console.log("Connected to MQTT Broker!");
 
     // HA-Gateway Subscriptions
-    gatewayClient.subscribe(MQTTConfig.gateway_getDeviceList_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.gateway_getBindList_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.gateway_removeDevice_topic, MQTTConfig.subpub_options);
+    gatewayClient.subscribe(MQTTTopicsConfig.gateway_getDeviceList_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.gateway_getBindList_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.gateway_removeDevice_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
     // Network Subscriptions
-	gatewayClient.subscribe(MQTTConfig.network_open_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.network_close_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.network_getinfo_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.network_hard_reset_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.network_soft_reset_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTTopicsConfig.network_open_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.network_close_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.network_getinfo_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.network_hard_reset_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.network_soft_reset_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
     // Light Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.light_set_ONOFF_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.light_get_ONOFF_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.light_set_level_transition_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.light_set_onoff_transition_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.light_get_level_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.light_set_color_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.light_get_color_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTTopicsConfig.light_set_ONOFF_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.light_get_ONOFF_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.light_set_level_transition_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.light_set_onoff_transition_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.light_get_level_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.light_set_color_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.light_get_color_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
     // Temp Sensor Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.temp_get_temp_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.temp_set_interval_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTTopicsConfig.temp_get_temp_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.temp_set_interval_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
     // Doorlock Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.doorlock_get_state_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.doorlock_set_unlock_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.doorlock_set_lock_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTTopicsConfig.doorlock_get_state_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.doorlock_set_unlock_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.doorlock_set_lock_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
     // Thermostat Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.thermostat_change_setpoint_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.thermostat_get_minheat_setpoint_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.thermostat_get_all_attributes, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTTopicsConfig.thermostat_change_setpoint_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.thermostat_get_minheat_setpoint_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.thermostat_get_all_attributes, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
     // Binding Device Subscriptions
-	gatewayClient.subscribe(MQTTConfig.binding_set_bind_topic, MQTTConfig.subpub_options);
-	gatewayClient.subscribe(MQTTConfig.binding_set_unbind_topic, MQTTConfig.subpub_options);
+	gatewayClient.subscribe(MQTTTopicsConfig.binding_set_bind_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
+	gatewayClient.subscribe(MQTTTopicsConfig.binding_set_unbind_topic, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});
   });
 
   gatewayClient.on("error",function(error){
@@ -89,110 +90,110 @@ gatewayClient.on('connect', function(){
     console.log("Message Topic: %s  Message: %s  \n" ,topic, msgData);
     switch (topic){
         // ----------------- HA-Gateway Control ----------------------------
-        case MQTTConfig.gateway_getDeviceList_topic:
+        case MQTTTopicsConfig.gateway_getDeviceList_topic:
           zigbeeGateway.getDeviceList();
           break;
   
-        case MQTTConfig.gateway_getBindList_topic:
+        case MQTTTopicsConfig.gateway_getBindList_topic:
           zigbeeGateway.getBindList();
           break;
   
-        case MQTTConfig.gateway_removeDevice_topic:
+        case MQTTTopicsConfig.gateway_removeDevice_topic:
           zigbeeGateway.removeDevice(msgData);
           break;
   
         // ----------------- Network Control ----------------------------
-        case MQTTConfig.network_open_topic:
+        case MQTTTopicsConfig.network_open_topic:
           zigbeeGateway.openNetwork();
           break;
           
-        case MQTTConfig.network_close_topic:
+        case MQTTTopicsConfig.network_close_topic:
           zigbeeGateway.closeNetwork();
           break;
         
-        case MQTTConfig.network_getinfo_topic:
+        case MQTTTopicsConfig.network_getinfo_topic:
           zigbeeGateway.getNetworkInfo();
           break;
   
-        case MQTTConfig.network_hard_reset_topic:
+        case MQTTTopicsConfig.network_hard_reset_topic:
           zigbeeGateway.hardSystemReset();
           break;
   
-        case MQTTConfig.network_soft_reset_topic:
+        case MQTTTopicsConfig.network_soft_reset_topic:
           zigbeeGateway.softSystemReset();
           break;
   
         // ----------------- Light Device ----------------------------
-        case MQTTConfig.light_set_ONOFF_topic:
+        case MQTTTopicsConfig.light_set_ONOFF_topic:
           zigbeeGateway.DimmableLight.set_ONOFF_state(msgData);
           break;
   
-        case MQTTConfig.light_get_ONOFF_topic:
+        case MQTTTopicsConfig.light_get_ONOFF_topic:
           zigbeeGateway.DimmableLight.get_ONOFF_state(msgData);
           break;
   
-        case MQTTConfig.light_set_level_transition_topic:
+        case MQTTTopicsConfig.light_set_level_transition_topic:
           zigbeeGateway.DimmableLight.set_level_transition(msgData);
           break;
   
-        case MQTTConfig.light_set_onoff_transition_topic:
+        case MQTTTopicsConfig.light_set_onoff_transition_topic:
           zigbeeGateway.DimmableLight.set_onoff_transition(msgData);
           break;
   
-        case MQTTConfig.light_get_level_topic:
+        case MQTTTopicsConfig.light_get_level_topic:
           zigbeeGateway.DimmableLight.get_level(msgData);
           break;
   
-        case MQTTConfig.light_set_color_topic:
+        case MQTTTopicsConfig.light_set_color_topic:
           zigbeeGateway.ColorLight.set_color(msgData);
           break;
   
-        case MQTTConfig.light_get_color_topic:
+        case MQTTTopicsConfig.light_get_color_topic:
           zigbeeGateway.ColorLight.get_color(msgData);
           break;
   
         // ----------------- Temeprature Sensor Device ----------------------------
-        case MQTTConfig.temp_get_temp_topic:
+        case MQTTTopicsConfig.temp_get_temp_topic:
           zigbeeGateway.TempSensor.get_temp(msgData);
           break;
   
-        case MQTTConfig.temp_set_interval_topic:
+        case MQTTTopicsConfig.temp_set_interval_topic:
           zigbeeGateway.TempSensor.set_interval(msgData);
           break;
   
         // ----------------- DoorLock Device ----------------------------
-        case MQTTConfig.doorlock_get_state_topic:
+        case MQTTTopicsConfig.doorlock_get_state_topic:
           zigbeeGateway.DoorLockDevice.get_state(msgData);
           break;
   
-        case MQTTConfig.doorlock_set_unlock_topic:
+        case MQTTTopicsConfig.doorlock_set_unlock_topic:
           zigbeeGateway.DoorLockDevice.unlock(msgData);
           break;
   
-        case MQTTConfig.doorlock_set_lock_topic:
+        case MQTTTopicsConfig.doorlock_set_lock_topic:
           zigbeeGateway.DoorLockDevice.lock(msgData);
           break;
   
         // ----------------- Thermostat Device ----------------------------
-        case MQTTConfig.thermostat_change_setpoint_topic:
+        case MQTTTopicsConfig.thermostat_change_setpoint_topic:
           zigbeeGateway.ThermostatDevice.setpoint_change(msgData);
           break;
   
-        case MQTTConfig.thermostat_get_minheat_setpoint_topic:
+        case MQTTTopicsConfig.thermostat_get_minheat_setpoint_topic:
           zigbeeGateway.ThermostatDevice.get_minheat_setpoint(msgData);
           break;
   
-        case MQTTConfig.thermostat_get_all_attributes:
+        case MQTTTopicsConfig.thermostat_get_all_attributes:
           zigbeeGateway.ThermostatDevice.get_all_attributes(msgData);
           break;
   
   
         // ----------------- Device Binding ----------------------------
-        case MQTTConfig.binding_set_bind_topic:
+        case MQTTTopicsConfig.binding_set_bind_topic:
           zigbeeGateway.DeviceBinding.set_binding(msgData);
           break;
   
-        case MQTTConfig.binding_set_unbind_topic:
+        case MQTTTopicsConfig.binding_set_unbind_topic:
           zigbeeGateway.DeviceBinding.set_unbinding(msgData);
           break;
         
@@ -215,7 +216,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(listData);
-		gatewayClient.publish(MQTTConfig.server_devList_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_devList_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}
   })
 
@@ -232,7 +233,7 @@ gatewayClient.on('connect', function(){
     if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(listData);
-		gatewayClient.publish(MQTTConfig.server_devList_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_devList_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -243,7 +244,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_removeDeviceCard_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_removeDeviceCard_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -253,7 +254,7 @@ gatewayClient.on('connect', function(){
 
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
-		gatewayClient.publish(MQTTConfig.server_network_ready_topic, "null", MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_network_ready_topic, "null", {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -264,7 +265,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_network_info_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_network_info_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -282,7 +283,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(listData);
-		gatewayClient.publish(MQTTConfig.server_binding_event_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_binding_event_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -293,7 +294,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 
-		gatewayClient.publish(MQTTConfig.server_binding_failed_topic, "null", MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_binding_failed_topic, "null", {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  	
   })
 
@@ -304,7 +305,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 
-		gatewayClient.publish(MQTTConfig.server_unbinding_failed_topic, "null", MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_unbinding_failed_topic, "null", {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -314,7 +315,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_light_device_state_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_light_device_state_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
         console.log("MQTT Published!");
 	}  
   })
@@ -325,7 +326,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_light_device_level_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_light_device_level_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -335,7 +336,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_light_device_color_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_light_device_color_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -345,7 +346,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_temp_device_temp_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_temp_device_temp_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -355,7 +356,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_doorlock_device_state_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_doorlock_device_state_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -365,7 +366,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_doorlock_device_set_rsp_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_doorlock_device_set_rsp_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   })
 
@@ -375,7 +376,7 @@ gatewayClient.on('connect', function(){
 	if(gatewayClient.connected == true){
 		console.log("MQTT Connection Status: ", gatewayClient.connected);
 		msgData = JSON.stringify(data);
-		gatewayClient.publish(MQTTConfig.server_thermostat_attribute_topic, msgData, MQTTConfig.subpub_options);  
+		gatewayClient.publish(MQTTTopicsConfig.server_thermostat_attribute_topic, msgData, {"retain": MQTTConfig.retain, "qos": MQTTConfig.qos});  
 	}  
   });
 
