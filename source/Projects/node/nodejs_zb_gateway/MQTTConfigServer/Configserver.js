@@ -2,8 +2,21 @@ const express = require( 'express' ); // import express package
 const bodyParser = require( 'body-parser' ); // use body parser
 const path = require( 'path' );
 const fs = require( 'fs' );
+var events = require('events');
 const app = express(); // define the main app as the express package
 const port = 9000;
+
+var ConfigServerInstance;
+
+function ConfigServer(ip_address) {
+
+  // Make sure there is only one instance created
+  if (typeof ConfigServerInstance !== "undefined") {
+    return ConfigServerInstance;
+  }
+  /* Set up to emit events */
+  events.EventEmitter.call(this);
+  ConfigServerInstance = this;
 
 const workingJson = 'cloud_adapters/MQTTConfig-working.json';
 const defaultJson = 'cloud_adapters/MQTTConfig-default.json';
@@ -56,8 +69,12 @@ app.post('/submit', ( req, res ) => {
   fs.writeFile( workingJson, fields, ( err ) => {
     if ( err ) {
       throw err;
+    }else{
+    console.log( "JSON data was saved -- called MQTT Adapter Reset." );
+    //Restart MQTTadapter app to apply new configuration
+    ConfigServerInstance.emit("restartMQTT");
     }
-    console.log( "JSON data was saved." );
+
   } );
 
   // get fields back into json
@@ -94,3 +111,8 @@ app.listen( port, () => {
     }
   } );
 });
+
+
+}
+ConfigServer.prototype.__proto__ = events.EventEmitter.prototype;
+module.exports = ConfigServer;

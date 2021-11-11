@@ -55,6 +55,5 @@ echo -e "\nWait for Node.js Zigbee MQTT Gateway to Start...\n"
 cd ../../../Projects/node/nodejs_zb_gateway/
 node main.js MQTTandLocal &
 echo -e "\nStarting Config Server...\n"
-sleep 10
-node ./MQTTConfigServer/App.js &
+
 
