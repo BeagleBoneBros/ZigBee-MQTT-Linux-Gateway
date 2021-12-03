@@ -1,0 +1,80 @@
+[
+	{
+		"info": {
+			"id": "f0d102be2601",
+			"ieee": {
+				"type": "Buffer",
+				"data": [
+					38,
+					190,
+					2,
+					0,
+					0,
+					184,
+					209,
+					240
+				]
+			},
+			"ep": 1
+		},
+		"data": {
+			"guid": "f0d1b8000002be26:1",
+			"name": "Zigbee Light",
+			"type": "ColorLight",
+			"hue": 0,
+			"saturation": 0
+		}
+	},
+	{
+		"info": {
+			"id": "b0ce17824e01",
+			"ieee": {
+				"type": "Buffer",
+				"data": [
+					78,
+					130,
+					23,
+					0,
+					20,
+					24,
+					206,
+					176
+				]
+			},
+			"ep": 1
+		},
+		"data": {
+			"guid": "b0ce18140017824e:1",
+			"name": "Zigbee Light",
+			"type": "ColorLight",
+			"hue": 0,
+			"saturation": 0
+		}
+	},
+	{
+		"info": {
+			"id": "b0ce17a80501",
+			"ieee": {
+				"type": "Buffer",
+				"data": [
+					5,
+					168,
+					23,
+					0,
+					20,
+					24,
+					206,
+					176
+				]
+			},
+			"ep": 1
+		},
+		"data": {
+			"guid": "b0ce18140017a805:1",
+			"name": "Zigbee Light",
+			"type": "ColorLight",
+			"hue": 0,
+			"saturation": 0
+		}
+	}
+]

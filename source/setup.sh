@@ -119,6 +119,36 @@ else
     exit 1
 fi
 
+#Install Python Packages (LCD)
+echo -e "\nInstalling pip \n"
+if apt-get install pip -y; then
+    echo "SUCCESS: Installed pip Successfully"
+else
+    echo "ERROR: Failed installing pip"
+    echo -e "\n****** SETUP FAILED! *****\n"
+    exit 1
+fi
+
+#Install PIL Python Package (LCD)
+echo -e "\nInstalling PIL \n"
+if pip install PIL; then
+    echo "SUCCESS: Installed PIL Successfully"
+else
+    echo "ERROR: Failed installing PIL "
+    echo -e "\n****** SETUP FAILED! *****\n"
+    exit 1
+fi
+
+#Install Adafruit_GPIO Python Package (LCD)
+echo -e "\nInstalling Adafruit_GPIO \n"
+if pip install Adafruit_GPIO; then
+    echo "SUCCESS: Installed Adafruit_GPIO Successfully"
+else
+    echo "ERROR: Failed installing Adafruit_GPIO"
+    echo -e "\n****** SETUP FAILED! *****\n"
+    exit 1
+fi
+
 # Return to original directory
 cd -
 

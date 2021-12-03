@@ -54,5 +54,5 @@ pkill ZLSZNP_arm
 pkill GATEWAY_SRVR_ar
 pkill OTA_SRVR_ar
 pkill NWKMGR_SRVR_arm
-
+pkill python
 pkill node

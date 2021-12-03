@@ -4,6 +4,8 @@
 
  @brief Adapter to send and receive messages from an MQTT broker
 
+ @author Adam Hood
+
  *****************************************************************************/
 
 
@@ -23,7 +25,7 @@ function MQTTCloudAdapter(ip_address) {
     return MQTTCloudAdapterInstance;
   }
 
-  /* Set up to emit events */
+  // Set up to emit events 
   events.EventEmitter.call(this);
   MQTTCloudAdapterInstance = this;
 
@@ -33,28 +35,21 @@ function MQTTCloudAdapter(ip_address) {
 
   // connect to MQTT broker and create MQTT client object
   var gatewayClient = mqtt.connect("mqtt://" + MQTTConfig.broker_address, MQTTConfig.broker_options);
+  //var gatewayClient = mqtt.connect("mqtt://" + MQTTConfig.broker_address, MQTTConfig.broker_options);
 
   //reinitialize MQTT client when configuration is changed
-  fs.watchFile('./MQTTTopicsConfig-working.json', (curr, prev) => {
-    console.log(`${'./MQTTTopicsConfig-working.json'} file Changed`);
+  fs.watchFile('./MQTTConfig-working.json', (curr, prev) => {
+    console.log(`${'./MQTTConfig-working.json'} file Changed`);
     MQTTConfig = require('./MQTTConfig-working.json');
     MQTTTopicsConfig = require('./MQTTTopicsConfig-working.json');
-    gatewayClient = mqtt.connect("mqtt://" + MQTTConfig.broker_address, MQTTConfig.broker_options);
+    connectMQTT();
   });
+
   // create Zigbee Gateway
   var zigbeeGateway = new ZigbeeGateway(ip_address);
 
   //attach timeout function to update the status file
   setInterval(updateStatus, 5000);
-
-  // object that holds the current status
-  var currentStatus = {
-    "ip_Addesses": {},
-    "Devices": {},
-    "MQTT_Config": {},
-    "MQTT_Status": false,
-    "Gateway_Client": false
-  }
 
   //subscribe to topics
   gatewayClient.on('connect', function () {
@@ -100,8 +95,9 @@ function MQTTCloudAdapter(ip_address) {
   });
 
   //respond to MQTT Commands from the subscribed topics by passing messages to the gateway servers
-  gatewayClient.on('message', function (topic, msgData) {
+  gatewayClient.on('message', function (topic, msgDataString) {
     console.log("Message Topic: %s  Message: %s  \n", topic, msgData);
+    var msgData = jsonIEEEBufferStringToObject(msgDataString);
     switch (topic) {
       // ----------------- HA-Gateway Control ----------------------------
       case MQTTTopicsConfig.gateway_getDeviceList_topic:
@@ -233,7 +229,7 @@ function MQTTCloudAdapter(ip_address) {
       gatewayClient.publish(MQTTTopicsConfig.server_devList_topic, msgData, MQTTConfig.sub_options);
     }
     //update status with device list
-    currentStatus.Devices = listData;
+    updateDeviceFile(devList);
   })
 
     // ############################### Push Cuurent Device List to Cloud ######################################
@@ -253,7 +249,7 @@ function MQTTCloudAdapter(ip_address) {
       }
 
       //update status with device list
-      currentStatus.Devices = listData;
+      updateDeviceFile(devList);
     })
 
     // ############################ Send Remove Device Card Command to Cloud ##################################
@@ -306,7 +302,7 @@ function MQTTCloudAdapter(ip_address) {
         gatewayClient.publish(MQTTTopicsConfig.server_binding_event_topic, msgData, MQTTConfig.sub_options);
       }
       //update status with device list
-      currentStatus.Devices = listData;
+      updateDeviceFile(devList);
     })
 
     // ############################ Send Binding Failed Command to Cloud ######################################
@@ -402,14 +398,29 @@ function MQTTCloudAdapter(ip_address) {
       }
     });
 
-  function updateStatus() {
+  function updateDeviceFile(devList) {
+    var DeviceFileContents = JSON.stringify(devList, null, '\t');
+    console.log(DeviceFileContents);
+    //write the updated status to the status file
+    fs.writeFile("devices.json", DeviceFileContents, 'utf8', function (err) {
+      if (err) {
+        console.log("An error occured while writing JSON Object to File.");
+        return console.log(err);
+      }
+      console.log("Device file Updated");
+    });
+  }
 
-    currentStatus.ip_Addesses = ip.address();
-    currentStatus.Gateway_Client = gatewayClient.connected;
-    currentStatus.MQTT_Config = MQTTConfig;
-    currentStatus.MQTT_Status = MQTTCloudAdapterInstance.connected;
+  function updateStatus() {
+    var status = {
+      "MQTTConnected": gatewayClient.connected,
+      "broker_ip": MQTTConfig.broker_address,
+      "client_Id": MQTTConfig.broker_options.clientId,
+      "username": MQTTConfig.broker_options.username,
+      "password": MQTTConfig.broker_options.password
+    }
     //prepare stutus to be written to file
-    var statusFileContents = JSON.stringify(currentStatus);
+    var statusFileContents = JSON.stringify(status, null, '\t');
     console.log(statusFileContents);
     //write the updated status to the status file
     fs.writeFile("status.json", statusFileContents, 'utf8', function (err) {
@@ -417,13 +428,22 @@ function MQTTCloudAdapter(ip_address) {
         console.log("An error occured while writing JSON Object to File.");
         return console.log(err);
       }
-
       console.log("Status file Updated");
     });
+
+
+
   }
-}
+  function connectMQTT() {
+    var gatewayClient = mqtt.connect("mqtt://" + MQTTConfig.broker_address, MQTTConfig.broker_options);
+  }
 
-
+  }
+  function jsonIEEEBufferStringToObject(msgData){
+    var msgDataObj = JSON.parse(msgData);
+    msgDataObj.ieee = Buffer.from(msgDataObj.ieee.data);
+    return msgDataObj;
+  }
 
 MQTTCloudAdapter.prototype.__proto__ = events.EventEmitter.prototype;
 

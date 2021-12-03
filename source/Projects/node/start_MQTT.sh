@@ -55,5 +55,9 @@ echo -e "\nWait for Node.js Zigbee MQTT Gateway to Start...\n"
 cd ../../../Projects/node/nodejs_zb_gateway/
 node main.js MQTTandLocal &
 echo -e "\nStarting Config Server...\n"
+cd ../../../../lcd/
+python image.py
+echo -e "\nStarting LCD Script...\n"
+
 
 

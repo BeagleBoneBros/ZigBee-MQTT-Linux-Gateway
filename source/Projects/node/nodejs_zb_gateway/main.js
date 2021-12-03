@@ -45,7 +45,7 @@
 
 var Webserver = require('./webserver/webserver.js');
 var MQTTAdapter = require("./cloud_adapters/MQTTCloudAdapterSimple.js");
-var Configserver = require("./MQTTConfigServer/Configserver.js");
+var Configserver = require("./mqtt_config_server/Configserver.js");
 var events = require('events');
 
 

@@ -1,13 +1,13 @@
 {
-  "broker_address": "",
+  "broker_address": "192.168.1.24",
   "broker_options": {
     "clientId": "",
-    "username": "",
+    "username": "mosquitto",
     "password": "",
     "clean": true
   },
   "sub_options": {
     "retain": true,
-    "qos": 0
+    "qos": 1
   }
 }

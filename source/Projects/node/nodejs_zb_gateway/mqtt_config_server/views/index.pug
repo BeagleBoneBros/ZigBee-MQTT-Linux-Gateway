@@ -1,0 +1,57 @@
+html
+  head
+    link(rel='stylesheet', href='css/bulma.css',id='main-styles-link')
+  body
+    .section
+      .containers
+        .container
+          form(method='POST', action='/submit')
+
+            .field
+              label.label Broker Address:
+                input.input(name='broker_address', type='text', value=broker_address, placeholder='Broker address')
+              p.help This is a field for Broker Address
+
+            .field
+              label.label Broker Options:
+              p.help Here is some helpful info about broker options
+              br
+              .control
+                input.input(name='clientId', type='text',value=broker_options.clientId, placeholder='ClientID')
+                input.input(name='username', type = 'text', value=broker_options.username, placeholder='Username')
+                input.input(name='password', type='text', value=broker_options.password, placeholder='Password')
+                br
+                
+              .control
+                
+                .label Clean?  
+                  .radio
+                    label.label True  
+                      input.radio(name='clean', type='radio', checked= broker_options.clean == true, value='true')
+                  .radio
+                    label.label False  
+                      input.radio(name='clean', type='radio',checked= broker_options.clean == false, value='false')
+              
+            .field
+              label.label Publishing and Subscription Options:
+              .control
+                .label Retain?  
+                  .radio
+                    label.label True  
+                      input.radio(name='retain', type='radio', checked = sub_options.retain == true, value='true')
+                  .radio
+                    label.label False  
+                      input.radio(name='retain', type='radio', checked = sub_options.retain == false, value='false')
+              .control
+                .label QOS  
+                    select(name='qos',type='select' )
+                      option( value='0', selected= sub_options.qos == 0 ) 0
+                      option( value='1', selected= sub_options.qos == 1 ) 1
+                      option( value='2', selected= sub_options.qos == 2 ) 2
+
+
+              
+            .control
+              button.button.is-primary Submit
+          
+            

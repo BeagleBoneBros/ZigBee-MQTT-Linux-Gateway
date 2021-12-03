@@ -1423,6 +1423,7 @@ function WebAppClient() {
       ep: device_data.info.ep,
       on: ON_OFF_CLUSTER_OnOff.ON  
     };
+    console.log(data);
     
     // send command
     self.socket.emit('light_device:set:ONOFF', data);
@@ -1448,6 +1449,7 @@ function WebAppClient() {
       ep: device_data.info.ep,
       on: ON_OFF_CLUSTER_OnOff.OFF  
     };
+    console.log(data);
     
     // send command
     self.socket.emit('light_device:set:ONOFF', data);

@@ -267,10 +267,12 @@ case "$BOARD_TYPE" in
 bbb | beaglebone)
 	# beaglebone does some magic with the omap_mux
 	# and as such an explicit reverse isn't needed
-	config-pin P9.11 uart
-	config-pin P9.13 uart
 	ZBEE_RESET_EXPLICIT_REVERSE=0
 	ZBEE_RESET_GPIO_LINE=77
+	# set BB UART pins
+	config-pin P9.11 uart
+	config-pin P9.13 uart
+	# ttyS4 for UART 4
 	export ZBEE_SERIAL_PORT=/dev/ttyS4
 	setup_for_arm
 	;;	
